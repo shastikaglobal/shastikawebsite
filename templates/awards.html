@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Certifications & Awards</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+
+
+<body class="inner-page">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<a href="#" class="logo-container">
+<img src="{{ url_for('static', filename='images/logo.webp') }}" loading="lazy">
+<span>SHASTIKA</span>
+</a>
+
+<div class="menu-toggle" aria-label="Open Menu">☰</div>
+
+<div class="nav-links">
+
+<a href="/home">HOME</a>
+
+<div class="nav-dropdown">
+
+<a href="#" class="dropbtn">PRODUCTS ▾</a>
+
+<div class="dropdown-menu">
+
+<a href="/product/tendercoconut">Tender Coconut</a>
+<a href="/product/greencoconut">Green Coconut</a>
+<a href="/product/huskedcoconut">Husked Coconut</a>
+<a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+<a href="/product/dehusked">Dehusked Coconut</a>
+<a href="/product/freshorganic">Fresh Organic Coconut</a>
+<a href="/product/tomato">Tomato</a>
+<a href="/product/watermelon">Watermelon</a>
+<a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+<a href="/product/yellowpumpkin">Yellow Pumpkin</a>
+<a href="/product/whitepumpkin">White Pumpkin</a>
+<a href="/product/yellowcucumber">Yellow Cucumber</a>
+<a href="/product/banana">Cavendish Banana</a>
+<a href="/product/babybanana">Baby Banana</a>
+<a href="/product/nendranbanana">Nendran Banana</a>
+<a href="/product/redbanana">Red Banana</a>
+
+</div>
+</div>
+
+<a href="/countries">COUNTRIES</a>
+<a href="/awards">AWARDS</a>
+<a href="/team">OUR TEAM</a>
+<a href="/contact">CONTACT US</a>
+
+</div>
+
+</nav>
+
+
+<!-- AWARDS SECTION -->
+
+<section id="awards" class="gallery-section">
+
+<div class="section-header">
+<h2>Certifications & Awards</h2>
+</div>
+
+<div class="awards-shell">
+
+<button class="awards-btn left" onclick="moveAwards(-1)">‹</button>
+
+<div class="awards-viewport">
+<div class="awards-container" id="awardsSlider">
+
+<img src="{{ url_for('static', filename='images/certificate1.webp') }}" onclick="openGalleryModal(this)">
+
+<img src="{{ url_for('static', filename='images/certificate2.webp') }}" onclick="openGalleryModal(this)">
+
+<img src="{{ url_for('static', filename='images/certificate3.webp') }}" onclick="openGalleryModal(this)">
+
+<img src="{{ url_for('static', filename='images/certificate4.webp') }}" onclick="openGalleryModal(this)">
+
+</div>
+</div>
+
+<button class="awards-btn right" onclick="moveAwards(1)">›</button>
+
+</div>
+
+</section>
+
+
+
+<!-- FLOATING BUTTONS -->
+
+<div class="floating-icons">
+
+<a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
+<i class="fa-solid fa-robot"></i>
+</a>
+
+<a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+</div>
+
+
+
+<!-- MODAL -->
+
+<div id="galleryModal">
+
+<button class="gallery-back" onclick="closeGallery()">
+<span class="arrow">←</span>
+<span>Back to Awards</span>
+</button>
+
+<img id="galleryModalImg">
+
+</div>
+
+
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

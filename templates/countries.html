@@ -1,0 +1,145 @@
+<html>
+<head>
+  <title>About</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="inner-page">
+
+  <nav class="navbar">
+    <a href="#" class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.webp') }}"loading="lazy">
+        <span>SHASTIKA</span>
+    </a>
+    <div class="menu-toggle" aria-label="Open Menu">☰</div>
+    <div class="nav-links">
+      <a href="/home">HOME</a>
+        <div class="nav-dropdown">
+ <a href="#" class="dropbtn">PRODUCTS ▾</a>
+  <div class="dropdown-menu">
+    <a href="/product/tendercoconut">Tender Coconut</a>
+    <a href="/product/greencoconut">Green Coconut</a>
+    <a href="/product/huskedcoconut">Husked Coconut</a>
+    <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+    <a href="/product/dehusked">Dehusked Coconut</a>
+    <a href="/product/freshorganic">Fresh Organic Coconut</a>
+    <a href="/product/tomato">Tomato</a>
+    <a href="/product/watermelon">Watermelon</a>
+    <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+    <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
+    <a href="/product/whitepumpkin">White Pumpkin</a>
+    <a href="/product/yellowcucumber">Yellow Cucumber</a>
+    <a href="/product/banana">Cavendish Banana</a>
+    <a href="/product/babybanana">Baby Banana</a>
+    <a href="/product/nendranbanana">Nendran Banana</a>
+    <a href="/product/redbanana">Red Banana</a>
+  </div>
+</div>
+
+        <a href="/countries">COUNTRIES</a>
+        <a href="/awards">AWARDS</a>
+        <a href="/team">OUR TEAM</a>
+        <a href="/contact">CONTACT US</a>
+         <a href="/gallery">GALLERY</a>
+
+
+    </div>
+  </nav>
+<section class="global-network show">
+
+      <h1 class="glass-heading">Our Exporting Countries</h1>
+
+<div class="map-container">
+
+<svg viewBox="0 0 2000 1000" preserveAspectRatio="xMidYMid meet">
+
+  <!-- MAP IMAGE -->
+  <image
+    href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+    width="2000"
+    height="1000"
+  />
+
+  <!-- ✅ TRUE SOUTH INDIA ORIGIN -->
+  <circle class="origin" cx="1315" cy="480" r="10" />
+
+  <!-- ROUTES -->
+  <!-- ROUTES (CONNECTED TO SOUTH INDIA ORIGIN) -->
+<!-- ROUTES (ADJUSTED TO DESTINATIONS) -->
+
+<!-- Mauritius -->
+<path class="route" d="M1315 480 Q1200 600 1210 650" />
+
+<!-- Netherlands -->
+<path class="route" d="M1315 480 Q1150 300 990 280" />
+
+<!-- Dubai -->
+<path class="route" d="M1315 480 Q1250 450 1200 420" />
+
+<!-- Germany -->
+<path class="route" d="M1315 480 Q1120 300 1010 290" />
+
+<!-- Hong Kong -->
+<path class="route" d="M1315 480 Q1420 420 1475 410" />
+
+<!-- North America -->
+<path class="route" d="M1315 480 Q800 350 580 360" />
+
+<!-- Australia -->
+<path class="route" d="M1315 480 Q1500 620 1550 700" />
+
+
+
+ <!-- DESTINATIONS (STATIC WITH LABELS) -->
+
+<!-- Mauritius -->
+<circle class="destination" cx="1210" cy="650" r="8" />
+<text class="country-label" x="1225" y="655">Mauritius</text>
+
+<!-- Netherlands -->
+<circle class="destination" cx="990" cy="280" r="8" />
+<text class="country-label" x="1005" y="285">Netherlands</text>
+
+<!-- Dubai -->
+<circle class="destination" cx="1200" cy="420" r="8" />
+<text class="country-label" x="1215" y="425">Dubai</text>
+
+<!-- Germany -->
+<circle class="destination" cx="1010" cy="290" r="8" />
+<text class="country-label" x="1025" y="295">Germany</text>
+
+<!-- Hong Kong -->
+<circle class="destination" cx="1475" cy="410" r="8" />
+<text class="country-label" x="1490" y="415">Hong Kong</text>
+
+<!-- North America -->
+<circle class="destination" cx="580" cy="360" r="8" />
+<text class="country-label" x="595" y="365">North America</text>
+
+<!-- Australia -->
+<circle class="destination" cx="1550" cy="700" r="8" />
+<text class="country-label" x="1565" y="705">Australia</text>
+
+</svg>
+
+</div>
+    </section>
+    <!-- FLOATING ACTION BUTTONS -->
+<div class="floating-icons">
+
+  <!-- Chatbot -->
+  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
+    <i class="fa-solid fa-robot"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
+
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

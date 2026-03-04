@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shastika Global | Premium Organic Watermelon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+     * {
+    font-family: 'Cinzel', serif;
+}
+        body { 
+            <body style="background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed; background-size:cover;"> 
+            no-repeat center center fixed; 
+            background-size: cover; 
+            background-color: #001f3f; 
+        }
+
+        /* 1. GLASS STAGE - PRESERVED MIRROR DESIGN */
+        .glass-shell-stage { 
+            width: 100% !important;
+            max-width: 450px !important; 
+            height: 615px !important;    
+            margin-left: -10px !important; 
+            background: rgba(168, 207, 230, 0.45); 
+            border-radius: 60% 40% 50% 50% / 40% 40% 60% 60%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            overflow: visible !important; 
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* 2. PRODUCT IMAGE POSITION PRESERVED */
+        .product-seated {
+            padding-bottom: 0px !important; 
+            margin-bottom: -100px !important; 
+            transform: translateX(0px); 
+            width: 90% !important; 
+            transition: all 0.6s ease;
+        }
+
+        .glass-shell-stage:hover .product-seated {
+            transform: translateY(-20px) scale(1.05);
+        }
+
+        /* 3. TRANSPARENT GLASS FORM DESIGN */
+        .glass-form-card { 
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .custom-input {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #ffffff;
+            width: 100%;
+            outline: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        select.custom-input option {
+    background-color: rgba(20, 20, 20, 0.9);
+    color: #ffffff;
+}
+
+select.custom-input option:checked {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+
+        .custom-input:focus { border-color: #4CAF50; background-color: rgba(255, 255, 255, 0.1); }
+
+        /* 4. CONTENT HIGHLIGHTS */
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+        .highlight-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); }
+
+        @keyframes float { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-15px); } 
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+
+        .badge-anchor {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            z-index: 50;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="inner-page">
+<nav class="navbar">
+    <a href="#" class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.webp') }}"loading="lazy">
+        <span>SHASTIKA</span>
+    </a>
+    <div class="menu-toggle" aria-label="Open Menu">☰</div>
+    <div class="nav-links">
+        <a href="/home">HOME</a>
+        <div class="nav-dropdown">
+ <a href="#" class="dropbtn">PRODUCTS ▾</a>
+  <div class="dropdown-menu">
+    <a href="/product/tendercoconut">Tender Coconut</a>
+    <a href="/product/greencoconut">Green Coconut</a>
+    <a href="/product/huskedcoconut">Husked Coconut</a>
+    <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+    <a href="/product/dehusked">Dehusked Coconut</a>
+    <a href="/product/freshorganic">Fresh Organic Coconut</a>
+    <a href="/product/tomato">Tomato</a>
+    <a href="/product/watermelon">Watermelon</a>
+    <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+    <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
+    <a href="/product/whitepumpkin">White Pumpkin</a>
+    <a href="/product/yellowcucumber">Yellow Cucumber</a>
+    <a href="/product/banana">Cavendish Banana</a>
+    <a href="/product/babybanana">Baby Banana</a>
+    <a href="/product/nendranbanana">Nendran Banana</a>
+    <a href="/product/redbanana">Red Banana</a>
+  </div>
+</div>
+
+        <a href="/countries">COUNTRIES</a>
+        <a href="/awards">AWARDS</a>
+        <a href="/objectives">OBJECTIVES</a>
+        <a href="/team">OUR TEAM</a>
+        <a href="/contact">CONTACT US</a>
+        <a href="/gallery">GALLERY</a>
+
+    </div>
+  </nav>
+    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center relative z-50">
+        <div class="text-2xl font-black tracking-tighter uppercase">
+             <span class="font-light text-green-300 italic"></span>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+            
+            <div class="w-full lg:w-5/12 relative flex flex-col items-start">
+                <div class="glass-shell-stage group mb-12">
+                    <img src="{{ url_for('static', filename='images/watermelon-pd.webp') }}" alt="Organic Watermelon" class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
+                    <div class="badge-anchor">
+                        <div class="relative w-40 h-40 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
+                                <path id="badgePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+                                <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
+                                    <textPath xlink:href="#badgePath">SHASTIKA GLOBAL IMPEX PRIVATE LTD • </textPath>
+                                </text>
+                            </svg>
+                            <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
+                                <div class="w-full h-full animate-[spin_8s_linear_infinite]">
+                                    <img src="{{ url_for('static', filename='images/logo.webp') }}" class="w-full h-full object-contain scale-110" alt="Logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full glass-form-card p-8 relative">
+                    <h2 class="text-xl font-bold text-green-400 uppercase tracking-widest mb-6">Bulk Quote Inquiry</h2>
+                    <form class="space-y-4" onsubmit="submitEnquiryForm(event)">
+<input type="hidden" name="product" value="Watermelon">
+
+                        <input type="text" name="name" placeholder="Full Name *(required)" class="custom-input">
+                         <select id="countrySelect" name="country" class="custom-input" required>
+    <option value="">Select Country *</option>
+</select>
+<div class="flex gap-3">
+    <input type="text" id="countryCode" name="country_code" placeholder="+Code" class="custom-input w-28" readonly required>
+    <input type="tel" name="phone" placeholder="Phone Number *" class="custom-input flex-1" required>
+</div>
+                        <input type="email" name="email" placeholder="Email Address" class="custom-input">
+                        <button class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-black uppercase tracking-widest hover:scale-[1.01] transition-transform">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-7/12 space-y-12">
+                <div class="space-y-4">
+                    <span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block underline decoration-green-500/30 underline-offset-8">Global Fruit Export</span>
+                    <h1 class="text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
+                        Organic <br> <span class="text-green-300 italic font-serif text-6xl lg:text-8xl">Watermelon</span>
+                    </h1>
+                    <p class="max-w-2xl text-sm md:text-base leading-relaxed text-white">
+   <b> Shastika Global’s Premium Fresh Watermelons are grown under optimal climatic conditions and
+    harvested at peak maturity to ensure crisp texture, deep red flesh, and naturally high sweetness.
+    Carefully selected and packed for export, these watermelons offer excellent keeping quality and
+    durability, making them ideal for long-distance shipments and international markets.</b>
+</p>
+
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="highlight-card">
+                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Purity & Source</h4>
+                        <p class="text-xl font-bold mb-2 italic">100% Organic</p>
+                        <p class="text-sm text-white leading-relaxed">Cultivated in certified organic Indian farms, ensuring chemical-free sweetness and nutrient-rich red flesh.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Quality Grade</h4>
+                        <p class="text-xl font-bold mb-2 italic">A Grade Export</p>
+                        <p class="text-sm text-white leading-relaxed">Rigorous grading process selecting fruits with uniform shape, rind integrity, and high brix levels.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Export Packaging</h4>
+                        <p class="text-xl font-bold mb-2 italic">5kg,10kg,15kg & 20kg Carton</p>
+                        <p class="text-sm text-white leading-relaxed">Heavy-duty corrugated cardboard cartons specifically designed to prevent bruising during maritime or air transit.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">State of Origin</h4>
+                        <p class="text-xl font-bold mb-2 italic">India Heritage</p>
+                        <p class="text-sm text-white leading-relaxed">Direct farm-to-port logistics from India's most fertile belts, maintaining peak freshness upon arrival.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 p-8 rounded-3xl border border-white/10 flex flex-col md:flex-row gap-8 justify-between items-center">
+                    <div class="text-center md:text-left">
+                        <p class="text-4xl font-black text-green-300">Fresh</p>
+                        <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Hydration Focus</p>
+                    </div>
+                    <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                    <div class="text-center md:text-left">
+                        <p class="text-4xl font-black text-white italic">Global</p>
+                        <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Certified Export</p>
+                    </div>
+                    <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                    <div class="flex gap-4">
+                        <div class="w-14 h-14 rounded-full border border-green-500/50 flex items-center justify-center text-[10px] font-bold text-green-400">AG</div>
+                        <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold opacity-40">ISO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FLOATING ACTION BUTTONS -->
+<div class="floating-icons">
+
+  <!-- Chatbot -->
+  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
+    <i class="fa-solid fa-robot"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
+    </main>
+     <script>
+const countries = {
+  "Afghanistan": "+93",
+  "Albania": "+355",
+  "Algeria": "+213",
+  "Argentina": "+54",
+  "Australia": "+61",
+  "Austria": "+43",
+  "Bangladesh": "+880",
+  "Belgium": "+32",
+  "Brazil": "+55",
+  "Canada": "+1",
+  "China": "+86",
+  "Denmark": "+45",
+  "Egypt": "+20",
+  "Finland": "+358",
+  "France": "+33",
+  "Germany": "+49",
+  "Greece": "+30",
+  "Hong Kong": "+852",
+  "India": "+91",
+  "Indonesia": "+62",
+  "Ireland": "+353",
+  "Israel": "+972",
+  "Italy": "+39",
+  "Japan": "+81",
+  "Kenya": "+254",
+  "Kuwait": "+965",
+  "Malaysia": "+60",
+  "Maldives": "+960",
+  "Mexico": "+52",
+  "Netherlands": "+31",
+  "New Zealand": "+64",
+  "Nigeria": "+234",
+  "Norway": "+47",
+  "Oman": "+968",
+  "Pakistan": "+92",
+  "Philippines": "+63",
+  "Poland": "+48",
+  "Portugal": "+351",
+  "Qatar": "+974",
+  "Russia": "+7",
+  "Saudi Arabia": "+966",
+  "Singapore": "+65",
+  "South Africa": "+27",
+  "South Korea": "+82",
+  "Spain": "+34",
+  "Sri Lanka": "+94",
+  "Sweden": "+46",
+  "Switzerland": "+41",
+  "Thailand": "+66",
+  "Turkey": "+90",
+  "UAE": "+971",
+  "UK": "+44",
+  "USA": "+1",
+  "Vietnam": "+84"
+};
+
+const countrySelect = document.getElementById("countrySelect");
+const countryCodeInput = document.getElementById("countryCode");
+
+/* Populate dropdown */
+Object.keys(countries).forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
+});
+
+/* Auto-fill country code */
+countrySelect.addEventListener("change", function () {
+    countryCodeInput.value = countries[this.value] || "";
+});
+/* ================= PRODUCT ENQUIRY SUBMIT ================= */
+function submitEnquiryForm(e){
+  e.preventDefault();
+
+  const form = e.target;
+
+  fetch("/submit_enquiry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      product: form.querySelector('input[name="product"]').value,
+      name: form.querySelector('input[name="name"]').value,
+      country: form.querySelector('select[name="country"]').value,
+      phone: form.querySelector('input[name="country_code"]').value + " " +
+             form.querySelector('input[name="phone"]').value,
+      email: form.querySelector('input[name="email"]').value
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.status === "success"){
+      alert("Your enquiry has been sent successfully!");
+      form.reset();
+      document.getElementById("countryCode").value = "";
+    } else {
+      alert("Something went wrong!");
+    }
+  })
+  .catch(() => alert("Server error!"));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO -->
+<meta name="description" content="Shastika Global Impex Pvt Ltd is a trusted Indian exporter of coconuts, bananas, pumpkins, watermelons and fresh agricultural produce with certified quality and timely global delivery.">
+
+<meta name="keywords" content="coconut exporter India, green coconut, brown coconut, banana exporter, fresh vegetables export, Shastika Global Impex">
+<meta name="author" content="Shastika Global Impex Pvt Ltd">
+
+<!-- Open Graph (for social sharing) -->
+<meta property="og:title" content="Shastika Global Impex Pvt Ltd">
+<meta property="og:description" content="Premium agricultural exports from India. Fresh coconuts, bananas and vegetables delivered worldwide.">
+<meta property="og:image" content="https://shastikaglobal.co.in/static/images/logo.webp">
+<meta property="og:url" content="https://shastikaglobal.co.in">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shastika Global Impex Pvt Ltd">
+<meta name="twitter:description" content="Premium agricultural exports from India. Fresh coconuts, bananas and vegetables delivered worldwide.">
+<meta name="twitter:image" content="https://shastikaglobal.co.in/static/images/logo.webp">
+
+  <title>Shastika Global Impex Pvt Ltd</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+<link rel="canonical" href="https://shastikaglobal.co.in/">
+
+  <!-- ===================== GLOBAL CSS ===================== -->
+   <!-- GSAP (Our Team animations) -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {"@type": "ListItem","position": 1,"name": "Home","item": "https://shastikaglobal.co.in"}
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Product",
+ "name": "Fresh Green Coconut",
+ "image": "https://shastikaglobal.co.in/static/images/coconut-product.webp",
+ "description": "Premium export quality green coconuts from India",
+ "brand": {
+   "@type": "Brand",
+   "name": "Shastika Global Impex"
+ }
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Shastika Global Impex Pvt Ltd",
+  "url": "https://shastikaglobal.co.in",
+  "logo": "https://shastikaglobal.co.in/static/images/logo.webp",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No 41/1, ST-5, Sathy Athani Main Road",
+    "addressLocality": "Erode",
+    "addressRegion": "Tamil Nadu",
+    "postalCode": "638315",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9566266241",
+    "contactType": "customer service",
+    "areaServed": "Worldwide"
+  },
+  "sameAs": [
+    "https://www.instagram.com/shastika_global_impex_pvt_ltd"
+  ]
+}
+</script>
+
+
+</head>
+
+<body class="home-page">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar">
+    <a href="#" class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.webp') }}"loading="lazy">
+        <span>SHASTIKA</span>
+    </a>
+    <div class="menu-toggle" aria-label="Open Menu">☰</div>
+    <div class="nav-links">
+      <a href="/home">HOME</a>
+        <div class="nav-dropdown">
+ <a href="#" class="dropbtn">PRODUCTS ▾</a>
+  <div class="dropdown-menu">
+    <a href="/product/tendercoconut">Tender Coconut</a>
+    <a href="/product/greencoconut">Green Coconut</a>
+    <a href="/product/huskedcoconut">Husked Coconut</a>
+    <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+    <a href="/product/dehusked">Dehusked Coconut</a>
+    <a href="/product/freshorganic">Fresh Organic Coconut</a>
+    <a href="/product/tomato">Tomato</a>
+    <a href="/product/watermelon">Watermelon</a>
+    <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+    <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
+    <a href="/product/whitepumpkin">White Pumpkin</a>
+    <a href="/product/yellowcucumber">Yellow Cucumber</a>
+    <a href="/product/banana">Cavendish Banana</a>
+    <a href="/product/babybanana">Baby Banana</a>
+    <a href="/product/nendranbanana">Nendran Banana</a>
+    <a href="/product/redbanana">Red Banana</a>
+  </div>
+</div>
+
+        <a href="/countries">COUNTRIES</a>
+        <a href="/awards">AWARDS</a>
+        <a href="/team">OUR TEAM</a>
+        <a href="/contact">CONTACT US</a>
+        <a href="/gallery">GALLERY</a>
+
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header id="home" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+    <source src="{{ url_for('static', filename='videos/video.webm') }}" type="video/webm">
+</video>
+
+
+    <div class="hero-content">
+        <h1>SHASTIKA<br>GLOBAL IMPEX<br>PRIVATE LIMITED</h1>
+        <p>WE RAISE, PICK AND DISPATCH</p>
+        <div class="social-links">
+           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shastikaglobalimpexpvtltd@gmail.com&su=Export%20Inquiry%20-%20Shastika%20Global%20Impex&body=Hello%20Shastika%20Team,%0D%0A%0D%0AI%20am%20interested%20in%20your%20products." 
+  target="_blank" class="social-link">GMAIL ↗</a>
+  <a href="https://www.instagram.com/shastika_global_impex_pvt_ltd?igsh=MWZpazMyNHY0NGZ3Yw==" class="social-link">INSTAGRAM ↗</a>
+        </div>
+    </div>
+  </header>
+
+  <!-- ===================== PAGE BACKGROUND WRAPPER ===================== -->
+  <div class="mask-page">
+    <section id="why-us" class="section">
+     <div class="video-wrap">
+  <div class="video-mask">
+    <video 
+      id="coconutVideo"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline>
+      <source src="{{ url_for('static', filename='videos/coconut.webm') }}" type="video/webm">
+    </video>
+  </div>
+</div>
+
+
+
+ <div class="content">
+  <div class="headline animate-text">
+    <span class="tag arrow-wrap">
+  <span class="why-bar">WHY US?</span>
+</span>
+ Choose Shastika Global Impex Private Limited for ethically sourced, premium-quality produce delivered with strict adherence to international standards.
+  </div>
+
+  <div class="description animate-text">
+   Shastika Global Impex Private Limited is a trusted exporter and supplier of
+    premium coconuts, including brown, tender, and green varieties,
+    responsibly sourced from reliable growers. Backed by a dynamic young team across software, data analysis, and business
+    development, we combine technology, insight, and market expertise to deliver
+    consistent quality and long-term global partnerships.
+  </div>
+ </div>
+    </section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section id="products" class="products-section">
+  <div class="section-header">
+  <h2 class="glass-heading">Our Fresh Products</h2>
+    <h3><p>An inspired selection of fresh produce, chosen at its peak.</p></h3>
+  </div>
+
+  <div class="slider-shell">
+
+  <button class="slider-side-btn left" onclick="slidePage(-1)">‹</button>
+
+  <div class="slider-viewport">
+    <div class="products-grid" id="slider">
+     
+      <!-- GREEN COCONUT -->
+      <div class="product-card has-flip">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/coconut-product.webp') }}" loading="lazy">
+            <h3>GREEN COCONUT</h3>
+            <p>Fresh, naturally sweet, and packed with goodness — coconuts bring a taste of the tropics and pure nourishment in every drop and bite. 🟢</p>
+          </div>
+
+          <div class="flip-back">
+            <ul>
+              <li><a href="/product/tendercoconut">Tender Coconut</a></li>
+              <li><a href="/product/greencoconut">Green Coconut</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BROWN COCONUT -->
+      <div class="product-card has-flip">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            
+            <img src="{{ url_for('static', filename='images/browncoconut-product.webp') }}" class="prod-brown" loading="lazy">
+            <h3>BROWN COCONUT</h3>
+            <p>Naturally rich and full of goodness, brown coconut delivers authentic taste, nourishing oil, and traditional freshness in every bite. 🥥</p>
+          </div>
+
+          <div class="flip-back">
+            <ul>
+              <li><a href="/product/huskedcoconut">Husked Coconut</a></li>
+              <li><a href="/product/semihuskedcoconut">Semi-Husked Coconut</a></li>
+              <li><a href="/product/dehusked">Dehusked Coconut</a></li>
+              <li><a href="/product/freshorganic">Fresh Organic Coconut</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TOMATO (normal link card unchanged) -->
+     <div class="product-card has-flip">
+  <div class="flip-inner">
+
+    <!-- Front -->
+    <div class="flip-front">
+      <img src="{{ url_for('static', filename='images/tomato-product.webp') }}" loading="lazy">
+      <h3>TOMATO</h3>
+      <p>
+        Juicy, vibrant, and full of flavor — tomatoes add a burst of freshness and natural goodness to every dish. 🍅
+      </p>
+    </div>
+
+    <!-- Back (direct link) -->
+    <div class="flip-back">
+      <ul>
+        <li><a href="/product/tomato">View Tomato Details</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+      <!-- WATERMELON -->
+      <div class="product-card has-flip">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/watermelon-product.webp') }}" loading="lazy">
+            <h3>WATERMELON</h3>
+            <p>Crisp, juicy, and irresistibly refreshing — watermelon is summer’s sweetest way to stay cool and hydrated. 🍉</p>
+          </div>
+
+          <div class="flip-back">
+            <ul>
+              <li><a href="/product/watermelon">Watermelon</a></li>
+              <li><a href="/product/blackwatermelon">Black Diamond Watermelon</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PUMPKIN -->
+      <div class="product-card has-flip">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/pumpkin-product.webp') }}" loading="lazy">
+            <h3>PUMPKIN</h3>
+            <p>Naturally rich and hearty, pumpkin brings warm flavor, vibrant color, and wholesome nutrition to every meal. 🎃</p>
+          </div>
+
+          <div class="flip-back">
+            <ul>
+              <li><a href="/product/yellowpumpkin">Yellow Pumpkin</a></li>
+              <li><a href="/product/whitepumpkin">White Pumpkin</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CUCUMBER (normal link card unchanged) -->
+      <div class="product-card has-flip">
+  <div class="flip-inner">
+
+    <!-- Front -->
+    <div class="flip-front">
+      <img src="{{ url_for('static', filename='images/cucumber-product.webp') }}" class="prod-cucumber" loading="lazy">      <h3>YELLOW CUCUMBER</h3>
+      <p>
+        Cool, crisp, and refreshingly light — cucumber delivers pure freshness and hydration in every crunchy bite. 🥒
+      </p>
+    </div>
+
+    <!-- Back (direct link) -->
+    <div class="flip-back">
+      <ul>
+        <li><a href="/product/yellowcucumber">View Cucumber Details</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+      <!-- BANANA -->
+      <div class="product-card has-flip">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/banana-product.webp') }}" loading="lazy">
+            <h3>BANANA</h3>
+            <p>Naturally sweet, energy-rich, and wholesome — bananas are the perfect blend of taste, nutrition, and everyday freshness. 🍌</p>
+          </div>
+
+          <div class="flip-back">
+            <ul>
+              <li><a href="/product/banana">Cavendish Banana</a></li>
+              <li><a href="/product/babybanana">Baby Banana</a></li>
+              <li><a href="/product/nendranbanana">Nendran Banana</a></li>
+              <li><a href="/product/redbanana">Red Banana</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="slider-side-btn right" onclick="slidePage(1)">›</button>
+
+</div>
+
+</section>
+
+
+
+    <!-- ===================== GLOBAL NETWORK ===================== -->
+    <section id="network" class="global-network">
+      <h1 class="glass-heading">Our exporting countries</h1>
+
+<div class="map-container">
+
+<svg viewBox="0 0 2000 1000" preserveAspectRatio="xMidYMid meet">
+
+  <!-- MAP IMAGE -->
+  <image
+    href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+    width="2000"
+    height="1000"
+  />
+
+  <!-- ✅ TRUE SOUTH INDIA ORIGIN -->
+  <circle class="origin" cx="1315" cy="480" r="10" />
+
+  <!-- ROUTES -->
+  <!-- ROUTES (CONNECTED TO SOUTH INDIA ORIGIN) -->
+<!-- ROUTES (ADJUSTED TO DESTINATIONS) -->
+
+<!-- Mauritius -->
+<path class="route" d="M1315 480 Q1200 600 1210 650" />
+
+<!-- Netherlands -->
+<path class="route" d="M1315 480 Q1150 300 990 280" />
+
+<!-- Dubai -->
+<path class="route" d="M1315 480 Q1250 450 1200 420" />
+
+<!-- Germany -->
+<path class="route" d="M1315 480 Q1120 300 1010 290" />
+
+<!-- Hong Kong -->
+<path class="route" d="M1315 480 Q1420 420 1475 410" />
+
+<!-- North America -->
+<path class="route" d="M1315 480 Q800 350 580 360" />
+
+<!-- Australia -->
+<path class="route" d="M1315 480 Q1500 620 1550 700" />
+
+
+
+ <!-- DESTINATIONS (STATIC WITH LABELS) -->
+
+<!-- Mauritius -->
+<circle class="destination" cx="1210" cy="650" r="8" />
+<text class="country-label" x="1225" y="655">Mauritius</text>
+
+<!-- Netherlands -->
+<circle class="destination" cx="990" cy="280" r="8" />
+<text class="country-label" x="1005" y="285">Netherlands</text>
+
+<!-- Dubai -->
+<circle class="destination" cx="1200" cy="420" r="8" />
+<text class="country-label" x="1215" y="425">Dubai</text>
+
+<!-- Germany -->
+<circle class="destination" cx="1010" cy="290" r="8" />
+<text class="country-label" x="1025" y="295">Germany</text>
+
+<!-- Hong Kong -->
+<circle class="destination" cx="1475" cy="410" r="8" />
+<text class="country-label" x="1490" y="415">Hong Kong</text>
+
+<!-- North America -->
+<circle class="destination" cx="580" cy="360" r="8" />
+<text class="country-label" x="595" y="365">North America</text>
+
+<!-- Australia -->
+<circle class="destination" cx="1550" cy="700" r="8" />
+<text class="country-label" x="1565" y="705">Australia</text>
+
+</svg>
+
+</div>
+    </section>
+   <section id="certifications" class="cert-section">
+  <h2 class="glass-heading">Certifications and Awards</h2>
+
+  <div class="cert-shell">
+
+    <!-- LEFT BUTTON -->
+    <button class="cert-side-btn left" onclick="moveCert(-1)">‹</button>
+
+    <!-- VIEWPORT -->
+    <div class="slider-wrap">
+      <div class="slider" id="certSlider">
+
+        <div class="cert-card" onclick="openCertModal(this)">
+          <img src="{{ url_for('static', filename='images/certificate1.webp') }}" loading="lazy">
+        </div>
+
+        <div class="cert-card" onclick="openCertModal(this)">
+          <img src="{{ url_for('static', filename='images/certificate2.webp') }}" loading="lazy">
+        </div>
+
+        <div class="cert-card" onclick="openCertModal(this)">
+          <img src="{{ url_for('static', filename='images/certificate3.webp') }}" loading="lazy">
+        </div>
+
+        <div class="cert-card" onclick="openCertModal(this)">
+          <img src="{{ url_for('static', filename='images/certificate4.webp') }}" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT BUTTON -->
+    <button class="cert-side-btn right" onclick="moveCert(1)">›</button>
+
+  </div>
+</section>
+
+
+<!-- ===================== OUR OBJECTIVES ===================== -->
+<section id="objectives" class="objectives-section">
+
+  <div class="content">
+
+    <div class="objective animate-left">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>Strength</h3>
+      <p>
+        Our core strength lies in manufacturing and production, where quality excellence is our highest priority for every customer we serve.
+      </p>
+    </div>
+
+    <div class="center-card glass-center animate-center">
+      <h2>Our Objectives</h2>
+      <i class="fa-solid fa-tree"></i>
+      <h3>Promise</h3>
+      <p>
+        Recognized among the top exporters in Tamil Nadu, we are committed to the 3Bs — Best Service, Best Price, and Best Quality — working relentlessly to achieve total customer satisfaction.
+      </p>
+    </div>
+
+    <div class="objective animate-right">
+      <i class="fa-solid fa-globe"></i>
+      <h3>Connect</h3>
+      <p>
+        We are committed to enabling a seamless global market flow through collaboration, innovation, and trust, creating sustainable value worldwide.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== OUR TEAM ===================== -->
+<section id="team" class="team-section">
+  <h2 class="title glass-heading">Our Team</h2>
+  <p class="subtitle">
+    "What we cannot achieve alone becomes possible when we stand as one"
+  </p>
+
+  <div class="team-container">
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='images/ram.webp') }}" alt="Ragul" loading="lazy">
+      <h3>Mr. Ram Ragul</h3>
+      <span>CEO</span>
+    </div>
+
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='images/gokul.webp') }}" alt="Gokul" loading="lazy">
+      <h3>Mr. Lakshmana Gokul</h3>
+      <span>DIRECTOR</span>
+    </div>
+  </div>
+</section>
+<!-- ===== PHOTO GALLERY ===== -->
+<section id="gallery" class="gallery-section">
+
+  <div class="section-header">
+    <h2>Photo Gallery</h2>
+  </div>
+
+  <div class="gallery-shell">
+
+    <!-- LEFT BUTTON -->
+    <button class="gallery-btn left" onclick="moveGallery(-1)">‹</button>
+
+    <!-- VIEWPORT -->
+    <div class="gallery-viewport">
+      <div class="gallery-slider" id="gallerySlider">
+
+        <img src="{{ url_for('static', filename='images/Photo_1.webp') }}" onclick="openGalleryModal(this)">
+        <img src="{{ url_for('static', filename='images/Photo_2.webp') }}" onclick="openGalleryModal(this)">
+        <img src="{{ url_for('static', filename='images/Photo_3.webp') }}" onclick="openGalleryModal(this)">
+        <img src="{{ url_for('static', filename='images/Photo_4.webp') }}" onclick="openGalleryModal(this)">
+        <img src="{{ url_for('static', filename='images/Photo_5.webp') }}" onclick="openGalleryModal(this)">
+        <img src="{{ url_for('static', filename='images/Photo_6.webp') }}" onclick="openGalleryModal(this)">
+      </div>
+    </div>
+
+    <!-- RIGHT BUTTON -->
+    <button class="gallery-btn right" onclick="moveGallery(1)">›</button>
+
+  </div>
+
+</section>
+
+<section id="contact" class="contact-section">
+
+  <div class="contact-wrapper">
+
+    <h1 class="glass-heading">Contact Us</h1>
+
+    <p class="contact-subtitle">
+      Reach out now to place your paid trial order.
+    </p>
+
+    <!-- ================= CONTACT FORM ================= -->
+    <form onsubmit="submitContactForm(event)">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Country & Phone Number</label>
+
+        <div class="phone-group">
+          <select name="countryCode">
+           <option value="+93">Afghanistan (+93)</option>
+    <option value="+355">Albania (+355)</option>
+    <option value="+213">Algeria (+213)</option>
+    <option value="+1-684">American Samoa (+1-684)</option>
+    <option value="+376">Andorra (+376)</option>
+    <option value="+244">Angola (+244)</option>
+    <option value="+1-264">Anguilla (+1-264)</option>
+    <option value="+672">Antarctica (+672)</option>
+    <option value="+1-268">Antigua & Barbuda (+1-268)</option>
+    <option value="+54">Argentina (+54)</option>
+    <option value="+374">Armenia (+374)</option>
+    <option value="+297">Aruba (+297)</option>
+    <option value="+61">Australia (+61)</option>
+    <option value="+43">Austria (+43)</option>
+    <option value="+994">Azerbaijan (+994)</option>
+
+    <option value="+1-242">Bahamas (+1-242)</option>
+    <option value="+973">Bahrain (+973)</option>
+    <option value="+880">Bangladesh (+880)</option>
+    <option value="+1-246">Barbados (+1-246)</option>
+    <option value="+375">Belarus (+375)</option>
+    <option value="+32">Belgium (+32)</option>
+    <option value="+501">Belize (+501)</option>
+    <option value="+229">Benin (+229)</option>
+    <option value="+1-441">Bermuda (+1-441)</option>
+    <option value="+975">Bhutan (+975)</option>
+    <option value="+591">Bolivia (+591)</option>
+    <option value="+387">Bosnia & Herzegovina (+387)</option>
+    <option value="+267">Botswana (+267)</option>
+    <option value="+55">Brazil (+55)</option>
+    <option value="+673">Brunei (+673)</option>
+    <option value="+359">Bulgaria (+359)</option>
+    <option value="+226">Burkina Faso (+226)</option>
+    <option value="+257">Burundi (+257)</option>
+
+    <option value="+855">Cambodia (+855)</option>
+    <option value="+237">Cameroon (+237)</option>
+    <option value="+1">Canada (+1)</option>
+    <option value="+238">Cape Verde (+238)</option>
+    <option value="+1-345">Cayman Islands (+1-345)</option>
+    <option value="+236">Central African Republic (+236)</option>
+    <option value="+235">Chad (+235)</option>
+    <option value="+56">Chile (+56)</option>
+    <option value="+86">China (+86)</option>
+    <option value="+57">Colombia (+57)</option>
+    <option value="+269">Comoros (+269)</option>
+    <option value="+242">Congo (+242)</option>
+    <option value="+243">Congo (DRC) (+243)</option>
+    <option value="+506">Costa Rica (+506)</option>
+    <option value="+385">Croatia (+385)</option>
+    <option value="+53">Cuba (+53)</option>
+    <option value="+357">Cyprus (+357)</option>
+    <option value="+420">Czech Republic (+420)</option>
+
+    <option value="+45">Denmark (+45)</option>
+    <option value="+253">Djibouti (+253)</option>
+    <option value="+1-767">Dominica (+1-767)</option>
+    <option value="+1-809">Dominican Republic (+1-809)</option>
+
+    <option value="+593">Ecuador (+593)</option>
+    <option value="+20">Egypt (+20)</option>
+    <option value="+503">El Salvador (+503)</option>
+    <option value="+240">Equatorial Guinea (+240)</option>
+    <option value="+291">Eritrea (+291)</option>
+    <option value="+372">Estonia (+372)</option>
+    <option value="+251">Ethiopia (+251)</option>
+
+    <option value="+358">Finland (+358)</option>
+    <option value="+33">France (+33)</option>
+
+    <option value="+995">Georgia (+995)</option>
+    <option value="+49">Germany (+49)</option>
+    <option value="+233">Ghana (+233)</option>
+    <option value="+30">Greece (+30)</option>
+    <option value="+1-473">Grenada (+1-473)</option>
+    <option value="+502">Guatemala (+502)</option>
+    <option value="+224">Guinea (+224)</option>
+    <option value="+245">Guinea-Bissau (+245)</option>
+    <option value="+592">Guyana (+592)</option>
+
+    <option value="+509">Haiti (+509)</option>
+    <option value="+504">Honduras (+504)</option>
+    <option value="+852">Hong Kong (+852)</option>
+    <option value="+36">Hungary (+36)</option>
+
+    <option value="+91">India (+91)</option>
+    <option value="+62">Indonesia (+62)</option>
+    <option value="+98">Iran (+98)</option>
+    <option value="+964">Iraq (+964)</option>
+    <option value="+353">Ireland (+353)</option>
+    <option value="+972">Israel (+972)</option>
+    <option value="+39">Italy (+39)</option>
+
+    <option value="+81">Japan (+81)</option>
+    <option value="+962">Jordan (+962)</option>
+
+    <option value="+254">Kenya (+254)</option>
+    <option value="+965">Kuwait (+965)</option>
+    <option value="+996">Kyrgyzstan (+996)</option>
+
+    <option value="+856">Laos (+856)</option>
+    <option value="+371">Latvia (+371)</option>
+    <option value="+961">Lebanon (+961)</option>
+    <option value="+266">Lesotho (+266)</option>
+    <option value="+231">Liberia (+231)</option>
+    <option value="+218">Libya (+218)</option>
+    <option value="+370">Lithuania (+370)</option>
+    <option value="+352">Luxembourg (+352)</option>
+
+    <option value="+60">Malaysia (+60)</option>
+    <option value="+960">Maldives (+960)</option>
+    <option value="+52">Mexico (+52)</option>
+    <option value="+976">Mongolia (+976)</option>
+    <option value="+212">Morocco (+212)</option>
+    <option value="+258">Mozambique (+258)</option>
+
+    <option value="+95">Myanmar (+95)</option>
+
+    <option value="+264">Namibia (+264)</option>
+    <option value="+977">Nepal (+977)</option>
+    <option value="+31">Netherlands (+31)</option>
+    <option value="+64">New Zealand (+64)</option>
+    <option value="+234">Nigeria (+234)</option>
+    <option value="+850">North Korea (+850)</option>
+    <option value="+47">Norway (+47)</option>
+
+    <option value="+968">Oman (+968)</option>
+
+    <option value="+92">Pakistan (+92)</option>
+    <option value="+507">Panama (+507)</option>
+    <option value="+595">Paraguay (+595)</option>
+    <option value="+51">Peru (+51)</option>
+    <option value="+63">Philippines (+63)</option>
+    <option value="+48">Poland (+48)</option>
+    <option value="+351">Portugal (+351)</option>
+
+    <option value="+974">Qatar (+974)</option>
+
+    <option value="+40">Romania (+40)</option>
+    <option value="+7">Russia (+7)</option>
+
+    <option value="+966">Saudi Arabia (+966)</option>
+    <option value="+65">Singapore (+65)</option>
+    <option value="+27">South Africa (+27)</option>
+    <option value="+82">South Korea (+82)</option>
+    <option value="+34">Spain (+34)</option>
+    <option value="+94">Sri Lanka (+94)</option>
+    <option value="+46">Sweden (+46)</option>
+    <option value="+41">Switzerland (+41)</option>
+
+    <option value="+66">Thailand (+66)</option>
+    <option value="+90">Turkey (+90)</option>
+
+    <option value="+256">Uganda (+256)</option>
+    <option value="+380">Ukraine (+380)</option>
+    <option value="+971">United Arab Emirates (+971)</option>
+    <option value="+44">United Kingdom (+44)</option>
+    <option value="+1">United States (+1)</option>
+    <option value="+598">Uruguay (+598)</option>
+
+    <option value="+58">Venezuela (+58)</option>
+    <option value="+84">Vietnam (+84)</option>
+
+    <option value="+263">Zimbabwe (+263)</option>
+          </select>
+
+          <input type="tel" name="phone" placeholder="Phone Number">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="Enter subject">
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Write your message..."></textarea>
+      </div>
+
+      <button class="submit-btn">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <!-- ================= DIRECT DETAILS ================= -->
+  <div class="contact-details-block">
+
+    <div class="contact-details-grid">
+
+      <div class="detail-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <strong>Phone</strong>
+          <p>+91-7397612015 / +91-9944550319</p>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <i class="fa-brands fa-whatsapp"></i>
+        <div>
+          <strong>WhatsApp</strong>
+          <p>+91-7397612015</p>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <strong>Email</strong>
+          <p>shastikaglobalimpexpvtltd@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <strong>Address</strong>
+          <p>
+            No 41/1, ST-5, Sathy Athani Main Road,<br>
+            Thuckanayakanpalayam, Erode,<br>
+            Tamil Nadu – 638315, India
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= LOCATION MAP ================= -->
+  <div class="location-block">
+
+    <a href="https://www.google.com/maps?q=11.3589,77.5447"
+       target="_blank"
+       class="map-link">
+
+      <div class="map-box">
+        <iframe
+          src="https://maps.google.com/maps?q=11.3589,77.5447&z=15&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+<!-- FLOATING ACTION BUTTONS -->
+<div class="floating-icons">
+
+  <!-- Chatbot -->
+  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
+    <i class="fa-solid fa-robot"></i>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
+
+    <footer>
+  <div class="footer-overlay">
+    <div class="footer-container">
+      <div>
+        <h2>Shastika Global Impex Private Limited</h2>
+        <h4>Import & Export of Agricultural Products,</h4>
+        <h4>Shastika Global Impex Private Limited is a trusted exporter and supplier of
+          premium coconuts, including brown, tender, and green varieties,
+          responsibly sourced from reliable growers.Backed by a dynamic young team across software, data analysis, and business
+          development, we combine technology, insight, and market expertise to deliver
+          consistent quality and long-term global partnerships.</h4>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#why-us">About</a></p>
+        <p><a href="#products">Products</a></p>
+        <p><a href="#certifications">Certifications</a></p>
+        <p><a href="#contact">Contact Us</a></p>
+      </div>
+      <div class="footer-bottom">
+         © 2025 Shastika Global Impex Pvt. Ltd. All Rights Reserved.
+         </div>
+</footer>
+</div>
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
