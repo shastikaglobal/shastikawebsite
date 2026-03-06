@@ -16,24 +16,22 @@ app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "SHASTIKA_ADMIN_PANEL_KEY_2025")
 
 # ==============================
-# MONGODB CONNECTION
+# MONGODB CONNECTION 
 # ==============================
 
-MONGO_URI = os.getenv(
-    "MONGO_URI",
-    "mongodb+srv://shastikaAdmin:Shastika%402026DB@cluster0.wfhd0hm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-)
+MONGO_URI = os.getenv("MONGO_URI")
+
+
 
 client = MongoClient(MONGO_URI)
 
-# Test MongoDB connection
 try:
     client.admin.command("ping")
-    print("MongoDB Connected Successfully")
+    print("✅ MongoDB Connected Successfully")
 except Exception as e:
-    print("MongoDB Connection Failed:", e)
+    print("❌ MongoDB Connection Failed:", e)
 
-db = client["shastikaDB"]
+db = client["shastikaDB"]  # ✅ Fixed: was "shastikaAdmin"
 
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]

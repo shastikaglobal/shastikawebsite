@@ -6,6 +6,9 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 
@@ -20,14 +23,13 @@
 <span>SHASTIKA</span>
 </a>
 
-<div class="menu-toggle" aria-label="Open Menu">☰</div>
+<div class="menu-toggle">☰</div>
 
 <div class="nav-links">
 
 <a href="/home">HOME</a>
 
 <div class="nav-dropdown">
-
 <a href="#" class="dropbtn">PRODUCTS ▾</a>
 
 <div class="dropdown-menu">
@@ -78,11 +80,8 @@
 <div class="awards-container" id="awardsSlider">
 
 <img src="{{ url_for('static', filename='images/certificate1.webp') }}" onclick="openGalleryModal(this)">
-
 <img src="{{ url_for('static', filename='images/certificate2.webp') }}" onclick="openGalleryModal(this)">
-
 <img src="{{ url_for('static', filename='images/certificate3.webp') }}" onclick="openGalleryModal(this)">
-
 <img src="{{ url_for('static', filename='images/certificate4.webp') }}" onclick="openGalleryModal(this)">
 
 </div>
@@ -95,21 +94,23 @@
 </section>
 
 
-
 <!-- FLOATING BUTTONS -->
 
 <div class="floating-icons">
 
-<a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-<i class="fa-solid fa-robot"></i>
-</a>
-
-<a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+<!-- WhatsApp -->
+<a href="https://wa.me/917397612015"
+target="_blank"
+class="float-btn whatsapp-btn">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 </div>
 
+
+<!-- CHATBOT BUTTON -->
+
+<div id="chatbot-button" onclick="openChatbot()">💬</div>
 
 
 <!-- MODAL -->
@@ -128,11 +129,15 @@
 
 <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-<!-- page content -->
-
-<link rel="stylesheet" href="/widget/chat-widget.css">
-<script src="/widget/chat-widget.js"></script>
-
+<script>
+function openChatbot(){
+window.open(
+"https://chatbot-e99e.onrender.com",
+"chatbot",
+"width=450,height=650"
+);
+}
+</script>
 
 </body>
 

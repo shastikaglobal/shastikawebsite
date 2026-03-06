@@ -72,6 +72,15 @@
 <!-- FLOATING ACTION BUTTONS -->
 <div class="floating-icons">
 
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
+
+<div id="chatbot-button" onclick="openChatbot()">💬</div>
+
   <!-- Chatbot -->
   <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
     <i class="fa-solid fa-robot"></i>
@@ -86,5 +95,14 @@
 
 <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 
+<script>
+function openChatbot(){
+  window.open(
+    "https://chatbot-e99e.onrender.com",
+    "chatbot",
+    "width=450,height=650"
+  );
+}
+</script>
 </body>
 </html>

@@ -1,9 +1,11 @@
 <html>
 <head>
-  <title>About</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body class="inner-page">
 
@@ -128,6 +130,16 @@
     <!-- FLOATING ACTION BUTTONS -->
 <div class="floating-icons">
 
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
+
+<div id="chatbot-button" onclick="openChatbot()">💬</div>
+
   <!-- Chatbot -->
   <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
     <i class="fa-solid fa-robot"></i>
@@ -147,5 +159,14 @@ width="100%"
 height="700px"
 style="border:none;">
 </iframe>
+<script>
+function openChatbot(){
+  window.open(
+    "https://chatbot-e99e.onrender.com",
+    "chatbot",
+    "width=450,height=650"
+  );
+}
+</script>
 </body>
 </html>

@@ -3280,11 +3280,17 @@ cursor:pointer;
 
 /* WhatsApp */
 .whatsapp-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
   background: #25D366;
 }
 
 /* Chatbot */
 .chat-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
   background: #111;
 }
 @media (max-width: 600px) {
