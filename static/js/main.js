@@ -377,11 +377,11 @@ const gallerySlider = document.getElementById("gallerySlider");
 let galleryIndex = 0;
 
 function moveGallery(direction){
+
   const imgWidth = gallerySlider.querySelector("img").offsetWidth + 28;
   const total = gallerySlider.querySelectorAll("img").length;
 
-  const visible = window.innerWidth < 600 ? 1 :
-                  window.innerWidth < 900 ? 2 : 3;
+  const visible = 2;
 
   const maxIndex = total - visible;
 
@@ -391,7 +391,7 @@ function moveGallery(direction){
   if(galleryIndex > maxIndex) galleryIndex = maxIndex;
 
   gallerySlider.style.transform =
-    `translateX(-${galleryIndex * imgWidth}px)`;
+  `translateX(-${galleryIndex * 50}%)`;
 }
 
 /* ================= GALLERY MODAL ================= */

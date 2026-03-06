@@ -3182,7 +3182,6 @@ footer a {
     0 0 60px rgba(120,180,255,0.55);
 }
 /* ===== SIMPLE PHOTO GALLERY ===== */
-
 .gallery-section {
   padding: 80px 40px;
   text-align: center;
@@ -3195,16 +3194,30 @@ footer a {
 }
 
 .gallery-slider {
-  display: flex;
-  gap: 30px;
-  transition: transform .4s ease;
+  display:flex;
+gap:30px;
+transition:transform .4s ease;
+}.gallery-viewport{
+width:100%;
+overflow:hidden;
 }
-.gallery-slider img {
-  flex: 0 0 calc((100% - 30px) / 2);
-  height: 220px;
-  object-fit: cover;
-  border-radius: 12px;
-  cursor: pointer;
+.gallery-shell{
+max-width:900px;
+margin:auto;
+}
+.gallery-slider{
+display:flex;
+gap:30px;
+transition:transform .4s ease;
+}
+
+.gallery-slider img{
+width:calc((100% - 30px)/2);
+flex-shrink:0;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+cursor:pointer;
 }
 
 /* ===== GLASS HEADING CARD — REUSE FOR ALL SECTIONS ===== */
@@ -4135,5 +4148,45 @@ justify-content:center;
 }
 
 .awards-btn:hover{
-background:white;
-}  
+  background: white;
+}
+
+/* Chatbot Button */
+#chatbot-button{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #1b5e20;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+}.awards-btn:hover{
+  background: white;
+}
+
+/* Chatbot Button */
+#chatbot-button{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #1b5e20;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+}

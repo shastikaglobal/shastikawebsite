@@ -854,12 +854,8 @@
 
 </section>
 <!-- FLOATING ACTION BUTTONS -->
+<!-- FLOATING ACTION BUTTONS -->
 <div class="floating-icons">
-
-  <!-- Chatbot -->
-  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-    <i class="fa-solid fa-robot"></i>
-  </a>
 
   <!-- WhatsApp -->
   <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
@@ -868,17 +864,22 @@
 
 </div>
 
-    <footer>
+
+<footer>
   <div class="footer-overlay">
     <div class="footer-container">
+
       <div>
         <h2>Shastika Global Impex Private Limited</h2>
-        <h4>Import & Export of Agricultural Products,</h4>
-        <h4>Shastika Global Impex Private Limited is a trusted exporter and supplier of
+        <h4>Import & Export of Agricultural Products</h4>
+        <h4>
+          Shastika Global Impex Private Limited is a trusted exporter and supplier of
           premium coconuts, including brown, tender, and green varieties,
-          responsibly sourced from reliable growers.Backed by a dynamic young team across software, data analysis, and business
-          development, we combine technology, insight, and market expertise to deliver
-          consistent quality and long-term global partnerships.</h4>
+          responsibly sourced from reliable growers. Backed by a dynamic young team
+          across software, data analysis, and business development, we combine
+          technology, insight, and market expertise to deliver consistent quality
+          and long-term global partnerships.
+        </h4>
       </div>
 
       <div>
@@ -889,12 +890,34 @@
         <p><a href="#certifications">Certifications</a></p>
         <p><a href="#contact">Contact Us</a></p>
       </div>
-      <div class="footer-bottom">
-         © 2025 Shastika Global Impex Pvt. Ltd. All Rights Reserved.
-         </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Shastika Global Impex Pvt. Ltd. All Rights Reserved.
+    </div>
+
+  </div>
 </footer>
-</div>
+
+<!-- MAIN JS -->
 <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<!-- CHATBOT WIDGET -->
+<script src="{{ url_for('static', filename='chat-widget.js') }}"></script>
+
+<!-- CHATBOT BUTTON -->
+<div id="chatbot-button" onclick="openChatbot()">💬</div>
+
+<script>
+function openChatbot(){
+  window.open(
+    "https://chatbot-e99e.onrender.com",
+    "chatbot",
+    "width=450,height=650"
+  );
+}
+</script>
 
 </body>
 </html>

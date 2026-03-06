@@ -1,7 +1,13 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for, abort
+from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
 from pymongo import MongoClient
-import os
 
+import os
+import sys
+
+sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app")
+
+from rag import answer_question
+from translator import translate
 # ==============================
 # APP CONFIG
 # ==============================
@@ -15,21 +21,33 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "SHASTIKA_ADMIN_PANEL_KEY_2025")
 
 MONGO_URI = os.getenv(
     "MONGO_URI",
-    "mongodb+srv://shastikaAdmin:3mlwFIzs28o9cpT2@shastika.uruv1ox.mongodb.net/?appName=shastika"
+    "mongodb+srv://shastikaAdmin:Shastika%402026DB@cluster0.wfhd0hm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 )
 
 client = MongoClient(MONGO_URI)
+
+# Test MongoDB connection
+try:
+    client.admin.command("ping")
+    print("MongoDB Connected Successfully")
+except Exception as e:
+    print("MongoDB Connection Failed:", e)
+
 db = client["shastikaDB"]
 
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]
 
 # ==============================
-# WEBSITE HOME
+# WEBSITE ROUTES
 # ==============================
 
 @app.route("/")
 def final():
+    return render_template("home.html")
+
+@app.route("/home")
+def home():
     return render_template("home.html")
 
 @app.route("/about")
@@ -40,13 +58,14 @@ def about():
 def products():
     return render_template("products.html")
 
-@app.route("/home")
-def home():
-    return render_template("home.html")
-
 @app.route("/countries")
 def countries():
     return render_template("countries.html")
+    from flask import send_from_directory
+
+@app.route('/widget/<path:filename>')
+def widget_files(filename):
+    return send_from_directory('widget', filename)
 
 @app.route("/awards")
 def awards():
@@ -59,13 +78,14 @@ def team():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
 @app.route("/location")
 def location():
     return render_template("location.html")
+
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
-
 
 # ==============================
 # DYNAMIC PRODUCT PAGES
@@ -84,6 +104,7 @@ def product_page(product_name):
 
 @app.route("/submit_contact", methods=["POST"])
 def submit_contact():
+
     data = request.json
 
     contact_collection.insert_one({
@@ -102,6 +123,7 @@ def submit_contact():
 
 @app.route("/submit_enquiry", methods=["POST"])
 def submit_enquiry():
+
     data = request.json
 
     enquiry_collection.insert_one({
@@ -120,6 +142,7 @@ def submit_enquiry():
 
 @app.route("/admin_login", methods=["POST"])
 def admin_login():
+
     data = request.json
 
     ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@shastika.com")
@@ -132,14 +155,15 @@ def admin_login():
     return jsonify({"status": "fail"}), 401
 
 # ==============================
-# ADMIN PANEL PAGE
+# ADMIN PANEL
 # ==============================
 
 @app.route("/admin")
 def admin_panel():
+
     if not session.get("admin"):
-        return render_template("admin.html")  
-        # Shows login screen first
+        return render_template("admin.html")
+
     return render_template("admin.html")
 
 # ==============================
@@ -148,6 +172,7 @@ def admin_panel():
 
 @app.route("/admin/messages")
 def admin_messages():
+
     if not session.get("admin"):
         return jsonify([]), 401
 
@@ -155,16 +180,18 @@ def admin_messages():
 
     return jsonify([
         {
-            "name": m["name"],
-            "email": m["email"],
-            "phone": m["phone"],
-            "subject": m["subject"],
-            "message": m["message"]
-        } for m in msgs
+            "name": m.get("name"),
+            "email": m.get("email"),
+            "phone": m.get("phone"),
+            "subject": m.get("subject"),
+            "message": m.get("message")
+        }
+        for m in msgs
     ])
 
 @app.route("/admin/enquiries")
 def admin_enquiries():
+
     if not session.get("admin"):
         return jsonify([]), 401
 
@@ -172,12 +199,13 @@ def admin_enquiries():
 
     return jsonify([
         {
-            "product": e["product"],
-            "name": e["name"],
-            "country": e["country"],
-            "phone": e["phone"],
-            "email": e["email"]
-        } for e in enqs
+            "product": e.get("product"),
+            "name": e.get("name"),
+            "country": e.get("country"),
+            "phone": e.get("phone"),
+            "email": e.get("email")
+        }
+        for e in enqs
     ])
 
 # ==============================
@@ -190,7 +218,7 @@ def admin_logout():
     return redirect(url_for("admin_panel"))
 
 # ==============================
-# CUSTOM 404
+# CUSTOM 404 PAGE
 # ==============================
 
 @app.errorhandler(404)
@@ -200,6 +228,26 @@ def page_not_found(e):
 # ==============================
 # RUN SERVER
 # ==============================
+# ==============================
+# CHATBOT API
+# ==============================
+
+@app.route("/chatbot", methods=["GET","POST"])
+def chatbot():
+
+    data = request.get_json(silent=True)
+
+    if not data:
+        return jsonify({"status": "chatbot ready"})
+
+    message = data.get("message")
+
+    answer = answer_question(message)
+
+    return jsonify({"reply": answer})
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+    
