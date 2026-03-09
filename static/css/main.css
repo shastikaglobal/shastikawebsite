@@ -26,6 +26,12 @@ body {
   background: url("../images/background.webp") center center / cover no-repeat fixed;
   color: #fff;
 }
+
+html, body {
+overflow-x: hidden;
+overflow-y: auto !important;
+height: auto;
+}
 /* NAVBAR */
 .navbar {
     position: fixed;
@@ -121,12 +127,15 @@ body {
 .nav-links a:hover::after {
     width: 100%;
 }
-/* HERO */
-.hero {
-    position: relative;
-    width: 100%;
-   min-height: 100svh;
-    overflow: hidden;
+.hero{
+position: relative;
+width:100%;
+min-height:70vh;
+overflow:visible;
+}
+
+.products-section{
+margin-top:80px;
 }
 .hero video {
   position: absolute;
@@ -143,6 +152,7 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.45);
+    pointer-events:none;
 }
 .hero video {
   filter: brightness(1.25) contrast(1.05) saturate(1.1);
@@ -1878,6 +1888,76 @@ img[src*="cucumber-product"] {
 .product-card a[href*="yellowcucumber"] p {
   color: #ffffff !important;   /* change to any color you want */
 }
+
+
+
+
+/* ================= PRODUCT FLIP SYSTEM ================= */
+
+.product-card{
+position: relative;
+width: 320px;
+height: 320px;
+perspective: 1000px;
+}
+/* inner container */
+.flip-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+/* flip animation */
+.product-card.has-flip:hover .flip-inner{
+  transform: rotateY(180deg);
+}
+
+/* front + back base */
+.flip-front,
+.flip-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+}
+
+/* front card */
+.flip-front{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 78px 22px 18px;
+  text-align: center;
+}
+
+/* back card */
+.flip-back{
+  background: rgba(255,255,255,0.18);
+  transform: rotateY(180deg);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* back links */
+.flip-back ul{
+  list-style: none;
+  padding: 0;
+}
+
+.flip-back li{
+  margin: 10px 0;
+}
+
+.flip-back a{
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+}
 /* ===== CERTIFICATE CARD SIZE REDUCTION ===== */
 
 .cert-card {
@@ -2244,6 +2324,12 @@ body::before {
 .team-card {
   opacity: 0;
   transform: translateY(50px);
+}
+.contact-wrapper h1{
+text-align:center;
+font-size:40px;
+margin-bottom:20px;
+display:block;
 }
 /* CONTACT START STATE */
 #contact h1,
@@ -3000,8 +3086,17 @@ body:not(.home-page) .detail-item {
   justify-content: center;
   gap: 16px;
 }
-.products-grid {
-  overflow: visible;
+.slider-viewport,
+.slider-wrap,
+.gallery-viewport {
+  overflow: hidden;
+}
+
+.products-grid,
+#certSlider,
+.gallery-slider {
+  display: flex;
+  transition: transform 0.4s ease;
 }
 
 .slider-side-btn.left {
@@ -3015,7 +3110,9 @@ body:not(.home-page) .detail-item {
   position: relative;
   overflow: hidden;
 }
-
+.cert-card {
+  flex: 0 0 420px;   /* fixed width so slider can move */
+}
 .cert-section .slider-shell {
   width: min(1100px, 92%);
   margin: 0 auto;
@@ -3347,11 +3444,15 @@ cursor:pointer;
   padding: 0;
 }
 
-/* card row */
+/* card row */  
 #certSlider {
   display: flex;
-  gap: 28px;
-  transition: transform .45s ease;
+  gap: 40px;
+  transition: transform 0.4s ease;
+}
+
+.slider-wrap {
+  overflow: hidden;
 }
 
 /* buttons — NOT absolute */
@@ -3436,14 +3537,8 @@ cursor:pointer;
   object-fit: contain;
   z-index: 5;
 }
-.products-grid,
-.product-card,
-.flip-front,
-.flip-back,
-.slider-viewport {
-  overflow: visible !important;
-}
-.slider-viewport {
+
+.slider-viewpor {
   overflow: hidden;
   width: 100%;
 }
@@ -3625,7 +3720,7 @@ cursor:pointer;
 /* slider viewport should NOT clip vertical overflow */
 .slider-viewport {
   overflow-x: hidden;
-  overflow-y: visible;   /* ← key fix */
+  overflow-y: auto;   /* ← key fix */
 }
 
 /* slider row should allow overflow */
@@ -4196,3 +4291,339 @@ justify-content:center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 9999;
 }
+
+.cert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.cert-modal img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+} 
+
+.product-modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+justify-content:center;
+align-items:center;
+}
+
+.modal-box{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:400px;
+text-align:center;
+position:relative;
+}
+
+.modal-box img{
+width:200px;
+margin-bottom:20px;
+}
+
+.modal-close{
+position:absolute;
+top:10px;
+right:15px;
+border:none;
+background:none;
+font-size:22px;
+cursor:pointer;
+}
+
+.modal-btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#0f8f4b;
+color:white;
+border-radius:8px;
+text-decoration:none;
+}
+
+#chatbot-button{
+position: fixed;
+bottom: 25px;
+right: 25px;
+
+width: 55px;
+height: 55px;
+
+background: #111;
+color: white;
+
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 24px;
+cursor: pointer;
+
+z-index: 999999;   /* VERY IMPORTANT */
+}
+
+
+#chatbot-button{
+position: fixed;
+bottom: 20px;
+right: 20px;
+background:#000;
+color:white;
+font-size:24px;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:9999;
+}
+
+
+
+
+
+/* chatbot button */
+#chatbot-toggle{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+background:#000;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+cursor:pointer;
+z-index:9999;
+}
+
+/* chatbot window */
+#chatbot-box{
+position:fixed;
+bottom:90px;
+right:20px;
+width:350px;
+height:500px;
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+display:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+z-index:9999;
+}
+
+#chatbot-box iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+
+#chatbot-button{
+position: fixed;
+bottom: 20px;
+right: 20px;
+background:#000;
+color:#fff;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+cursor:pointer;
+z-index:9999;
+}
+
+#chatbot-box{
+position: fixed;
+bottom:90px;
+right:20px;
+width:420px;
+height:600px;
+background:white;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+display:none;
+overflow:hidden;
+z-index:9999;
+}
+
+#chatbot-box iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+#cocobot-icon{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+z-index:9999;
+}
+
+#cocobot-box{
+position:fixed;
+bottom:90px;
+right:20px;
+width:280px;
+background:white;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+display:none;
+z-index:9999;
+}
+
+.coco-header{
+background:#16a34a;
+color:white;
+padding:10px;
+font-weight:bold;
+border-radius:10px 10px 0 0;
+}
+
+.coco-body{
+padding:12px;
+font-size:14px;
+}
+
+#coco-input{
+width:100%;
+border:none;
+border-top:1px solid #ddd;
+padding:10px;
+outline:none;
+}
+
+#bp-web-widget-container{
+display:none !important;
+}
+
+.bpw-widget-btn{
+display:none !important;
+}
+
+#cocobot-box{
+position:fixed;
+bottom:90px;
+right:20px;
+width:420px;      /* width increase */
+height:600px;     /* height increase */
+background:white;
+border-radius:12px;
+overflow:hidden;
+display:none;
+z-index:9999;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+#cocobot-box iframe{
+width:100%;
+height:100%;
+border:none;
+display:block;
+}
+body{
+background:url("/static/images/background.webp") center center / cover no-repeat fixed !important;
+}
+body{
+background: url("/static/images/background.webp") center center no-repeat fixed;
+background-size: cover;
+}
+.floating-products{
+position:relative;
+width:100%;
+margin-top:80px;
+margin-bottom:80px;
+}
+.floating-products{
+position:sticky;
+bottom:20px;
+}
+.floating-products{
+position: relative;
+width:100%;
+margin-top:80px;
+margin-bottom:80px;
+}
+html, body{
+overflow-x:hidden;
+overflow-y:auto !important;
+height:auto !important;
+}
+
+
+#gallerySlider{
+display:flex;
+transition:0.5s;
+}
+
+
+
+
+.product-page{
+display:flex;
+align-items:center;
+gap:60px;
+padding:80px;
+}
+
+.product-details{
+max-width:600px;
+color:white;
+}
+
+.product-details h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.product-details p{
+font-size:18px;
+line-height:1.6;
+}
+
+
+

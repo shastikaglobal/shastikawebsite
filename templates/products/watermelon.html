@@ -250,125 +250,77 @@ select.custom-input option:checked {
                     </div>
                 </div>
             </div>
-        </div>
+        </div
+
         <!-- FLOATING ACTION BUTTONS -->
 <div class="floating-icons">
 
-  <!-- Chatbot -->
-  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-    <i class="fa-solid fa-robot"></i>
-  </a>
+<!-- CHATBOT ICON -->
+<div id="cocobot-icon">💬</div>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
+<!-- CHATBOT BOX -->
+<div id="cocobot-box">
+<iframe src="https://chatbot-e99e.onrender.com"></iframe>
+</div>
 
 </div>
-    </main>
-     <script>
-const countries = {
-  "Afghanistan": "+93",
-  "Albania": "+355",
-  "Algeria": "+213",
-  "Argentina": "+54",
-  "Australia": "+61",
-  "Austria": "+43",
-  "Bangladesh": "+880",
-  "Belgium": "+32",
-  "Brazil": "+55",
-  "Canada": "+1",
-  "China": "+86",
-  "Denmark": "+45",
-  "Egypt": "+20",
-  "Finland": "+358",
-  "France": "+33",
-  "Germany": "+49",
-  "Greece": "+30",
-  "Hong Kong": "+852",
-  "India": "+91",
-  "Indonesia": "+62",
-  "Ireland": "+353",
-  "Israel": "+972",
-  "Italy": "+39",
-  "Japan": "+81",
-  "Kenya": "+254",
-  "Kuwait": "+965",
-  "Malaysia": "+60",
-  "Maldives": "+960",
-  "Mexico": "+52",
-  "Netherlands": "+31",
-  "New Zealand": "+64",
-  "Nigeria": "+234",
-  "Norway": "+47",
-  "Oman": "+968",
-  "Pakistan": "+92",
-  "Philippines": "+63",
-  "Poland": "+48",
-  "Portugal": "+351",
-  "Qatar": "+974",
-  "Russia": "+7",
-  "Saudi Arabia": "+966",
-  "Singapore": "+65",
-  "South Africa": "+27",
-  "South Korea": "+82",
-  "Spain": "+34",
-  "Sri Lanka": "+94",
-  "Sweden": "+46",
-  "Switzerland": "+41",
-  "Thailand": "+66",
-  "Turkey": "+90",
-  "UAE": "+971",
-  "UK": "+44",
-  "USA": "+1",
-  "Vietnam": "+84"
-};
 
-const countrySelect = document.getElementById("countrySelect");
-const countryCodeInput = document.getElementById("countryCode");
-
-/* Populate dropdown */
-Object.keys(countries).forEach(country => {
-    const option = document.createElement("option");
-    option.value = country;
-    option.textContent = country;
-    countrySelect.appendChild(option);
-});
-
-/* Auto-fill country code */
-countrySelect.addEventListener("change", function () {
-    countryCodeInput.value = countries[this.value] || "";
-});
-/* ================= PRODUCT ENQUIRY SUBMIT ================= */
-function submitEnquiryForm(e){
-  e.preventDefault();
-
-  const form = e.target;
-
-  fetch("/submit_enquiry", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      product: form.querySelector('input[name="product"]').value,
-      name: form.querySelector('input[name="name"]').value,
-      country: form.querySelector('select[name="country"]').value,
-      phone: form.querySelector('input[name="country_code"]').value + " " +
-             form.querySelector('input[name="phone"]').value,
-      email: form.querySelector('input[name="email"]').value
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status === "success"){
-      alert("Your enquiry has been sent successfully!");
-      form.reset();
-      document.getElementById("countryCode").value = "";
-    } else {
-      alert("Something went wrong!");
-    }
-  })
-  .catch(() => alert("Server error!"));
+<style>
+#cocobot-icon{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+cursor:pointer;
+z-index:9999;
 }
+
+#cocobot-box{
+position:fixed;
+bottom:90px;
+right:20px;
+width:400px;
+height:600px;
+background:white;
+display:none;
+border-radius:10px;
+overflow:hidden;
+z-index:9999;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+#cocobot-box iframe{
+width:100%;
+height:100%;
+border:none;
+}
+</style>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const icon = document.getElementById("cocobot-icon");
+const box = document.getElementById("cocobot-box");
+
+icon.addEventListener("click", function(){
+
+if(box.style.display === "block"){
+box.style.display = "none";
+}else{
+box.style.display = "block";
+}
+
+});
+
+});
+
 </script>
-</body>
-</html>

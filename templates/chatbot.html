@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chatbot Test</title>
+<style>
+#icon{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:26px;
+}
+
+#chat{
+position:fixed;
+bottom:90px;
+right:20px;
+width:300px;
+height:400px;
+background:white;
+border:1px solid #ccc;
+display:none;
+flex-direction:column;
+}
+
+#messages{
+flex:1;
+padding:10px;
+overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div id="chat">
+<div id="messages"></div>
+<input id="msg" placeholder="Type message">
+<button onclick="send()">Send</button>
+</div>
+
+<div id="icon">💬</div>
+
+<script>
+
+const icon = document.getElementById("icon")
+const chat = document.getElementById("chat")
+
+icon.onclick = () => {
+chat.style.display = chat.style.display === "flex" ? "none" : "flex"
+chat.style.flexDirection = "column"
+}
+
+function send(){
+const text = document.getElementById("msg").value
+
+fetch("/chatbot",{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({message:text})
+})
+.then(r=>r.json())
+.then(data=>{
+document.getElementById("messages").innerHTML +=
+"<div>You: "+text+"</div><div>Bot: "+data.reply+"</div>"
+})
+
+}
+
+</script>
+
+</body>
+</html>

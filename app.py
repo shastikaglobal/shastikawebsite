@@ -1,13 +1,8 @@
 from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
 from pymongo import MongoClient
-
 import os
-import sys
+import requests as http_requests
 
-sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app")
-
-from rag import answer_question
-from translator import translate
 # ==============================
 # APP CONFIG
 # ==============================
@@ -16,12 +11,10 @@ app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "SHASTIKA_ADMIN_PANEL_KEY_2025")
 
 # ==============================
-# MONGODB CONNECTION 
+# MONGODB CONNECTION
 # ==============================
 
 MONGO_URI = os.getenv("MONGO_URI")
-
-
 
 client = MongoClient(MONGO_URI)
 
@@ -31,7 +24,7 @@ try:
 except Exception as e:
     print("❌ MongoDB Connection Failed:", e)
 
-db = client["shastikaDB"]  # ✅ Fixed: was "shastikaAdmin"
+db = client["shastikaDB"]
 
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]
@@ -49,6 +42,7 @@ def home():
     return render_template("home.html")
 
 @app.route("/about")
+
 def about():
     return render_template("about.html")
 
@@ -59,11 +53,10 @@ def products():
 @app.route("/countries")
 def countries():
     return render_template("countries.html")
-    from flask import send_from_directory
 
-@app.route('/widget/<path:filename>')
+@app.route("/widget/<path:filename>")
 def widget_files(filename):
-    return send_from_directory('widget', filename)
+    return send_from_directory("widget", filename)
 
 @app.route("/awards")
 def awards():
@@ -224,28 +217,33 @@ def page_not_found(e):
     return "<h1>404 - Page Not Found</h1>", 404
 
 # ==============================
-# RUN SERVER
-# ==============================
-# ==============================
 # CHATBOT API
 # ==============================
 
 @app.route("/chatbot", methods=["GET","POST"])
 def chatbot():
 
-    data = request.get_json(silent=True)
+    # Browser open panna page show
+    if request.method == "GET":
+        return render_template("chatbot.html")
 
-    if not data:
-        return jsonify({"status": "chatbot ready"})
+    # Chat message receive
+    data = request.get_json()
 
     message = data.get("message")
 
-    answer = answer_question(message)
+    response = http_requests.post(
+        "https://chatbot-e99e.onrender.com/chatbot",
+        json={"message": message}
+    )
 
-    return jsonify({"reply": answer})
+    return jsonify(response.json())
+
+# ==============================
+# RUN SERVER
+# ==============================
 
 if __name__ == "__main__":
     app.run(debug=True)
 
 
-    

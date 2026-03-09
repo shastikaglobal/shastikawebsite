@@ -1,374 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shastika Global | Premium Organic Tomato</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
- <style>
-     * {
-    font-family: 'Cinzel', serif;
-}
-        body { 
-            <body style="background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed; background-size:cover;"> 
-            no-repeat center center fixed; 
-            background-size: cover; 
-            background-color: #001f3f; 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* 1. GLASS STAGE - PRESERVED */
-        .glass-shell-stage { 
-            width: 100% !important;
-            max-width: 450px !important; 
-            height: 615px !important;    
-            margin-left: -10px !important; 
-            background: rgba(168, 207, 230, 0.45); 
-            border-radius: 60% 40% 50% 50% / 40% 40% 60% 60%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            position: relative;
-            overflow: visible !important; 
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-        }
+<title>Shastika Global | Premium Organic Tomato</title>
 
-        .product-seated {
-            padding-bottom: 0px !important; 
-            margin-bottom: -100px !important; 
-            transform: translateX(0px); 
-            width: 90% !important; 
-            transition: all 0.6s ease;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        .glass-shell-stage:hover .product-seated {
-            transform: translateY(-20px) scale(1.05);
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        /* 2. TRANSPARENT GLASS FORM DESIGN */
-        .glass-form-card { 
-            background: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        .custom-input {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #ffffff;
-            width: 100%;
-            outline: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        select.custom-input option {
-    background-color: rgba(20, 20, 20, 0.9);
-    color: #ffffff;
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<style>
+
+*{font-family:'Cinzel', serif;}
+
+body{
+background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed;
+background-size:cover;
+background-color:#001f3f;
 }
 
-select.custom-input option:checked {
-    background-color: rgba(255, 255, 255, 0.15);
+/* GLASS STAGE */
+
+.glass-shell-stage{
+width:100%;
+max-width:450px;
+min-height:615px;
+background:rgba(168,207,230,0.45);
+border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+position:relative;
+overflow:visible;
+backdrop-filter:blur(40px);
+border:1.5px solid rgba(255,255,255,0.3);
 }
 
+.product-seated{
+margin-bottom:-100px;
+width:90%;
+transition:all .6s ease;
+}
 
-        .custom-input:focus { border-color: #4CAF50; background-color: rgba(255, 255, 255, 0.1); }
+.glass-shell-stage:hover .product-seated{
+transform:translateY(-20px) scale(1.05);
+}
 
-        /* 3. NEW CONTENT STYLING */
-        .highlight-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-            padding: 1.5rem;
-            transition: 0.3s;
-        }
-        .highlight-card:hover { background: rgba(255,255,255,0.08); }
+.glass-form-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(25px);
+border-radius:24px;
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+border:1px solid rgba(255,255,255,0.15);
+}
 
-        @keyframes float { 
-            0%, 100% { transform: translateY(0); } 
-            50% { transform: translateY(-15px); } 
-        }
-        .animate-float { animation: float 5s ease-in-out infinite; }
+.custom-input{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:12px;
+padding:12px 16px;
+color:white;
+width:100%;
+outline:none;
+}
 
-        .badge-anchor {
-            position: absolute;
-            top: -25px;
-            right: -25px;
-            z-index: 50;
-        }
-    </style>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+.highlight-card{
+background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0));
+border-bottom:1px solid rgba(74,222,128,0.2);
+padding:1.5rem;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+.animate-float{
+animation:float 5s ease-in-out infinite;
+}
+
+/* ============================= */
+/* SHASTIKA COCOBOT */
+/* ============================= */
+
+#cocobot-icon{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+z-index:9999;
+}
+
+#cocobot-box{
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+background:rgba(168,207,230,0.45);
+backdrop-filter:blur(20px);
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+display:none;
+z-index:9999;
+padding:20px;
+}
+
+.coco-header{
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.lang-btn{
+width:100%;
+padding:12px;
+margin:6px 0;
+border-radius:20px;
+border:none;
+background:rgba(255,255,255,0.3);
+cursor:pointer;
+}
+
+</style>
+
 </head>
+
 <body class="inner-page">
+
+<!-- NAVBAR -->
 <nav class="navbar">
-    <a href="#" class="logo-container">
-        <img src="{{ url_for('static', filename='images/logo.webp') }}"loading="lazy">
-        <span>SHASTIKA</span>
-    </a>
-    <div class="menu-toggle" aria-label="Open Menu">☰</div>
-    <div class="nav-links">
-        <a href="/home">HOME</a>
-        <div class="nav-dropdown">
- <a href="#" class="dropbtn">PRODUCTS ▾</a>
-  <div class="dropdown-menu">
-    <a href="/product/tendercoconut">Tender Coconut</a>
-    <a href="/product/greencoconut">Green Coconut</a>
-    <a href="/product/huskedcoconut">Husked Coconut</a>
-    <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
-    <a href="/product/dehusked">Dehusked Coconut</a>
-    <a href="/product/freshorganic">Fresh Organic Coconut</a>
-    <a href="/product/tomato">Tomato</a>
-    <a href="/product/watermelon">Watermelon</a>
-    <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
-    <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
-    <a href="/product/whitepumpkin">White Pumpkin</a>
-    <a href="/product/yellowcucumber">Yellow Cucumber</a>
-    <a href="/product/banana">Cavendish Banana</a>
-    <a href="/product/babybanana">Baby Banana</a>
-    <a href="/product/nendranbanana">Nendran Banana</a>
-    <a href="/product/redbanana">Red Banana</a>
-  </div>
+
+<a href="#" class="logo-container">
+<img src="{{ url_for('static', filename='images/logo.webp') }}">
+<span>SHASTIKA</span>
+</a>
+
+<div class="menu-toggle">☰</div>
+
+<div class="nav-links">
+
+<a href="/home">HOME</a>
+
+<div class="nav-dropdown">
+
+<a href="#" class="dropbtn">PRODUCTS ▾</a>
+
+<div class="dropdown-menu">
+
+<a href="/product/tendercoconut">Tender Coconut</a>
+<a href="/product/greencoconut">Green Coconut</a>
+<a href="/product/huskedcoconut">Husked Coconut</a>
+<a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+<a href="/product/dehusked">Dehusked Coconut</a>
+<a href="/product/freshorganic">Fresh Organic Coconut</a>
+
+<a href="/product/tomato">Tomato</a>
+<a href="/product/watermelon">Watermelon</a>
+<a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+
 </div>
 
-        <a href="/countries">COUNTRIES</a>
-        <a href="/awards">AWARDS</a>
-        <a href="/objectives">OBJECTIVES</a>
-        <a href="/team">OUR TEAM</a>
-        <a href="/contact">CONTACT US</a>
-        <a href="/gallery">GALLERY</a>
-
-    </div>
-  </nav>
-    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center relative z-50">
-        <div class="text-2xl font-black tracking-tighter uppercase">
-             <span class="font-light text-green-300 italic"></span>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        <div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
-            
-            <div class="w-full lg:w-5/12 relative flex flex-col items-start">
-                <div class="glass-shell-stage group mb-12">
-                    <img src="{{ url_for('static', filename='images/tomato-pd.webp') }}"  alt="Organic Tomato" class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
-                    <div class="badge-anchor">
-                        <div class="relative w-40 h-40 flex items-center justify-center">
-                            <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
-                                <path id="badgePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
-                                <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
-                                    <textPath xlink:href="#badgePath">SHASTIKA  GLOBAL  IMPEX  PRIVATE LTD  • </textPath>
-                                </text>
-                            </svg>
-                            <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
-                                <div class="w-full h-full animate-[spin_8s_linear_infinite]">
-                                    <img src="{{ url_for('static', filename='images/logo.webp') }}" class="w-full h-full object-contain scale-110" alt="Logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full glass-form-card p-8 relative">
-                    <h2 class="text-xl font-bold text-green-400 uppercase tracking-widest mb-6">Bulk Quote Inquiry</h2>
-                    <form class="space-y-4" onsubmit="submitEnquiryForm(event)">
-<input type="hidden" name="product" value="Tomato">
-
-                        <input type="text" name="name" placeholder="Full Name *(required)" class="custom-input">
-                            <select id="countrySelect" name="country" class="custom-input" required>
-    <option value="">Select Country *</option>
-</select>
-<div class="flex gap-3">
-    <input type="text" id="countryCode" name="country_code" placeholder="+Code" class="custom-input w-28" readonly required>
-    <input type="tel" name="phone" placeholder="Phone Number *" class="custom-input flex-1" required>
 </div>
 
-                        <input type="email" name="email" placeholder="Email Address" class="custom-input">
-                        <button type="submit"  class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-black uppercase tracking-widest">Send Enquiry</button>
-                    </form>
-                </div>
-            </div>
+<a href="/countries">COUNTRIES</a>
+<a href="/contact">CONTACT</a>
 
-            <div class="w-full lg:w-7/12 space-y-12">
-                <div class="space-y-4">
-                    <span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block underline decoration-green-500/30 underline-offset-8">Shastika Fresh Catalog</span>
-                    <h1 class="text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
-                        Organic <br> <span class="text-green-300 italic font-serif text-6xl lg:text-8xl">Tomato</span>
-                    </h1>
-                    <p class="max-w-2xl text-sm md:text-base leading-relaxed text-white">
-    <b>Shastika Global’s Premium Fresh Tomatoes are cultivated under controlled farming conditions
-    and harvested at optimal ripeness to ensure vibrant color, firm texture, and rich natural flavor.
-    Carefully graded and packed for export, our tomatoes offer excellent shelf life and consistency,
-    making them ideal for international markets that demand freshness, durability, and reliable supply.</b>
+</div>
+
+</nav>
+
+
+<!-- MAIN -->
+<main class="max-w-7xl mx-auto px-6 py-12">
+
+<div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+
+<div class="w-full lg:w-5/12">
+
+<div class="glass-shell-stage">
+
+<img src="{{ url_for('static', filename='images/tomato-pd.webp') }}"
+alt="Organic Tomato"
+class="product-seated animate-float">
+
+</div>
+
+</div>
+
+<div class="lg:w-7/12 space-y-12">
+
+<h1 class="text-7xl font-black uppercase">
+Organic Tomato
+</h1>
+
+<p class="text-white">
+Shastika Global’s Premium Fresh Tomatoes are cultivated under controlled farming conditions and harvested at optimal ripeness.
 </p>
 
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="highlight-card">
-                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Purity Standard</h4>
-                        <p class="text-xl font-bold mb-2 italic">A-Grade Selection</p>
-                        <p class="text-sm text-white leading-relaxed">Hand-picked Indian tomatoes sorted by color, weight, and firm texture for premium exports.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Sustainable Sourcing</h4>
-                        <p class="text-xl font-bold mb-2 italic">100% Organic</p>
-                        <p class="text-sm text-white leading-relaxed">Cultivated without synthetic pesticides, preserving the authentic rich flavor and nutritional value.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Shipping Ready</h4>
-                        <p class="text-xl font-bold mb-2 italic">2kg,5kg,10kg and 20kg Carton Box</p>
-                        <p class="text-sm text-white leading-relaxed">Ventilated industrial packaging designed to maintain optimal temperature during transit.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h4 class="text-green-400 font-bold text-xs uppercase tracking-tighter mb-2">Origin Control</h4>
-                        <p class="text-xl font-bold mb-2 italic">Product of India</p>
-                        <p class="text-sm text-white leading-relaxed">Sourced directly from certified heritage farms ensuring complete traceability from seed to shelf.</p>
-                    </div>
-                </div>
-
-                <div class="bg-white/5 p-8 rounded-3xl border border-white/10 flex flex-col md:flex-row gap-8 justify-between items-center">
-                    <div class="text-center md:text-left">
-                        <p class="text-4xl font-black text-green-300">Global</p>
-                        <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Export Delivery</p>
-                    </div>
-                    <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
-                    <div class="text-center md:text-left">
-                        <p class="text-4xl font-black text-white">48h</p>
-                        <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Harvest To Port</p>
-                    </div>
-                    <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
-                    <div class="flex gap-4">
-                        <div class="w-14 h-14 rounded-full border border-green-500/50 flex items-center justify-center text-[10px] font-bold text-green-400">ISO</div>
-                        <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold opacity-40">FDA</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- FLOATING ACTION BUTTONS -->
-<div class="floating-icons">
-
-  <!-- Chatbot -->
-  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-    <i class="fa-solid fa-robot"></i>
-  </a>
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
+</div>
 
 </div>
-    </main>
-     <script>
-const countries = {
-  "Afghanistan": "+93",
-  "Albania": "+355",
-  "Algeria": "+213",
-  "Argentina": "+54",
-  "Australia": "+61",
-  "Austria": "+43",
-  "Bangladesh": "+880",
-  "Belgium": "+32",
-  "Brazil": "+55",
-  "Canada": "+1",
-  "China": "+86",
-  "Denmark": "+45",
-  "Egypt": "+20",
-  "Finland": "+358",
-  "France": "+33",
-  "Germany": "+49",
-  "Greece": "+30",
-  "Hong Kong": "+852",
-  "India": "+91",
-  "Indonesia": "+62",
-  "Ireland": "+353",
-  "Israel": "+972",
-  "Italy": "+39",
-  "Japan": "+81",
-  "Kenya": "+254",
-  "Kuwait": "+965",
-  "Malaysia": "+60",
-  "Maldives": "+960",
-  "Mexico": "+52",
-  "Netherlands": "+31",
-  "New Zealand": "+64",
-  "Nigeria": "+234",
-  "Norway": "+47",
-  "Oman": "+968",
-  "Pakistan": "+92",
-  "Philippines": "+63",
-  "Poland": "+48",
-  "Portugal": "+351",
-  "Qatar": "+974",
-  "Russia": "+7",
-  "Saudi Arabia": "+966",
-  "Singapore": "+65",
-  "South Africa": "+27",
-  "South Korea": "+82",
-  "Spain": "+34",
-  "Sri Lanka": "+94",
-  "Sweden": "+46",
-  "Switzerland": "+41",
-  "Thailand": "+66",
-  "Turkey": "+90",
-  "UAE": "+971",
-  "UK": "+44",
-  "USA": "+1",
-  "Vietnam": "+84"
-};
 
-const countrySelect = document.getElementById("countrySelect");
-const countryCodeInput = document.getElementById("countryCode");
+</main>
+<!-- ======================= -->
+<!-- SHASTIKA COCOBOT -->
+<!-- ======================= -->
 
-/* Populate dropdown */
-Object.keys(countries).forEach(country => {
-    const option = document.createElement("option");
-    option.value = country;
-    option.textContent = country;
-    countrySelect.appendChild(option);
-});
+<!-- Chatbot Icon -->
+<div id="cocobot-icon">💬</div>
 
-/* Auto-fill country code */
-countrySelect.addEventListener("change", function () {
-    countryCodeInput.value = countries[this.value] || "";
-});
-/* ================= PRODUCT ENQUIRY SUBMIT ================= */
-function submitEnquiryForm(e){
-  e.preventDefault();
+<!-- Chatbot Window -->
+<div id="cocobot-box">
+  <iframe src="https://chatbot-e99e.onrender.com"></iframe>
+</div>
 
-  const form = e.target;
+<script>
 
-  fetch("/submit_enquiry", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      product: form.querySelector('input[name="product"]').value,
-      name: form.querySelector('input[name="name"]').value,
-      country: form.querySelector('select[name="country"]').value,
-      phone: form.querySelector('input[name="country_code"]').value + " " +
-             form.querySelector('input[name="phone"]').value,
-      email: form.querySelector('input[name="email"]').value
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.status === "success"){
-      alert("Your enquiry has been sent successfully!");
-      form.reset();
-      document.getElementById("countryCode").value = "";
+document.addEventListener("DOMContentLoaded", function(){
+
+  const icon = document.getElementById("cocobot-icon");
+  const box = document.getElementById("cocobot-box");
+
+  icon.onclick = function(){
+
+    if(box.style.display === "block"){
+      box.style.display = "none";
     } else {
-      alert("Something went wrong!");
+      box.style.display = "block";
     }
-  })
-  .catch(() => alert("Server error!"));
-}
+
+  }
+
+});
+
 </script>
-</body>
-</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+<title>Shastika Global</title>
+
+</head>
+
+<body>
+
+{% block content %}{% endblock %}
+
+
+<!-- ================= CHATBOT ================= -->
+
+<div id="ai-chatbot" style="
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+height:420px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
+display:none;
+flex-direction:column;
+z-index:9999;
+">
+
+<div style="background:#0b3d91;color:white;padding:10px;border-radius:10px 10px 0 0;">
+Shastika CocoBot
+</div>
+
+<div id="ai-messages" style="flex:1;padding:10px;overflow-y:auto;"></div>
+
+<div style="display:flex;border-top:1px solid #ddd;">
+<input id="ai-input" type="text" placeholder="Ask about our products..." style="flex:1;border:none;padding:10px;">
+<button id="ai-send" style="background:#0b3d91;color:white;border:none;padding:10px;">Send</button>
+</div>
+
+</div>
+
+
+<!-- CHAT ICON -->
+
+<div id="chatbot-icon" onclick="toggleChatbot()" style="
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:black;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+cursor:pointer;
+z-index:9999;
+">
+💬
+</div>
+
+
+<script>
+
+function toggleChatbot(){
+
+const bot = document.getElementById("ai-chatbot");
+
+if(bot.style.display === "flex"){
+bot.style.display="none";
+}else{
+bot.style.display="flex";
+}
+
+}
+
+</script>
+
+</body>
+</html>

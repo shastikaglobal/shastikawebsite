@@ -14,11 +14,33 @@ bubble.innerHTML = "💬";
 
 const win = document.createElement("div");
 win.id = "ai-chat-window";
+win.style.position = "fixed";
+win.style.bottom = "90px";
+win.style.right = "20px";
+win.style.width = "380px";
+win.style.height = "520px";
+win.style.background = "#fff";
+win.style.borderRadius = "12px";
+win.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
+win.style.display = "none";
+win.style.zIndex = "9999";
+win.style.overflow = "hidden";
+
+win.innerHTML = `
+<iframe 
+src="https://chatbot-e99e.onrender.com" 
+width="100%" 
+height="100%" 
+style="border:none;">
+</iframe>
+`;
 
 document.body.appendChild(bubble);
 document.body.appendChild(win);
 
-bubble.onclick = openLanguageScreen;
+bubble.onclick = () => {
+  win.style.display = win.style.display === "block" ? "none" : "block";
+};
 
 
 /* ===============================
@@ -498,7 +520,7 @@ console.log("🚀 submitContact triggered");
     stopTyping();
 
     // ✅ show backend thank-you message
-    addBot(data.reply, data.options || []);
+  addBot(data.response || data.reply, data.options || []);
 
   } catch (err) {
     stopTyping();
@@ -506,125 +528,116 @@ console.log("🚀 submitContact triggered");
     addBot("❌ Failed to submit contact details. Please try again.");
   }
 }
-
 /* ===============================
    SEND MESSAGE
 ================================ */
 
 async function send(msg){
 
-  addUser(msg);
-  typing();
+    addUser(msg);
+    typing();
 
-  try{
+    try{
 
-    const res = await fetch(API_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({
-        message: msg,
-        lang: USER_LANG,
-        session_id: SESSION_ID
-      })
-    });
+        const res = await fetch(API_URL,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                message: msg,
+                lang: USER_LANG,
+                session_id: SESSION_ID
+            })
+        });
 
-    const data = await res.json();
-    stopTyping();
+        const data = await res.json();
 
-    // ✅ FORM TRIGGERS
+        stopTyping();
 
-    if(data.reply === "SHOW_QUOTE_FORM"){
-      showQuoteForm();
-      return;
+        // normal reply
+        addBot(data.response || data.reply || "Hello! How can I help you?");
+
+        /* ===============================
+           FORM TRIGGERS
+        =============================== */
+
+        if(data.reply === "SHOW_QUOTE_FORM"){
+            showQuoteForm();
+            return;
+        }
+
+        if(data.reply === "SHOW_EXPORT_FORM"){
+            showExportForm();
+            return;
+        }
+
+        if(data.reply === "SHOW_DOMESTIC_FORM"){
+            showDomesticForm();
+            return;
+        }
+
+        if(data.reply === "SHOW_BULK_FORM"){
+            showBulkForm();
+            return;
+        }
+
+        if(data.reply === "SHOW_CONTACT_FORM"){
+            showContactForm();
+            return;
+        }
+
+    }catch(err){
+
+        stopTyping();
+        console.error(err);
+
+        addBot("Server error — please try again.");
+
     }
 
-    if(data.reply === "SHOW_EXPORT_FORM"){
-      showExportForm();
-      return;
-    }
-
-    if(data.reply === "SHOW_DOMESTIC_FORM"){
-      showDomesticForm();
-      return;
-    }
-
-    if(data.reply === "SHOW_BULK_FORM"){
-      showBulkForm();
-      return;
-    }
-    if(data.reply === "SHOW_CONTACT_FORM"){
-      showContactForm();
-      return;
-    }
- 
-    // normal bot reply
-    addBot(data.reply, data.options || []);
-
-  }catch{
-    stopTyping();
-    addBot("Server error — please try again.");
-  }
 }
+
 
 /* ===============================
    INPUT EVENTS
 ================================ */
 
 document.addEventListener("click",e=>{
-  if(e.target.id==="ai-send"){
-    const i=document.getElementById("ai-input");
-    if(i.value){ send(i.value); i.value=""; }
-  }
+
+    if(e.target.id==="ai-send"){
+
+        const input=document.getElementById("ai-input");
+
+        const msg=input.value.trim();
+
+        if(!msg) return;
+
+        input.value="";
+
+        send(msg);
+
+    }
+
 });
+
 
 document.addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-    const i=document.getElementById("ai-input");
-    if(i) document.getElementById("ai-send").click();
-  }
+
+    if(e.key==="Enter"){
+
+        const input=document.getElementById("ai-input");
+
+        if(!input) return;
+
+        const msg=input.value.trim();
+
+        if(!msg) return;
+
+        input.value="";
+
+        send(msg);
+
+    }
+
 });
-
-function sendMessage() {
-
-  const input = document.getElementById("chat-input");
-  const userMessage = input.value;
-
-  if (!userMessage) return;
-
-  addUser(userMessage);
-
-  input.value = "";
-
-  fetch(API_ROOT + "/chatbot", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: userMessage
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    addBot(data.reply);
-  });
-
-}function sendMessage(userMessage){
-
-fetch("http://127.0.0.1:5000/chatbot", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-message: userMessage
-})
-})
-.then(res => res.json())
-.then(data => {
-
-addBot(data.reply)
-
-})
-
-}
