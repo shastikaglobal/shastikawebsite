@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Certifications & Awards</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
+<!-- FONT AWESOME -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -18,12 +15,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body class="inner-page">
 
-
 <!-- NAVBAR -->
-
 <nav class="navbar">
 
-<a href="/home" class="logo-container">
+<a href="#" class="logo-container">
 <img src="{{ url_for('static', filename='images/logo.webp') }}" loading="lazy">
 <span>SHASTIKA</span>
 </a>
@@ -35,7 +30,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <a href="/home">HOME</a>
 
 <div class="nav-dropdown">
-
 <a href="#" class="dropbtn">PRODUCTS ▾</a>
 
 <div class="dropdown-menu">
@@ -70,7 +64,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </nav>
 
 
-
 <!-- AWARDS SECTION -->
 
 <section id="awards" class="gallery-section">
@@ -79,13 +72,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <h2>Certifications & Awards</h2>
 </div>
 
-<div class="gallery-shell">
+<div class="awards-shell">
 
-<button class="gallery-btn left" onclick="moveGallery(-1)">‹</button>
+<button class="awards-btn left" onclick="moveAwards(-1)">‹</button>
 
-<div class="gallery-viewport">
-
-<div class="gallery-slider" id="gallerySlider">
+<div class="awards-viewport">
+<div class="awards-container" id="awardsSlider">
 
 <img src="{{ url_for('static', filename='images/certificate1.webp') }}" onclick="openGalleryModal(this)">
 <img src="{{ url_for('static', filename='images/certificate2.webp') }}" onclick="openGalleryModal(this)">
@@ -93,31 +85,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <img src="{{ url_for('static', filename='images/certificate4.webp') }}" onclick="openGalleryModal(this)">
 
 </div>
-
 </div>
 
-<button class="gallery-btn right" onclick="moveGallery(1)">›</button>
+<button class="awards-btn right" onclick="moveAwards(1)">›</button>
 
 </div>
 
 </section>
 
 
-
 <!-- FLOATING BUTTONS -->
 
 <div class="floating-icons">
 
+<!-- WhatsApp -->
 <a href="https://wa.me/917397612015"
 target="_blank"
 class="float-btn whatsapp-btn">
-
 <i class="fa-brands fa-whatsapp"></i>
-
 </a>
 
 </div>
-
 
 
 <!-- CHATBOT BUTTON -->
@@ -125,8 +113,7 @@ class="float-btn whatsapp-btn">
 <div id="chatbot-button" onclick="openChatbot()">💬</div>
 
 
-
-<!-- IMAGE MODAL -->
+<!-- MODAL -->
 
 <div id="galleryModal">
 
@@ -140,150 +127,16 @@ class="float-btn whatsapp-btn">
 </div>
 
 
-
-<!-- MAIN JS -->
-
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-
-<!-- CHATBOT WINDOW -->
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 <script>
-
 function openChatbot(){
-
 window.open(
 "https://chatbot-e99e.onrender.com",
 "chatbot",
 "width=450,height=650"
 );
-
 }
-
-</script>
-<!-- FLOATING ACTION BUTTONS -->
-<div class="floating-icons">
-
-<!-- CHATBOT ICON -->
-<div id="chatbot-icon">💬</div>
-
-<!-- SHASTIKA COCOBOT -->
-<div id="ai-chatbot">
-
-<div class="bot-header">
-Shastika CocoBot
-</div>
-
-<div id="ai-messages"></div>
-
-<div class="bot-input">
-<input id="ai-input" type="text" placeholder="Ask about our products...">
-<button id="ai-send">Send</button>
-</div>
-
-</div>
-
-</div>
-
-
-<style>
-
-#chatbot-icon{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-background:black;
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:26px;
-cursor:pointer;
-z-index:9999;
-}
-
-/* Chatbot Box */
-
-#ai-chatbot{
-position:fixed;
-bottom:90px;
-right:20px;
-width:320px;
-height:420px;
-background:#fff;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
-display:none;
-flex-direction:column;
-overflow:hidden;
-z-index:9999;
-}
-
-/* Header */
-
-.bot-header{
-background:#0b3d91;
-color:white;
-padding:10px;
-font-weight:bold;
-}
-
-/* Messages */
-
-#ai-messages{
-flex:1;
-padding:10px;
-overflow-y:auto;
-font-size:14px;
-}
-
-/* Input */
-
-.bot-input{
-display:flex;
-border-top:1px solid #ddd;
-}
-
-#ai-input{
-flex:1;
-border:none;
-padding:10px;
-outline:none;
-}
-
-#ai-send{
-background:#0b3d91;
-color:white;
-border:none;
-padding:10px 15px;
-cursor:pointer;
-}
-
-</style>
-
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function(){
-
-const icon = document.getElementById("chatbot-icon");
-const bot = document.getElementById("ai-chatbot");
-
-icon.onclick = function(){
-
-if(bot.style.display === "flex"){
-bot.style.display = "none";
-}else{
-bot.style.display = "flex";
-}
-
-}
-
-});
-
 </script>
 
 </body>

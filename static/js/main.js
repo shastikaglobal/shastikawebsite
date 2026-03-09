@@ -61,37 +61,30 @@ function moveGallery(direction){
   if(!slider) return;
 
   const images = slider.querySelectorAll("img");
+  if(images.length === 0) return;
+
+  const imageWidth = 340;
+  const gap = 28;
+  const itemWidth = imageWidth + gap;
 
   const visible = 2;
-  const maxIndex = images.length - visible;
+  const maxIndex = Math.max(0, images.length - visible);
 
   galleryIndex += direction;
 
   if(galleryIndex < 0) galleryIndex = 0;
   if(galleryIndex > maxIndex) galleryIndex = maxIndex;
 
-  slider.style.transform =
-    `translateX(-${galleryIndex * 50}%)`;
+  console.log(`Gallery moved: index=${galleryIndex}, transform=-${galleryIndex * itemWidth}px`);
+
+  slider.style.transform = `translateX(-${galleryIndex * itemWidth}px)`;
 
 }
 
 
 /* ================= GALLERY CLICK ================= */
 
-function openGalleryModal(img){function openProductModal(img,title,desc,link){
-
-document.getElementById("productModal").style.display="flex";
-
-document.getElementById("modalImg").src=img;
-document.getElementById("modalTitle").innerText=title;
-document.getElementById("modalDesc").innerText=desc;
-document.getElementById("modalLink").href=link;
-
-}
-
-function closeProductModal(){
-document.getElementById("productModal").style.display="none";
-}
+function openGalleryModal(img){
 
   const modal = document.getElementById("galleryModal");
   const modalImg = document.getElementById("galleryModalImg");
@@ -99,6 +92,24 @@ document.getElementById("productModal").style.display="none";
   modalImg.src = img.src;
   modal.style.display = "flex";
 
+}
+
+
+/* ================= PRODUCT MODAL ================= */
+
+function openProductModal(img,title,desc,link){
+
+  document.getElementById("productModal").style.display="flex";
+
+  document.getElementById("modalImg").src=img;
+  document.getElementById("modalTitle").innerText=title;
+  document.getElementById("modalDesc").innerText=desc;
+  document.getElementById("modalLink").href=link;
+
+}
+
+function closeProductModal(){
+  document.getElementById("productModal").style.display="none";
 }
 
 

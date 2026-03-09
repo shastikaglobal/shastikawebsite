@@ -3285,36 +3285,34 @@ footer a {
   position: relative;
 }
 
-.gallery-wrap {
-  overflow: hidden;
-  margin-top: 30px;
+.gallery-shell {
+  width: min(1200px, 94%);
+  margin: 40px auto;
+  display: grid !important;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  gap: 20px;
+}
+
+.gallery-viewport {
+  width: 100%;
+  overflow: hidden !important;
+  position: relative;
 }
 
 .gallery-slider {
-  display:flex;
-gap:30px;
-transition:transform .4s ease;
-}.gallery-viewport{
-width:100%;
-overflow:hidden;
-}
-.gallery-shell{
-max-width:900px;
-margin:auto;
-}
-.gallery-slider{
-display:flex;
-gap:30px;
-transition:transform .4s ease;
+  display: flex !important;
+  gap: 28px;
+  transition: transform 0.45s ease;
+  will-change: transform;
 }
 
-.gallery-slider img{
-width:calc((100% - 30px)/2);
-flex-shrink:0;
-height:220px;
-object-fit:cover;
-border-radius:12px;
-cursor:pointer;
+.gallery-slider img {
+  flex: 0 0 340px !important;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 /* ===== GLASS HEADING CARD — REUSE FOR ALL SECTIONS ===== */
@@ -3501,16 +3499,31 @@ cursor:pointer;
   position: relative !important;
   top: auto !important;
   transform: none !important;
-
   width: 56px;
+
   height: 56px;
   border-radius: 50%;
   border: none;
   font-size: 26px;
   cursor: pointer;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
 
-  background: #444;
-  color: #fff;
+.gallery-btn:hover {
+  background: rgba(255,255,255,0.95);
+  transform: scale(1.1);
+}
+
+.gallery-btn:active {
+  transform: scale(0.95);
 }
 /* ===== PRODUCT CARD SIZE — CORRECT ===== */
 
@@ -3665,8 +3678,7 @@ cursor:pointer;
 /* ---------- buttons — side only ---------- */
 
 .slider-side-btn,
-.cert-side-btn,
-.gallery-btn {
+.cert-side-btn {
   position: relative !important;
   top: auto !important;
   left: auto !important;
@@ -3996,20 +4008,6 @@ body:not(.home-page) .hero {
   transform: translateY(-6px) scale(1.04);
 }
 
-/* arrows */
-.gallery-btn {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(10px);
-  color: #000;
-}
-
 /* ===== MODAL ===== */
 
 #galleryModal {
@@ -4179,78 +4177,6 @@ box-shadow:0 14px 40px rgba(0,0,0,0.25);
 cursor:pointer;
 }
 
-/* Certificates: keep aspect ratio, no stretching */
-#awards .awards-container img{
-  width: 100%;
-  height: auto;
-  display: block;
-
-  background: rgba(255,255,255,0.95);
-  padding: 12px;
-  border-radius: 14px;
-
-  object-fit: contain;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-#awards .awards-container img:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
-}
-
-/* ===== AWARDS SLIDER ===== */
-
-.awards-shell{
-width:min(1100px,94%);
-margin:40px auto;
-
-display:grid;
-grid-template-columns:60px 1fr 60px;
-align-items:center;
-gap:20px;
-}
-
-.awards-viewport{
-overflow:hidden;
-width:100%;
-}
-
-.awards-container{
-display:flex;
-gap:24px;
-transition:transform .4s ease;
-}
-
-.awards-container img{
-flex:0 0 calc((100% - 24px)/2);
-background:white;
-padding:12px;
-border-radius:14px;
-object-fit:contain;
-box-shadow:0 14px 40px rgba(0,0,0,0.25);
-cursor:pointer;
-}.awards-btn{
-width:54px;
-height:54px;
-border-radius:50%;
-border:none;
-font-size:26px;
-cursor:pointer;
-
-background:rgba(255,255,255,0.75);
-backdrop-filter:blur(10px);
-color:#000;
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.awards-btn:hover{
-  background: white;
-}
 
 /* Chatbot Button */
 #chatbot-button{
