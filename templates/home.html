@@ -208,21 +208,12 @@
     <h3><p>An inspired selection of fresh produce, chosen at its peak.</p></h3>
   </div>
 
-  <div class="slider-shell">
+  <div class="products-wrapper">
 
-  <button class="slider-side-btn left" onclick="slidePage(-1)">‹</button>
-
-  <div class="slider-viewport">
-    <div class="products-grid" id="slider">
+    
      
       <!-- GREEN COCONUT -->
-      <div class="product-card has-flip"
-onclick="openProductModal(
-'{{ url_for('static', filename='images/coconut-product.webp') }}',
-'Green Coconut',
-'Fresh naturally sweet coconut packed with natural electrolytes.',
-'/product/greencoconut'
-)">
+      <div class="product-card has-flip">
         <div class="flip-inner">
 
           <div class="flip-front">
@@ -232,10 +223,8 @@ onclick="openProductModal(
           </div>
 
           <div class="flip-back">
-            <ul>
-              <li><a href="/product/tendercoconut">Tender Coconut</a></li>
-              <li><a href="/product/greencoconut">Green Coconut</a></li>
-            </ul>
+            <a href="/product/tendercoconut" class="product-btn">Tender Coconut</a>
+            <a href="/product/greencoconut" class="product-btn">Green Coconut</a>
           </div>
 
         </div>
@@ -253,58 +242,42 @@ onclick="openProductModal(
           </div>
 
           <div class="flip-back">
-            <ul>
-              <li><a href="/product/huskedcoconut">Husked Coconut</a></li>
-              <li><a href="/product/semihuskedcoconut">Semi-Husked Coconut</a></li>
-              <li><a href="/product/dehusked">Dehusked Coconut</a></li>
-              <li><a href="/product/freshorganic">Fresh Organic Coconut</a></li>
-            </ul>
+            <a href="/product/huskedcoconut" class="product-btn">Husked Coconut</a>
+            <a href="/product/semihuskedcoconut" class="product-btn">Semi-Husked Coconut</a>
+            <a href="/product/dehusked" class="product-btn">Dehusked Coconut</a>
+            <a href="/product/freshorganic" class="product-btn">Fresh Organic Coconut</a>
           </div>
 
         </div>
       </div>
 
-      <!-- TOMATO (normal link card unchanged) -->
-     <div class="product-card has-flip">
-  <div class="flip-inner">
-
-    <!-- Front -->
-    <div class="flip-front">
-      <img src="{{ url_for('static', filename='images/tomato-product.webp') }}" loading="lazy">
-      <h3>TOMATO</h3>
-      <p>
-        Juicy, vibrant, and full of flavor — tomatoes add a burst of freshness and natural goodness to every dish. 🍅
-      </p>
-    </div>
-
-    <!-- Back (direct link) -->
-    <div class="flip-back">
-      <ul>
-        <li><a href="/product/tomato">View Tomato Details</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-
-      <!-- WATERMELON -->
+      <!-- TOMATO -->
       <div class="product-card has-flip">
         <div class="flip-inner">
-
           <div class="flip-front">
-            <img src="{{ url_for('static', filename='images/watermelon-product.webp') }}" loading="lazy">
-            <h3>WATERMELON</h3>
-            <p>Crisp, juicy, and irresistibly refreshing — watermelon is summer’s sweetest way to stay cool and hydrated. 🍉</p>
+            <img src="{{ url_for('static', filename='images/tomato-product.webp') }}" loading="lazy" alt="Tomato">
+            <h3>TOMATO</h3>
+            <p>Juicy, vibrant, and full of flavor — tomatoes add a burst of freshness and natural goodness to every dish. 🍅</p>
           </div>
-
           <div class="flip-back">
-            <ul>
-              <li><a href="/product/watermelon">Watermelon</a></li>
-              <li><a href="/product/blackwatermelon">Black Diamond Watermelon</a></li>
-            </ul>
+            <a href="/product/tomato" class="product-btn">View Tomato Details</a>
           </div>
+        </div>
+      </div>
 
+
+      <!-- WATERMELON - CENTERED, SPANS 2 COLUMNS -->
+      <div class="product-card has-flip watermelon">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/watermelon-product.webp') }}" loading="lazy" alt="Watermelon">
+            <h3>WATERMELON</h3>
+            <p>Crisp, juicy, and irresistibly refreshing — watermelon is summer's sweetest way to stay cool and hydrated. 🍉</p>
+          </div>
+          <div class="flip-back">
+            <a href="/product/watermelon" class="product-btn">Watermelon</a>
+            <a href="/product/blackwatermelon" class="product-btn">Black Diamond Watermelon</a>
+          </div>
         </div>
       </div>
 
@@ -319,37 +292,25 @@ onclick="openProductModal(
           </div>
 
           <div class="flip-back">
-            <ul>
-              <li><a href="/product/yellowpumpkin">Yellow Pumpkin</a></li>
-              <li><a href="/product/whitepumpkin">White Pumpkin</a></li>
-            </ul>
+            <a href="/product/yellowpumpkin" class="product-btn">Yellow Pumpkin</a>
+            <a href="/product/whitepumpkin" class="product-btn">White Pumpkin</a>
           </div>
-
         </div>
       </div>
 
-      <!-- CUCUMBER (normal link card unchanged) -->
+      <!-- YELLOW CUCUMBER -->
       <div class="product-card has-flip">
-  <div class="flip-inner">
-
-    <!-- Front -->
-    <div class="flip-front">
-      <img src="{{ url_for('static', filename='images/cucumber-product.webp') }}" class="prod-cucumber" loading="lazy">
-      <h3>YELLOW CUCUMBER</h3>
-      <p>
-        Cool, crisp, and refreshingly light — cucumber delivers pure freshness and hydration in every crunchy bite. 🥒
-      </p>
-    </div>
-
-    <!-- Back (direct link) -->
-    <div class="flip-back">
-      <ul>
-        <li><a href="/product/yellowcucumber">View Cucumber Details</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="{{ url_for('static', filename='images/cucumber-product.webp') }}" class="prod-cucumber" loading="lazy" alt="Yellow Cucumber">
+            <h3>YELLOW CUCUMBER</h3>
+            <p>Cool, crisp, and refreshingly light — cucumber delivers pure freshness and hydration in every crunchy bite. 🥒</p>
+          </div>
+          <div class="flip-back">
+            <a href="/product/yellowcucumber" class="product-btn">View Cucumber Details</a>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -362,35 +323,24 @@ onclick="openProductModal(
             <h3>BANANA</h3>
             <p>Naturally sweet, energy-rich, and wholesome — bananas are the perfect blend of taste, nutrition, and everyday freshness. 🍌</p>
           </div>
+           <!-- RIGHT BUTTON -->
+    <button class="slider-btn right" onclick="scrollProducts(320)">❯</button>
 
           <div class="flip-back">
-            <ul>
-              <li><a href="/product/banana">Cavendish Banana</a></li>
-              <li><a href="/product/babybanana">Baby Banana</a></li>
-              <li><a href="/product/nendranbanana">Nendran Banana</a></li>
-              <li><a href="/product/redbanana">Red Banana</a></li>
-            </ul>
+            <a href="/product/cavendish-banana/" class="product-btn">Cavendish Banana</a>
+            <a href="/product/babybanana" class="product-btn">Baby Banana</a>
+            <a href="/product/nendranbanana" class="product-btn">Nendran Banana</a>
+            <a href="/product/redbanana" class="product-btn">Red Banana</a>
           </div>
-
         </div>
       </div>
-
-    </div>
   </div>
-
-  <button class="slider-side-btn right" onclick="slidePage(1)">›</button>
-
-</div>
 
 </section>
 
-<div id="gallerySlider">
 
-<img src="img1.jpg">
-<img src="img2.jpg">
-<img src="img3.jpg">
 
-</div>
+
 
     <!-- ===================== GLOBAL NETWORK ===================== -->
     <section id="network" class="global-network">
@@ -485,20 +435,19 @@ height="1000"
 
 <div class="slider" id="certSlider">
 
-<div class="cert-card" onclick="openCertModal(this)">
-<img src="{{ url_for('static', filename='images/certificate1.webp') }}">
-</div>
-
-<div class="cert-card" onclick="openCertModal(this)">
-<img src="{{ url_for('static', filename='images/certificate2.webp') }}">
-</div>
-
-<div class="cert-card" onclick="openCertModal(this)">
-<img src="{{ url_for('static', filename='images/certificate3.webp') }}">
-</div>
-
-<div class="cert-card" onclick="openCertModal(this)">
-<img src="{{ url_for('static', filename='images/certificate4.webp') }}">
+<div class="cert-grid-box">
+    <div class="cert-card" onclick="openCertModal(this)">
+      <img src="{{ url_for('static', filename='images/certificate1.webp') }}" loading="lazy">
+    </div>
+    <div class="cert-card" onclick="openCertModal(this)">
+      <img src="{{ url_for('static', filename='images/certificate2.webp') }}" loading="lazy">
+    </div>
+    <div class="cert-card" onclick="openCertModal(this)">
+      <img src="{{ url_for('static', filename='images/certificate3.webp') }}" loading="lazy">
+    </div>
+    <div class="cert-card" onclick="openCertModal(this)">
+      <img src="{{ url_for('static', filename='images/certificate4.webp') }}" loading="lazy">
+    </div>
 </div>
 
 </div>
@@ -824,3 +773,36 @@ z-index:9999;
 
 </body>
 </html>
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+
+
+*{
+font-family:'Cinzel', serif;
+}
+
+</style>
+
+
+<!-- HOME PAGE CONTENT -->
+
+<section class="max-w-7xl mx-auto px-6 py-12">
+
+<h1 class="text-6xl text-white text-center font-bold">
+Welcome to Shastika Global
+</h1>
+
+<p class="text-center text-white mt-6">
+Premium export quality coconuts, fruits and vegetables from India.
+</p>
+
+</section>
+
+
+{% endblock %}

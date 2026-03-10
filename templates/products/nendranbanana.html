@@ -1,14 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-
-<title>Shastika Global | Premium Nendran Banana</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,12 +8,12 @@ font-family:'Cinzel', serif;
 }
 
 body{
-background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed;
+background:url("{{ url_for('static', filename='images/background.webp') }}") no-repeat center center fixed;
 background-size:cover;
 background-color:#001f3f;
 }
 
-/* GLASS STAGE */
+/* GLASS PRODUCT STAGE */
 
 .glass-shell-stage{
 width:100%;
@@ -34,8 +25,6 @@ border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-overflow:visible;
 backdrop-filter:blur(40px);
 border:1.5px solid rgba(255,255,255,0.3);
 }
@@ -43,156 +32,139 @@ border:1.5px solid rgba(255,255,255,0.3);
 .product-seated{
 margin-bottom:-100px;
 width:90%;
-transition:all 0.6s ease;
+transition:.6s ease;
 }
 
 .glass-shell-stage:hover .product-seated{
 transform:translateY(-20px) scale(1.05);
 }
 
-/* FORM */
+/* TEXT */
 
-.glass-form-card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(25px);
-border-radius:24px;
-box-shadow:0 25px 50px rgba(0,0,0,0.3);
-border:1px solid rgba(255,255,255,0.15);
+.product-title{
+font-size:70px;
+font-weight:900;
+color:white;
+text-align:center;
+margin-top:40px;
 }
 
-.custom-input{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:12px;
-padding:12px 16px;
-color:#fff;
-width:100%;
-outline:none;
+.product-desc{
+color:white;
+font-size:18px;
+text-align:center;
+max-width:900px;
+margin:auto;
+line-height:1.6;
 }
+
+/* INFO CARDS */
 
 .highlight-card{
-background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
-border-bottom:1px solid rgba(74,222,128,0.2);
+background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+border-bottom:1px solid rgba(74,222,128,.2);
 padding:1.5rem;
-transition:0.3s;
+}
+.highlight-card ul{
+list-style:none;
+padding:0;
+margin:0;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
 }
 
-.highlight-card:hover{
-background:rgba(255,255,255,0.08);
-transform:translateY(-5px);
+.highlight-card li{
+background:rgba(74,222,128,0.2);
+border:1px solid rgba(74,222,128,0.4);
+color:white;
+padding:8px 14px;
+border-radius:8px;
+font-size:13px;
+margin:0;
+cursor:pointer;
+transition:all 0.3s ease;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
+.highlight-card li:hover{
+background:rgba(74,222,128,0.4);
+border-color:rgba(74,222,128,0.8);
+transform:translateY(-2px);
 }
-
-.animate-float{
-animation:float 5s ease-in-out infinite;
-}
-
 </style>
+
 
 <main class="max-w-7xl mx-auto px-6 py-12">
 
-<div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+<div class="flex flex-col lg:flex-row gap-16">
 
-<!-- PRODUCT IMAGE -->
+<!-- LEFT IMAGE -->
 
-<div class="w-full lg:w-5/12">
+<div class="lg:w-5/12">
 
 <div class="glass-shell-stage">
 
-<img src="{{ url_for('static', filename='images/nendranbanana-pd.webp') }}"
-alt="Nendran Banana"
-class="product-seated animate-float">
-
-</div>
-
-<!-- ENQUIRY FORM -->
-
-<div class="glass-form-card p-8 mt-10">
-
-<h2 class="text-xl font-bold text-green-400 uppercase mb-6">
-Bulk Quote Inquiry
-</h2>
-
-<form class="space-y-4" onsubmit="submitEnquiryForm(event)">
-
-<input type="hidden" name="product" value="Nendran Banana">
-
-<input type="text" name="name"
-placeholder="Full Name *(required)"
-class="custom-input" required>
-
-<select id="countrySelect" name="country" class="custom-input" required>
-<option value="">Select Country *</option>
-</select>
-
-<div class="flex gap-3">
-
-<input type="text"
-id="countryCode"
-name="country_code"
-placeholder="+Code"
-class="custom-input w-28"
-readonly required>
-
-<input type="tel"
-name="phone"
-placeholder="Phone Number *"
-class="custom-input flex-1"
-required>
-
-</div>
-
-<input type="email"
-name="email"
-placeholder="Email Address *"
-class="custom-input" required>
-
-<button type="submit"
-class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-bold text-white">
-Send Enquiry </button>
-
-</form>
+<img 
+src="{{ url_for('static', filename='images/cucumber-pd.webp') }}" 
+class="product-seated"
+alt="Organic Cucumber">
 
 </div>
 
 </div>
 
-<!-- PRODUCT CONTENT -->
 
-<div class="w-full lg:w-7/12 space-y-12">
+<!-- RIGHT CONTENT -->
 
-<h1 class="text-7xl font-black uppercase">
-Nendran Banana
+<div class="lg:w-7/12 space-y-10">
+
+<h1 class="product-title">
+Organic Cucumber
 </h1>
 
-<p class="text-white max-w-2xl">
-Cultivated in the fertile plains of Gobichettipalayam, these Golden Bananas are known for their large size, thick skin, and distinctive shape. Ideal for export markets across Europe and the Middle East.
+<p class="product-desc">
+Shastika Global’s Organic Cucumbers are cultivated under natural farming conditions 
+to ensure freshness, crisp texture, and premium export quality. 
+These cucumbers are carefully harvested and selected to meet international 
+market standards for freshness and nutritional value.
 </p>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="grid md:grid-cols-2 gap-6">
 
 <div class="highlight-card">
 <h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Purity & Source
+Purity
 </h4>
 <p class="text-white text-sm">
-Sourced from the Bhavani-LBP canal region and grown under GAP standards ensuring chemical-free produce.
+100% Natural & Organic
 </p>
 </div>
 
 <div class="highlight-card">
 <h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Quality & Grade
+Export Grade
 </h4>
-<ul class="text-white text-sm space-y-2">
-<li>Length: 20–25 cm</li>
-<li>Shape: Long and curved</li>
-<li>Texture: Firm when green</li>
-</ul>
+<p class="text-white text-sm">
+Premium Export Quality
+</p>
+</div>
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Shelf Life
+</h4>
+<p class="text-white text-sm">
+10 – 14 Days under proper storage
+</p>
+</div>
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Color & Texture
+</h4>
+<p class="text-white text-sm">
+Fresh Green | Crisp & Juicy
+</p>
 </div>
 
 </div>
@@ -202,14 +174,38 @@ Quality & Grade
 </div>
 
 </main>
+<div class="products-container">
 
-<script>
+<div class="product-card">
+<img src="green-coconut.png">
+<h3>GREEN COCONUT</h3>
+<p>Fresh, naturally sweet and packed with goodness.</p>
+</div>
 
-function submitEnquiryForm(e){
-e.preventDefault();
-alert("Your enquiry has been sent successfully!");
-}
+<div class="product-card">
+<img src="brown-coconut.png">
+<h3>BROWN COCONUT</h3>
+<p>Naturally rich and full of goodness.</p>
+</div>
 
-</script>
+<div class="product-card">
+<img src="tomato.png">
+<h3>TOMATO</h3>
+<p>Juicy and vibrant tomatoes full of freshness.</p>
+</div>
+
+<div class="product-card">
+<img src="pumpkin.png">
+<h3>PUMPKIN</h3>
+<p>Rich and hearty pumpkin with vibrant color.</p>
+</div>
+
+<div class="watermelon-card">
+<img src="watermelon.png" width="180">
+<h3>WATERMELON</h3>
+<p>Crisp, juicy and refreshing.</p>
+</div>
+
+</div>
 
 {% endblock %}

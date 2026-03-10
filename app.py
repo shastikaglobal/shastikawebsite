@@ -29,6 +29,9 @@ db = client["shastikaDB"]
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]
 
+
+
+
 # ==============================
 # WEBSITE ROUTES
 # ==============================

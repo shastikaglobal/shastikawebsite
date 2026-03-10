@@ -1,55 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% block content %}
 
-<title>Shastika Global | Premium Organic Pumpkin</title>
+<title>Shastika Global | Premium Yellow Pumpkin</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
 <style>
 
-*{
-font-family:'Cinzel',serif;
+*{font-family:'Cinzel', serif;}
+
+.product-layout{
+display:flex;
+flex-direction:column;
+gap:40px;
 }
 
-/* FIXED BODY BACKGROUND */
-
-body{
-background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed;
-background-size:cover;
-background-color:#001f3f;
+@media(min-width:1024px){
+.product-layout{
+flex-direction:row;
+align-items:center;
 }
-
-/* GLASS STAGE */
+}
 
 .glass-shell-stage{
-width:100%;
 max-width:450px;
 height:615px;
-margin-left:-10px;
 background:rgba(168,207,230,0.45);
 border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
 display:flex;
 align-items:flex-end;
 justify-content:center;
-position:relative;
-overflow:visible;
 backdrop-filter:blur(40px);
--webkit-backdrop-filter:blur(40px);
 border:1.5px solid rgba(255,255,255,0.3);
 }
 
 .product-seated{
-margin-bottom:-100px;
 width:90%;
+margin-bottom:-100px;
 transition:all .6s ease;
 }
 
@@ -57,149 +46,134 @@ transition:all .6s ease;
 transform:translateY(-20px) scale(1.05);
 }
 
-/* FORM */
-
 .glass-form-card{
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(25px);
--webkit-backdrop-filter:blur(25px);
 border-radius:24px;
-box-shadow:0 25px 50px rgba(0,0,0,0.3);
 border:1px solid rgba(255,255,255,0.15);
+padding:30px;
 }
 
 .custom-input{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
 border-radius:12px;
-padding:12px 16px;
+padding:12px;
 color:white;
 width:100%;
-outline:none;
-font-size:.9rem;
-transition:.3s;
 }
 
-.custom-input:focus{
-border-color:#4CAF50;
-background:rgba(255,255,255,0.1);
-}
-
-select.custom-input option{
-background:#111;
+.product-title{
+font-size:64px;
+font-weight:900;
+text-transform:uppercase;
 color:white;
 }
 
-/* CONTENT */
+.product-desc{
+color:white;
+font-size:18px;
+line-height:1.6;
+}
 
 .highlight-card{
 background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0));
+padding:20px;
 border-bottom:1px solid rgba(74,222,128,0.2);
-padding:1.5rem;
-transition:.3s;
 }
 
-.highlight-card:hover{
-background:rgba(255,255,255,0.08);
+.highlight-card ul{
+list-style:none;
+padding:0;
+margin:0;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
+.highlight-card li{
+display:inline-block;
+background:rgba(74,222,128,0.2);
+border:1px solid rgba(74,222,128,0.4);
+color:white;
+padding:8px 14px;
+border-radius:8px;
+font-size:13px;
+margin:6px 4px 6px 0;
+transition:all 0.3s ease;
 }
 
-.animate-float{
-animation:float 5s ease-in-out infinite;
-}
-
-.badge-anchor{
-position:absolute;
-top:-25px;
-right:-25px;
-z-index:50;
+.highlight-card li:hover{
+background:rgba(74,222,128,0.4);
+border-color:rgba(74,222,128,0.8);
+transform:translateY(-2px);
 }
 
 </style>
-</head>
 
-<body class="inner-page">
-
-<!-- NAVBAR -->
-
-<nav class="navbar">
-
-<a href="#" class="logo-container">
-<img src="{{ url_for('static', filename='images/logo.webp') }}" loading="lazy">
-<span>SHASTIKA</span>
-</a>
-
-<div class="menu-toggle">☰</div>
-
-<div class="nav-links">
-
-<a href="/home">HOME</a>
-
-<a href="/countries">COUNTRIES</a>
-
-<a href="/awards">AWARDS</a>
-
-<a href="/objectives">OBJECTIVES</a>
-
-<a href="/team">OUR TEAM</a>
-
-<a href="/contact">CONTACT US</a>
-
-</div>
-
-</nav>
-
-
-<!-- MAIN -->
 
 <main class="max-w-7xl mx-auto px-6 py-12">
 
-<div class="flex flex-col lg:flex-row gap-16">
+<div class="product-layout">
 
-<!-- PRODUCT -->
+<!-- LEFT SIDE -->
 
 <div class="lg:w-5/12">
 
 <div class="glass-shell-stage">
 
 <img src="{{ url_for('static', filename='images/pumpkin-pd.webp') }}"
-class="product-seated animate-float">
+class="product-seated">
 
 </div>
 
-<!-- FORM -->
 
-<div class="glass-form-card p-8 mt-10">
+<!-- ENQUIRY FORM -->
+
+<div class="glass-form-card mt-10">
 
 <h2 class="text-xl font-bold text-green-400 uppercase mb-6">
-Bulk Quote Inquiry
+Bulk Inquiry
 </h2>
 
 <form class="space-y-4" onsubmit="submitEnquiryForm(event)">
 
 <input type="hidden" name="product" value="Yellow Pumpkin">
 
-<input type="text" name="name" placeholder="Full Name *" class="custom-input" required>
+<input type="text"
+name="name"
+placeholder="Full Name *"
+class="custom-input"
+required>
 
-<select id="countrySelect" name="country" class="custom-input" required>
+<select id="countrySelect"
+name="country"
+class="custom-input"
+required>
+
 <option value="">Select Country *</option>
+
 </select>
 
 <div class="flex gap-3">
 
-<input type="text" id="countryCode" name="country_code" class="custom-input w-28" readonly>
+<input type="text"
+id="countryCode"
+name="country_code"
+class="custom-input w-28"
+readonly>
 
-<input type="tel" name="phone" placeholder="Phone Number *" class="custom-input" required>
+<input type="tel"
+name="phone"
+placeholder="Phone Number"
+class="custom-input">
 
 </div>
 
-<input type="email" name="email" placeholder="Email Address" class="custom-input">
+<input type="email"
+name="email"
+placeholder="Email Address"
+class="custom-input">
 
-<button class="w-full bg-green-600 py-3 rounded-xl text-white font-bold">
+<button type="submit"
+class="w-full bg-green-600 py-3 rounded-xl text-white font-bold">
 Send Enquiry
 </button>
 
@@ -210,17 +184,66 @@ Send Enquiry
 </div>
 
 
-<!-- CONTENT -->
+
+<!-- RIGHT SIDE -->
 
 <div class="lg:w-7/12 space-y-10">
 
-<h1 class="text-7xl font-black uppercase">
+<h1 class="product-title">
 Yellow Pumpkin
 </h1>
 
-<p class="text-white">
-Shastika Global’s Premium Yellow Pumpkins are cultivated and harvested at optimal maturity ensuring vibrant color, firm texture, and export quality standards for global markets.
+<p class="product-desc">
+Shastika Global's Premium Yellow Pumpkins are cultivated and harvested at optimal maturity ensuring vibrant colour, firm texture, and rich nutritional value for export markets worldwide.
 </p>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Physical Specs
+</h4>
+<ul>
+<li>Vibrant Yellow Colour</li>
+<li>Firm Texture</li>
+<li>Fully Mature Harvest</li>
+</ul>
+</div>
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Quality
+</h4>
+<ul>
+<li>A Grade Export Quality</li>
+<li>Organic Farm Source</li>
+<li>Chemical Free</li>
+</ul>
+</div>
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Logistics
+</h4>
+<ul>
+<li>Export Carton Packing</li>
+<li>Farm to Port Supply</li>
+<li>Safe Packaging</li>
+</ul>
+</div>
+
+<div class="highlight-card">
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Applications
+</h4>
+<ul>
+<li>Hotels</li>
+<li>Food Processing</li>
+<li>Retail Stores</li>
+</ul>
+</div>
+
+</div>
 
 </div>
 
@@ -228,8 +251,6 @@ Shastika Global’s Premium Yellow Pumpkins are cultivated and harvested at opti
 
 </main>
 
-
-<!-- SCRIPT -->
 
 <script>
 
@@ -239,55 +260,24 @@ const countries={
 "UK":"+44",
 "UAE":"+971",
 "Australia":"+61",
+"Canada":"+1",
 "Germany":"+49"
 };
 
 const countrySelect=document.getElementById("countrySelect");
-const countryCode=document.getElementById("countryCode");
+const countryCodeInput=document.getElementById("countryCode");
 
-Object.keys(countries).forEach(c=>{
-let o=document.createElement("option");
-o.value=c;
-o.textContent=c;
-countrySelect.appendChild(o);
+Object.keys(countries).forEach(country=>{
+const option=document.createElement("option");
+option.value=country;
+option.textContent=country;
+countrySelect.appendChild(option);
 });
 
-countrySelect.addEventListener("change",()=>{
-countryCode.value=countries[countrySelect.value]||"";
+countrySelect.addEventListener("change",function(){
+countryCodeInput.value=countries[this.value]||"";
 });
-
-function submitEnquiryForm(e){
-
-e.preventDefault();
-
-const f=e.target;
-
-fetch("/submit_enquiry",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-product:f.querySelector('input[name="product"]').value,
-name:f.querySelector('input[name="name"]').value,
-country:f.querySelector('select[name="country"]').value,
-phone:f.querySelector('input[name="country_code"]').value+" "+f.querySelector('input[name="phone"]').value,
-email:f.querySelector('input[name="email"]').value
-})
-})
-.then(r=>r.json())
-.then(d=>{
-if(d.status==="success"){
-alert("Your enquiry has been sent successfully!");
-f.reset();
-countryCode.value="";
-}else{
-alert("Something went wrong!");
-}
-})
-.catch(()=>alert("Server error!"));
-
-}
 
 </script>
 
-</body>
-</html>
+{% endblock %}

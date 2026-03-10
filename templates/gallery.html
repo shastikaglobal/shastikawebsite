@@ -9,46 +9,44 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body class="inner-page">
 
-
-<!-- NAVBAR (copy your navbar here) -->
+<!-- NAVBAR -->
 <nav class="navbar">
     <a href="#" class="logo-container">
-        <img src="{{ url_for('static', filename='images/logo.webp') }}"loading="lazy">
+        <img src="{{ url_for('static', filename='images/logo.webp') }}" loading="lazy">
         <span>SHASTIKA</span>
     </a>
     <div class="menu-toggle" aria-label="Open Menu">☰</div>
     <div class="nav-links">
       <a href="/home">HOME</a>
         <div class="nav-dropdown">
- <a href="#" class="dropbtn">PRODUCTS ▾</a>
-  <div class="dropdown-menu">
-    <a href="/product/tendercoconut">Tender Coconut</a>
-    <a href="/product/greencoconut">Green Coconut</a>
-    <a href="/product/huskedcoconut">Husked Coconut</a>
-    <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
-    <a href="/product/dehusked">Dehusked Coconut</a>
-    <a href="/product/freshorganic">Fresh Organic Coconut</a>
-    <a href="/product/tomato">Tomato</a>
-    <a href="/product/watermelon">Watermelon</a>
-    <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
-    <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
-    <a href="/product/whitepumpkin">White Pumpkin</a>
-    <a href="/product/yellowcucumber">Yellow Cucumber</a>
-    <a href="/product/banana">Cavendish Banana</a>
-    <a href="/product/babybanana">Baby Banana</a>
-    <a href="/product/nendranbanana">Nendran Banana</a>
-    <a href="/product/redbanana">Red Banana</a>
-  </div>
-</div>
-
+          <a href="#" class="dropbtn">PRODUCTS ▾</a>
+          <div class="dropdown-menu">
+            <a href="/product/tendercoconut">Tender Coconut</a>
+            <a href="/product/greencoconut">Green Coconut</a>
+            <a href="/product/huskedcoconut">Husked Coconut</a>
+            <a href="/product/semihuskedcoconut">Semi-Husked Coconut</a>
+            <a href="/product/dehusked">Dehusked Coconut</a>
+            <a href="/product/freshorganic">Fresh Organic Coconut</a>
+            <a href="/product/tomato">Tomato</a>
+            <a href="/product/watermelon">Watermelon</a>
+            <a href="/product/blackwatermelon">Black Diamond Watermelon</a>
+            <a href="/product/yellowpumpkin">Yellow Pumpkin</a>
+            <a href="/product/whitepumpkin">White Pumpkin</a>
+            <a href="/product/yellowcucumber">Yellow Cucumber</a>
+            <a href="/product/banana">Cavendish Banana</a>
+            <a href="/product/babybanana">Baby Banana</a>
+            <a href="/product/nendranbanana">Nendran Banana</a>
+            <a href="/product/redbanana">Red Banana</a>
+          </div>
+        </div>
         <a href="/countries">COUNTRIES</a>
         <a href="/awards">AWARDS</a>
         <a href="/team">OUR TEAM</a>
         <a href="/contact">CONTACT US</a>
-        
-
     </div>
-  </nav>
+</nav>
+
+<!-- GALLERY SECTION -->
 <section id="gallery" class="gallery-section">
 
   <div class="section-header">
@@ -63,14 +61,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     <!-- VIEWPORT -->
     <div class="gallery-viewport">
       <div class="gallery-slider" id="gallerySlider">
-
         <img src="{{ url_for('static', filename='images/Photo_1.webp') }}" onclick="openGalleryModal(this)">
         <img src="{{ url_for('static', filename='images/Photo_2.webp') }}" onclick="openGalleryModal(this)">
         <img src="{{ url_for('static', filename='images/Photo_3.webp') }}" onclick="openGalleryModal(this)">
         <img src="{{ url_for('static', filename='images/Photo_4.webp') }}" onclick="openGalleryModal(this)">
         <img src="{{ url_for('static', filename='images/Photo_5.webp') }}" onclick="openGalleryModal(this)">
         <img src="{{ url_for('static', filename='images/Photo_6.webp') }}" onclick="openGalleryModal(this)">
-
       </div>
     </div>
 
@@ -82,42 +78,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </section>
 
 <!-- FLOATING ACTION BUTTONS -->
- <div class="floating-icons">
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-</div>
-
-<div id="chatbot-button" onclick="openChatbot()">💬</div>
-
-  <!-- Chatbot -->
-  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-    <i class="fa-solid fa-robot"></i>
-  </a>
-
-  <!-- WhatsApp -->
+<div class="floating-icons">
   <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
- 
 </div>
 
-<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+<!-- CHATBOT BUTTON -->
+<div id="chatbot-button" onclick="openChatbot()">💬</div>
 
+<!-- GALLERY MODAL -->
 <div id="galleryModal">
-
   <button class="gallery-back" onclick="closeGallery()">
     <span class="arrow">←</span>
     <span>Back to Gallery</span>
   </button>
-
   <img id="galleryModalImg">
-
-
 </div>
+
+<!-- SCRIPTS -->
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 <script>
 function openChatbot(){
   window.open(
@@ -127,5 +108,6 @@ function openChatbot(){
   );
 }
 </script>
+
 </body>
-</html>a
+</html>

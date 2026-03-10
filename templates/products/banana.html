@@ -1,81 +1,61 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <style>
-*{
-  font-family:'Cinzel', serif;
-}
 
 body{
-  background:url("{{ url_for('static', filename='images/background.webp') }}") no-repeat center center fixed;
-  background-size:cover;
-  background-color:#001f3f;
+background:url("{{ url_for('static', filename='images/background.webp') }}") no-repeat center center fixed;
+background-size:cover;
+background-color:#001f3f;
+font-family:'Cinzel', serif;
+color:white;
+text-align:center;
 }
 
-/* GLASS STAGE */
-.glass-shell-stage{
-width:100%!important;
-max-width:450px!important;
-height:615px!important;
-margin-left:-10px!important;
-background:rgba(168,207,230,0.45);
-border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-position:relative;
-overflow:visible!important;
-backdrop-filter:blur(40px);
--webkit-backdrop-filter:blur(40px);
-border:1.5px solid rgba(255,255,255,0.3);
+.product-stage{
+margin-top:80px;
 }
 
-.product-seated{
-padding-bottom:0!important;
-margin-bottom:-100px!important;
-transform:translateX(0);
-width:90%!important;
-transition:all .6s ease;
+.product-image{
+width:420px;
+max-width:90%;
 }
 
-.glass-shell-stage:hover .product-seated{
-transform:translateY(-20px) scale(1.05);
+.product-title{
+font-size:60px;
+font-weight:900;
+margin-top:30px;
 }
+
+.product-desc{
+max-width:800px;
+margin:20px auto;
+font-size:18px;
+line-height:1.6;
+}
+
 </style>
 
 
-<main class="max-w-7xl mx-auto px-6 py-12">
+<div class="product-stage">
 
-<!-- PRODUCT CONTENT (unchanged) -->
-<!-- your full banana page HTML here -->
+<img
+src="{{ url_for('static', filename='images/banana-pd.webp') }}"
+class="product-image"
+alt="Cavendish Banana">
 
-</main>
+<h1 class="product-title">
+Cavendish Banana
+</h1>
 
+<p class="product-desc">
+Cavendish Bananas are the most widely traded banana variety in global markets.
+They are known for uniform size, bright peel color, smooth texture, and naturally
+sweet taste. This variety is preferred by importers and retailers due to its
+consistent quality and strong consumer acceptance.
+</p>
 
-<script>
-const countries = {
-"India":"+91",
-"USA":"+1",
-"UK":"+44",
-"UAE":"+971"
-};
+</div>
 
-const countrySelect=document.getElementById("countrySelect");
-const countryCodeInput=document.getElementById("countryCode");
-
-if(countrySelect){
-Object.keys(countries).forEach(country=>{
-const option=document.createElement("option");
-option.value=country;
-option.textContent=country;
-countrySelect.appendChild(option);
-});
-
-countrySelect.addEventListener("change",function(){
-countryCodeInput.value=countries[this.value]||"";
-});
-}
-</script>
 
 {% endblock %}

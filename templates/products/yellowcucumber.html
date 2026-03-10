@@ -12,12 +12,7 @@
      * {
     font-family: 'Cinzel', serif;
 }
-        body { 
-            <body style="background:url('{{ url_for('static', filename='images/background.webp') }}') no-repeat center center fixed; background-size:cover;"> 
-            no-repeat center center fixed; 
-            background-size: cover; 
-            background-color: #001f3f; 
-        }
+      
 
         /* 1. GLASS STAGE - PRESERVED MIRROR DESIGN */
         .glass-shell-stage { 
@@ -283,21 +278,25 @@ select.custom-input option:checked {
                 </div>
             </div>
         </div>
-        <!-- FLOATING ACTION BUTTONS -->
-<div class="floating-icons">
+    </main>
 
-  <!-- Chatbot -->
-  <a href="/chatbot" class="float-btn chat-btn" title="Chat with us">
-    <i class="fa-solid fa-robot"></i>
-  </a>
+    <!-- EMBEDDED CHATBOT -->
+<div id="cocobot-icon" style="position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:black;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);">💬</div>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+<div id="cocobot-box" style="position:fixed;bottom:95px;right:25px;width:320px;height:400px;background:white;border-radius:15px;display:none;flex-direction:column;overflow:hidden;z-index:9999;box-shadow:0 15px 40px rgba(0,0,0,0.4);">
+  <div style="background:black;color:white;padding:12px;display:flex;justify-content:space-between;font-size:14px;font-weight:bold;">
+    <span>🌿 Shastika Assistant</span>
+    <span id="closebot" style="cursor:pointer;">✕</span>
+  </div>
+  <div id="chat-area" style="flex:1;padding:10px;overflow-y:auto;font-size:14px;"></div>
+  <input type="text" id="chat-input" placeholder="Ask about cucumber..." style="border:none;border-top:1px solid #ddd;padding:10px;width:100%;outline:none;">
+</div>
+
+<div style="position:fixed;bottom:25px;right:95px;z-index:9998;">
+  <a href="https://wa.me/917397612015" target="_blank" style="position:fixed;bottom:25px;right:95px;width:60px;height:60px;background:#25D366;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:all 0.3s ease;" title="WhatsApp us">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
-
 </div>
-    </main>
      <script>
 const countries = {
   "Afghanistan": "+93",
@@ -401,6 +400,54 @@ function submitEnquiryForm(e){
   })
   .catch(() => alert("Server error!"));
 }
+
+/* ================= EMBEDDED CHATBOT ================= */
+const botIcon = document.getElementById("cocobot-icon");
+const botBox = document.getElementById("cocobot-box");
+const closebot = document.getElementById("closebot");
+const chatArea = document.getElementById("chat-area");
+const chatInput = document.getElementById("chat-input");
+
+botIcon.onclick = () => { botBox.style.display = "flex"; };
+closebot.onclick = () => { botBox.style.display = "none"; };
+
+function addMessage(text, type) {
+  const msg = document.createElement("div");
+  msg.style.cssText = type === "user" 
+    ? "background:#d4f5e9;padding:8px;border-radius:8px;margin-bottom:6px;text-align:right;word-wrap:break-word;" 
+    : "background:#f1f1f1;padding:8px;border-radius:8px;margin-bottom:6px;word-wrap:break-word;";
+  msg.innerText = text;
+  chatArea.appendChild(msg);
+  chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+chatInput.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    const userText = chatInput.value.trim();
+    if (!userText) return;
+    
+    addMessage(userText, "user");
+    chatInput.value = "";
+    
+    // Simulate bot responses
+    let reply = "Thank you for your interest in Yellow Cucumber!";
+    
+    if (userText.toLowerCase().includes("price")) {
+      reply = "For pricing details, please fill out the Bulk Quote form or contact us via WhatsApp.";
+    } else if (userText.toLowerCase().includes("specification") || userText.toLowerCase().includes("quality")) {
+      reply = "Our cucumbers are 2-12kg graded, with 30-60 day shelf life, HACCP certified, and export quality.";
+    } else if (userText.toLowerCase().includes("delivery") || userText.toLowerCase().includes("shipping")) {
+      reply = "We offer year-round supply with sea & air freight options. Contact us for details.";
+    } else if (userText.toLowerCase().includes("hello") || userText.toLowerCase().includes("hi")) {
+      reply = "Hello! Welcome to Shastika Global. How can I help you with our cucumbers?";
+    } else if (userText.toLowerCase().includes("cucumber")) {
+      reply = "Our Yellow Cucumbers are fresh, crisp, and carefully cultivated for export quality. Would you like specifications or pricing?";
+    }
+    
+    setTimeout(() => addMessage(reply, "bot"), 500);
+  }
+});
 </script>
+
 </body>
 </html>

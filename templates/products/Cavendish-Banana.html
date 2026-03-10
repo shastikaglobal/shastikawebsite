@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+*{
+font-family:'Cinzel', serif;
+}
+
+body{
+background:url("{{ url_for('static', filename='images/background.webp') }}") no-repeat center center fixed;
+background-size:cover;
+background-color:#001f3f;
+}
+
+/* GLASS STAGE */
+
+.glass-shell-stage{
+width:100%;
+max-width:450px;
+height:615px;
+background:rgba(168,207,230,0.45);
+border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+position:relative;
+overflow:visible;
+backdrop-filter:blur(40px);
+border:1.5px solid rgba(255,255,255,0.3);
+}
+
+.product-seated{
+margin-bottom:-100px;
+width:90%;
+transition:.6s ease;
+}
+
+.glass-shell-stage:hover .product-seated{
+transform:translateY(-20px) scale(1.05);
+}
+
+.highlight-card{
+background:linear-gradient(135deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 100%);
+border-bottom:1px solid rgba(74,222,128,.3);
+padding:25px;
+transition:.3s;
+}
+
+.highlight-card:hover{
+background:rgba(255,255,255,.08);
+transform:translateY(-5px);
+}
+
+.glass-form-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border-radius:24px;
+box-shadow:0 25px 50px rgba(0,0,0,.3);
+border:1px solid rgba(255,255,255,.15);
+}
+
+.custom-input{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+border-radius:12px;
+padding:12px 16px;
+color:#fff;
+width:100%;
+outline:none;
+font-size:.9rem;
+transition:.3s;
+}
+
+.custom-input:focus{
+border-color:#4CAF50;
+background:rgba(255,255,255,.1);
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+.animate-float{
+animation:float 5s ease-in-out infinite;
+}
+
+.badge-anchor{
+position:absolute;
+top:-25px;
+right:-25px;
+z-index:50;
+}
+</style>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+
+<div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+
+<!-- LEFT COLUMN -->
+
+<div class="w-full lg:w-5/12 relative flex flex-col items-start">
+
+<div class="glass-shell-stage group mb-12">
+
+<img
+src="{{ url_for('static', filename='images/Cavendish-Banana-product-pd.webp') }}"
+alt="Cavendish Banana"
+class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
+
+<div class="badge-anchor">
+
+<div class="relative w-40 h-40 flex items-center justify-center">
+
+<svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
+
+<path id="badgePath"
+d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+fill="transparent"/>
+
+<text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
+
+<textPath xlink:href="#badgePath">
+SHASTIKA GLOBAL IMPEX PRIVATE LTD •
+</textPath>
+
+</text>
+
+</svg>
+
+<div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
+
+<div class="w-full h-full animate-[spin_8s_linear_infinite]">
+
+<img src="{{ url_for('static', filename='images/logo.webp') }}"
+class="w-full h-full object-contain scale-110">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="w-full glass-form-card p-8">
+
+<h2 class="text-xl font-bold text-green-400 uppercase tracking-widest mb-6">
+Bulk Quote Inquiry
+</h2>
+
+<form class="space-y-4" onsubmit="submitEnquiryForm(event)">
+
+<input type="hidden" name="product" value="Cavendish Banana">
+
+<input type="text" name="name"
+placeholder="Full Name *(required)"
+class="custom-input"
+required>
+
+<select id="countrySelect" name="country" class="custom-input" required>
+<option value="">Select Country *</option>
+</select>
+
+<div class="flex gap-3">
+
+<input type="text" id="countryCode"
+name="country_code"
+placeholder="+Code"
+class="custom-input w-28"
+readonly
+required>
+
+<input type="tel"
+name="phone"
+placeholder="Phone Number *"
+class="custom-input flex-1"
+required>
+
+</div>
+
+<input type="email"
+name="email"
+placeholder="Email Address"
+class="custom-input">
+
+<button type="submit"
+class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-black uppercase tracking-widest">
+Send Enquiry
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT COLUMN -->
+
+<div class="w-full lg:w-7/12 space-y-12">
+
+<div class="space-y-4">
+
+<span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block">
+Premium Export Variety
+</span>
+
+<h1 class="text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
+
+Cavendish <br>
+
+<span class="text-green-300 italic font-serif text-6xl lg:text-8xl">
+Banana
+</span>
+
+</h1>
+
+<p class="max-w-2xl text-sm md:text-base leading-relaxed text-white">
+
+<b>
+Cavendish Bananas are the most widely traded banana variety in global markets.
+They are known for their uniform size, smooth texture, bright peel colour,
+and naturally sweet flavour. Preferred by global importers and retailers,
+Cavendish bananas maintain consistent quality and strong consumer demand
+across international markets.
+</b>
+
+</p>
+
+</div>
+
+
+<!-- INFO CARDS -->
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+<div class="highlight-card">
+
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Fruit Characteristics
+</h4>
+
+<ul class="text-sm space-y-2 text-white">
+
+<li>Average Weight: <b>180 – 250 g</b></li>
+<li>Length: <b>18 – 25 cm</b></li>
+<li>Shape: <b>Well Curved Finger</b></li>
+
+</ul>
+
+</div>
+
+
+<div class="highlight-card">
+
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Quality
+</h4>
+
+<ul class="text-sm space-y-2 text-white">
+
+<li>Pulp: <b>Creamy White</b></li>
+<li>Taste: <b>Naturally Sweet</b></li>
+<li>Grade: <b>Export Quality</b></li>
+
+</ul>
+
+</div>
+
+
+<div class="highlight-card">
+
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Packaging
+</h4>
+
+<ul class="text-sm space-y-2 text-white">
+
+<li>Cartons: <b>Corrugated Export Boxes</b></li>
+<li>Weight: <b>13kg / 18kg</b></li>
+<li>Protection: <b>Foam + Liners</b></li>
+
+</ul>
+
+</div>
+
+
+<div class="highlight-card">
+
+<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
+Storage
+</h4>
+
+<ul class="text-sm space-y-2 text-white">
+
+<li>Temperature: <b>13-14°C</b></li>
+<li>Humidity: <b>90-95%</b></li>
+<li>Transport: <b>Refrigerated Container</b></li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const countries={
+"India":"+91","United States":"+1","United Kingdom":"+44",
+"Germany":"+49","France":"+33","Canada":"+1","Australia":"+61"
+};
+
+const countrySelect=document.getElementById("countrySelect");
+const countryCodeInput=document.getElementById("countryCode");
+
+Object.keys(countries).sort().forEach(country=>{
+const option=document.createElement("option");
+option.value=country;
+option.textContent=country;
+countrySelect.appendChild(option);
+});
+
+countrySelect.addEventListener("change",function(){
+countryCodeInput.value=countries[this.value]||"";
+});
+
+function submitEnquiryForm(event){
+event.preventDefault();
+alert("Enquiry Submitted Successfully!");
+}
+
+</script>
+
+{% endblock %}
