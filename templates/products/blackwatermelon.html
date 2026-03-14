@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Back to Home Button (Mobile Only) -->
+<a href="/" class="mobile-back-btn">
+  <span class="back-arrow">←</span> Back to Home
+</a>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +18,44 @@
 
     <style>
         * { font-family: 'Cinzel', serif; }
+
+        /* MOBILE BACK BUTTON */
+        .mobile-back-btn {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 12px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mobile-back-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateX(-4px);
+        }
+
+        .back-arrow {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-back-btn {
+                display: inline-flex;
+            }
+        }
 
         /* BACK BUTTON */
         .back-nav {

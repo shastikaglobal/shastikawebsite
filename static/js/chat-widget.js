@@ -35,12 +35,7 @@ style="border:none;">
 </iframe>
 `;
 
-document.body.appendChild(bubble);
 document.body.appendChild(win);
-
-bubble.onclick = () => {
-  win.style.display = win.style.display === "block" ? "none" : "block";
-};
 
 
 /* ===============================

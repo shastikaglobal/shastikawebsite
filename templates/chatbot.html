@@ -1,81 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Chatbot Test</title>
-<style>
-#icon{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-background:black;
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-size:26px;
-}
-
-#chat{
+<div id="ai-chatbot" style="
 position:fixed;
 bottom:90px;
 right:20px;
-width:300px;
-height:400px;
-background:white;
-border:1px solid #ccc;
+width:320px;
+height:420px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
 display:none;
 flex-direction:column;
-}
-
-#messages{
-flex:1;
-padding:10px;
-overflow:auto;
-}
-</style>
-</head>
-
-<body>
-
-<div id="chat">
-<div id="messages"></div>
-<input id="msg" placeholder="Type message">
-<button onclick="send()">Send</button>
-</div>
-
-<div id="icon">💬</div>
-
-<script>
-
-const icon = document.getElementById("icon")
-const chat = document.getElementById("chat")
-
-icon.onclick = () => {
-chat.style.display = chat.style.display === "flex" ? "none" : "flex"
-chat.style.flexDirection = "column"
-}
-
-function send(){
-const text = document.getElementById("msg").value
-
-fetch("/chatbot",{
-method:"POST",
-headers:{ "Content-Type":"application/json"},
-body:JSON.stringify({message:text})
-})
-.then(r=>r.json())
-.then(data=>{
-document.getElementById("messages").innerHTML +=
-"<div>You: "+text+"</div><div>Bot: "+data.reply+"</div>"
-})
-
-}
-
-</script>
-
-</body>
-</html>
+z-index:9999;
+">
+  <div style="background:#0b3d91;color:white;padding:10px;border-radius:10px 10px 0 0;display:flex;align-items:center;justify-content:space-between;">
+    <span>Shastika CocoBot</span>
+    <button onclick="document.getElementById('ai-chatbot').style.display='none'" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;line-height:1;padding:0;">✕</button>
+  </div>
+  <div id="ai-messages" style="flex:1;padding:10px;overflow-y:auto;"></div>
+  <div style="display:flex;border-top:1px solid #ddd;">
+    <input id="ai-input" type="text" placeholder="Ask about our products..." style="flex:1;border:none;padding:10px;">
+    <button id="ai-send" style="background:#0b3d91;color:white;border:none;padding:10px;">Send</button>
+  </div>
+</div> 

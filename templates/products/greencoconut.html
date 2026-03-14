@@ -2,234 +2,414 @@
 
 {% block content %}
 
-<title>Shastika Global | Pure Tender Coconut</title>
+<title>Shastika Global | Pure Green Coconut</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-font-family:'Cinzel', serif;
+* { font-family: 'Cinzel', serif; }
+
+/* ── MOBILE BACK BUTTON ── */
+.mobile-back-btn {
+    display: inline-flex;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    padding: 12px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    align-items: center;
+    gap: 8px;
+}
+.mobile-back-btn:hover { background: rgba(255,255,255,1); transform: translateX(-4px); }
+
+
+/* ── GLASS STAGE ── */
+.glass-shell-stage {
+    width: 100%;
+    max-width: 450px;
+    height: 615px;
+    background: rgba(168,207,230,0.45);
+    border-radius: 60% 40% 50% 50% / 40% 40% 60% 60%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1.5px solid rgba(255,255,255,0.3);
 }
 
-
-
-/* GLASS STAGE */
-
-.glass-shell-stage{
-width:100%;
-max-width:450px;
-height:615px;
-margin-left:-10px;
-background:rgba(168,207,230,0.45);
-border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-position:relative;
-overflow:visible;
-backdrop-filter:blur(40px);
-border:1.5px solid rgba(255,255,255,0.3);
+@media (max-width: 768px) {
+    .glass-shell-stage {
+        max-width: 320px;
+        height: 420px;
+        margin: 0 auto;
+    }
 }
 
-.product-seated{
-margin-bottom:-100px;
-width:90%;
-transition:all 0.6s ease;
+.product-seated {
+    margin-bottom: -100px;
+    width: 90%;
+    transition: all 0.6s ease;
 }
 
-.glass-shell-stage:hover .product-seated{
-transform:translateY(-20px) scale(1.05);
+.glass-shell-stage:hover .product-seated {
+    transform: translateY(-20px) scale(1.05);
 }
 
-/* FORM */
-
-.glass-form-card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(25px);
-border-radius:24px;
-box-shadow:0 25px 50px rgba(0,0,0,0.3);
-border:1px solid rgba(255,255,255,0.15);
+/* ── BADGE ── */
+.badge-anchor {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    z-index: 50;
 }
 
-.custom-input{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:12px;
-padding:12px 16px;
-color:#fff;
-width:100%;
-outline:none;
+@media (max-width: 768px) {
+    .badge-anchor {
+        top: -15px;
+        right: -15px;
+    }
+    .badge-anchor > div {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .badge-anchor .w-24 {
+        width: 60px !important;
+        height: 60px !important;
+    }
 }
 
-.highlight-card{
-background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
-border-bottom:1px solid rgba(74,222,128,0.2);
-padding:1.5rem;
-transition:0.3s;
+/* ── FORM ── */
+.glass-form-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
-.highlight-card ul{
-list-style:none;
-padding:0;
-margin:0;
+.custom-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    width: 100%;
+    outline: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-.highlight-card li{
-display:inline-block;
-background:rgba(74,222,128,0.2);
-border:1px solid rgba(74,222,128,0.4);
-color:white;
-padding:8px 14px;
-border-radius:8px;
-font-size:13px;
-margin:6px 4px 6px 0;
-cursor:pointer;
-transition:all 0.3s ease;
+.custom-input:focus {
+    border-color: #4CAF50;
+    background: rgba(255,255,255,0.1);
 }
 
-.highlight-card li:hover{
-background:rgba(74,222,128,0.4);
-border-color:rgba(74,222,128,0.8);
-transform:translateY(-2px);
+select.custom-input option {
+    background-color: rgba(20,20,20,0.9);
+    color: #fff;
 }
 
-.highlight-card:hover{
-background:rgba(255,255,255,0.08);
+/* ── HIGHLIGHT CARDS ── */
+.highlight-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+    border-bottom: 1px solid rgba(74,222,128,0.2);
+    padding: 1.5rem;
+    transition: 0.3s;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
+.highlight-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-5px);
 }
 
-.animate-float{
-animation:float 5s ease-in-out infinite;
+.highlight-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlight-card li {
+    display: inline-block;
+    background: rgba(74,222,128,0.2);
+    border: 1px solid rgba(74,222,128,0.4);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin: 6px 4px 6px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.highlight-card li:hover {
+    background: rgba(74,222,128,0.4);
+    border-color: rgba(74,222,128,0.8);
+    transform: translateY(-2px);
+}
+
+/* ── FLOAT ANIMATION ── */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+
+/* ── TITLE RESPONSIVE ── */
+.product-title {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
 }
 
 </style>
 
-
+<!-- Mobile back button -->
+<a href="/" class="mobile-back-btn">
+    <span style="font-size:18px;font-weight:bold;">←</span> Back to Home
+</a>
 
 <main class="max-w-7xl mx-auto px-6 py-12">
 
-<div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+    <div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
 
+        <!-- ── LEFT COLUMN ── -->
+        <div class="w-full lg:w-5/12 flex flex-col items-center lg:items-start">
 
-<!-- PRODUCT IMAGE -->
+            <div class="glass-shell-stage group mb-12">
 
-<div class="w-full lg:w-5/12">
+                <img src="{{ url_for('static', filename='images/greencoconut-pd.webp') }}"
+                     alt="Green Coconut"
+                     class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
 
-<div class="glass-shell-stage">
+                <!-- SPINNING LOGO BADGE -->
+                <div class="badge-anchor">
+                    <div class="relative w-40 h-40 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
+                            <path id="badgePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+                            <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
+                                <textPath xlink:href="#badgePath">SHASTIKA GLOBAL IMPEX PRIVATE LTD • </textPath>
+                            </text>
+                        </svg>
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
+                            <div class="w-full h-full animate-[spin_8s_linear_infinite]">
+                                <img src="{{ url_for('static', filename='images/logo.webp') }}"
+                                     class="w-full h-full object-contain scale-110" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<img src="{{ url_for('static', filename='images/greencoconut-pd.webp') }}"
-alt="Green Coconut"
-class="product-seated animate-float">
+            </div>
 
-</div>
+            <!-- ENQUIRY FORM -->
+            <div class="glass-form-card p-8 w-full">
 
+                <h2 class="text-xl font-bold text-green-400 uppercase mb-6 text-center">
+                    Pure Grade Inquiry
+                </h2>
 
+                <form class="space-y-4" onsubmit="submitEnquiryForm(event)">
 
-<!-- ENQUIRY FORM -->
+                    <input type="hidden" name="product" value="Green Coconut">
 
-<div class="glass-form-card p-8 mt-10">
+                    <input type="text" name="name" placeholder="Full Name *(required)"
+                           class="custom-input" required>
 
-<h2 class="text-xl font-bold text-green-400 uppercase mb-6 text-center">
-Pure Grade Inquiry
-</h2>
+                    <select id="countrySelect" name="country" class="custom-input" required>
+                        <option value="">Select Country *</option>
+                    </select>
 
-<form class="space-y-4" onsubmit="submitEnquiryForm(event)">
+                    <div class="flex gap-3">
+                        <input type="text" id="countryCode" name="country_code"
+                               placeholder="+Code" class="custom-input w-28" readonly required>
+                        <input type="tel" name="phone" placeholder="Phone Number *"
+                               class="custom-input flex-1" required>
+                    </div>
 
-<input type="hidden" name="product" value="Green Coconut">
+                    <input type="email" name="email" placeholder="Email Address"
+                           class="custom-input">
 
-<input type="text" name="name" placeholder="Full Name *(required)" class="custom-input">
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-green-300 to-green-500 py-4 rounded-xl font-bold text-blue-900 hover:scale-[1.01] transition-transform">
+                        Send Enquiry
+                    </button>
 
-<select id="countrySelect" name="country" class="custom-input" required>
-<option value="">Select Country *</option>
-</select>
+                </form>
 
-<div class="flex gap-3">
+            </div>
+        </div>
 
-<input type="text" id="countryCode" name="country_code"
-placeholder="+Code"
-class="custom-input w-28" readonly required>
+        <!-- ── RIGHT COLUMN ── -->
+        <div class="w-full lg:w-7/12 space-y-12">
 
-<input type="tel" name="phone"
-placeholder="Phone Number *"
-class="custom-input flex-1" required>
+            <div class="space-y-4">
+                <span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block underline decoration-green-500/30 underline-offset-8">
+                    Pure Export Grade
+                </span>
+                <h1 class="product-title">
+                    Green <br>
+                    <span class="text-green-300 italic font-serif" style="font-size:0.85em;">Coconut</span>
+                </h1>
+                <p class="text-white max-w-2xl text-sm md:text-base leading-relaxed">
+                    <b>Shastika Global's Green Coconuts are harvested at the ideal early maturity stage to
+                    preserve naturally sweet coconut water and soft kernel. Carefully selected for export
+                    markets demanding consistent freshness, quality, and superior taste.</b>
+                </p>
+            </div>
 
-</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-<input type="email" name="email"
-placeholder="Email Address"
-class="custom-input">
+                <div class="highlight-card">
+                    <h4 class="text-green-300 font-bold text-xs uppercase mb-2">Grade-A Selection</h4>
+                    <ul class="text-white text-sm space-y-2">
+                        <li>Weight: 800–1200 grams</li>
+                        <li>Shape: Diamond Polished</li>
+                        <li>Freshness: 100% Guaranteed</li>
+                    </ul>
+                </div>
 
-<button type="submit"
-class="w-full bg-gradient-to-r from-green-300 to-green-500 py-4 rounded-xl font-bold text-blue-900">
-Send Enquiry
-</button>
+                <div class="highlight-card">
+                    <h4 class="text-green-300 font-bold text-xs uppercase mb-2">Internal Profile</h4>
+                    <ul class="text-white text-sm space-y-2">
+                        <li>Water: 400–550 ml</li>
+                        <li>Taste: Naturally Sweet</li>
+                        <li>Shelf Life: 60 Days</li>
+                    </ul>
+                </div>
 
-</form>
+                <div class="highlight-card">
+                    <h4 class="text-green-300 font-bold text-xs uppercase mb-2">Packing</h4>
+                    <ul class="text-white text-sm space-y-2">
+                        <li>9 Pieces per Carton</li>
+                        <li>Custom Packing Available</li>
+                        <li>Delivery: 2–5 Days</li>
+                    </ul>
+                </div>
 
-</div>
-</div>
+                <div class="highlight-card">
+                    <h4 class="text-green-300 font-bold text-xs uppercase mb-2">Shipping</h4>
+                    <ul class="text-white text-sm space-y-2">
+                        <li>40ft RF: 18,540 pcs</li>
+                        <li>20ft RF: 8,010 pcs</li>
+                        <li>100% Fresh Selection</li>
+                    </ul>
+                </div>
 
+            </div>
 
+            <!-- STATS BAR -->
+            <div class="bg-white/5 p-8 rounded-3xl border border-white/10 flex flex-col md:flex-row gap-8 justify-between items-center">
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-black text-green-300 italic">550ml</p>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Max Water Volume</p>
+                </div>
+                <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-black text-white italic">60 Days</p>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Shelf Life</p>
+                </div>
+                <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                <div class="flex gap-4">
+                    <div class="w-14 h-14 rounded-full border border-green-500/50 flex items-center justify-center text-[10px] font-bold text-green-400 text-center uppercase">Sweet</div>
+                    <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold opacity-40 text-center uppercase">Fresh</div>
+                </div>
+            </div>
 
-<!-- PRODUCT DETAILS -->
+        </div>
 
-<div class="w-full lg:w-7/12 space-y-12">
-
-<h1 class="text-7xl font-black uppercase">
-Green Coconut
-</h1>
-
-<p class="text-white max-w-2xl">
-Shastika Global’s Green Coconuts are harvested at the ideal early maturity stage to preserve naturally sweet coconut water and soft kernel.
-</p>
-
-
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-<div class="highlight-card">
-<h4 class="text-green-300 font-bold text-xs uppercase mb-2">Grade-A Selection</h4>
-<ul class="text-white text-sm space-y-2">
-<li>Weight: 800-1200 grams</li>
-<li>Shape: Diamond Polished</li>
-<li>Freshness: 100% Guaranteed</li>
-</ul>
-</div>
-
-<div class="highlight-card">
-<h4 class="text-green-300 font-bold text-xs uppercase mb-2">Internal Profile</h4>
-<ul class="text-white text-sm space-y-2">
-<li>Water: 400-550 ml</li>
-<li>Taste: Naturally Sweet</li>
-<li>Shelf Life: 60 Days</li>
-</ul>
-</div>
-
-</div>
-
-</div>
-</div>
+    </div>
 
 </main>
 
-
+<!-- WHATSAPP FLOATING BUTTON -->
+<div class="floating-icons">
+    <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
 
 <script>
 
-function submitEnquiryForm(e){
-e.preventDefault();
-alert("Your enquiry has been sent successfully!");
+const countries = {
+    "Afghanistan":"+93","Albania":"+355","Algeria":"+213","Andorra":"+376",
+    "Angola":"+244","Argentina":"+54","Armenia":"+374","Australia":"+61",
+    "Austria":"+43","Azerbaijan":"+994","Bahrain":"+973","Bangladesh":"+880",
+    "Belarus":"+375","Belgium":"+32","Belize":"+501","Benin":"+229",
+    "Bhutan":"+975","Bolivia":"+591","Bosnia and Herzegovina":"+387",
+    "Botswana":"+267","Brazil":"+55","Brunei":"+673","Bulgaria":"+359",
+    "Burkina Faso":"+226","Burundi":"+257","Cambodia":"+855","Cameroon":"+237",
+    "Canada":"+1","Chad":"+235","Chile":"+56","China":"+86","Colombia":"+57",
+    "Congo":"+242","Costa Rica":"+506","Croatia":"+385","Cuba":"+53",
+    "Cyprus":"+357","Czech Republic":"+420","Denmark":"+45","Djibouti":"+253",
+    "Dominican Republic":"+1-809","Ecuador":"+593","Egypt":"+20",
+    "El Salvador":"+503","Estonia":"+372","Ethiopia":"+251","Fiji":"+679",
+    "Finland":"+358","France":"+33","Gabon":"+241","Gambia":"+220",
+    "Georgia":"+995","Germany":"+49","Ghana":"+233","Greece":"+30",
+    "Guatemala":"+502","Guinea":"+224","Haiti":"+509","Honduras":"+504",
+    "Hungary":"+36","Iceland":"+354","India":"+91","Indonesia":"+62",
+    "Iran":"+98","Iraq":"+964","Ireland":"+353","Israel":"+972","Italy":"+39",
+    "Jamaica":"+1-876","Japan":"+81","Jordan":"+962","Kazakhstan":"+7",
+    "Kenya":"+254","Kuwait":"+965","Kyrgyzstan":"+996","Laos":"+856",
+    "Latvia":"+371","Lebanon":"+961","Lesotho":"+266","Liberia":"+231",
+    "Libya":"+218","Lithuania":"+370","Luxembourg":"+352","Madagascar":"+261",
+    "Malawi":"+265","Malaysia":"+60","Maldives":"+960","Mali":"+223",
+    "Malta":"+356","Mauritania":"+222","Mauritius":"+230","Mexico":"+52",
+    "Moldova":"+373","Monaco":"+377","Mongolia":"+976","Montenegro":"+382",
+    "Morocco":"+212","Mozambique":"+258","Myanmar":"+95","Namibia":"+264",
+    "Nepal":"+977","Netherlands":"+31","New Zealand":"+64","Nicaragua":"+505",
+    "Niger":"+227","Nigeria":"+234","North Korea":"+850","Norway":"+47",
+    "Oman":"+968","Pakistan":"+92","Palestine":"+970","Panama":"+507",
+    "Papua New Guinea":"+675","Paraguay":"+595","Peru":"+51","Philippines":"+63",
+    "Poland":"+48","Portugal":"+351","Qatar":"+974","Romania":"+40",
+    "Russia":"+7","Rwanda":"+250","Saudi Arabia":"+966","Senegal":"+221",
+    "Serbia":"+381","Sierra Leone":"+232","Singapore":"+65","Slovakia":"+421",
+    "Slovenia":"+386","Somalia":"+252","South Africa":"+27","South Korea":"+82",
+    "South Sudan":"+211","Spain":"+34","Sri Lanka":"+94","Sudan":"+249",
+    "Sweden":"+46","Switzerland":"+41","Syria":"+963","Taiwan":"+886",
+    "Tajikistan":"+992","Tanzania":"+255","Thailand":"+66","Togo":"+228",
+    "Tunisia":"+216","Turkey":"+90","Turkmenistan":"+993","Uganda":"+256",
+    "Ukraine":"+380","United Arab Emirates":"+971","United Kingdom":"+44",
+    "United States":"+1","Uruguay":"+598","Uzbekistan":"+998","Venezuela":"+58",
+    "Vietnam":"+84","Yemen":"+967","Zambia":"+260","Zimbabwe":"+263"
+};
+
+const countrySelect    = document.getElementById("countrySelect");
+const countryCodeInput = document.getElementById("countryCode");
+
+Object.keys(countries).sort().forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
+});
+
+countrySelect.addEventListener("change", function () {
+    countryCodeInput.value = countries[this.value] || "";
+});
+
+function submitEnquiryForm(e) {
+    e.preventDefault();
+    alert("Your enquiry has been sent successfully!");
 }
 
 </script>
-
 
 {% endblock %}

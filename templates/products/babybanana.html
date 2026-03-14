@@ -4,301 +4,377 @@
 <title>Shastika Global | Premium Baby Banana</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-font-family:'Cinzel', serif;
+* { font-family: 'Cinzel', serif; }
+
+/* ── MOBILE BACK BUTTON ── */
+.mobile-back-btn {
+    display: inline-flex;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    padding: 12px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    align-items: center;
+    gap: 8px;
+}
+.mobile-back-btn:hover { background: rgba(255,255,255,1); transform: translateX(-4px); }
+
+
+/* ── GLASS STAGE ── */
+.glass-shell-stage {
+    width: 100%;
+    max-width: 450px;
+    height: 615px;
+    background: rgba(168,207,230,0.45);
+    border-radius: 60% 40% 50% 50% / 40% 40% 60% 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1.5px solid rgba(255,255,255,0.3);
 }
 
-/* GLASS STAGE */
-
-.glass-shell-stage{
-width:100% !important;
-max-width:450px !important;
-height:615px !important;
-margin-left:-10px !important;
-background:rgba(168,207,230,0.45);
-border-radius:60% 40% 50% 50% / 40% 40% 60% 60%;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-position:relative;
-overflow:visible !important;
-backdrop-filter:blur(40px);
--webkit-backdrop-filter:blur(40px);
-border:1.5px solid rgba(255,255,255,0.3);
+@media (max-width: 768px) {
+    .glass-shell-stage {
+        max-width: 320px;
+        height: 420px;
+        margin: 0 auto;
+    }
 }
 
-.product-seated{
-padding-bottom:0px !important;
-margin-bottom:-100px !important;
-transform:translateX(0px);
-width:90% !important;
-transition:all .6s ease;
+.product-seated {
+    width: 75%;
+    transform: translateY(40px);
+    animation: float 5s ease-in-out infinite;
+    transition: all 0.6s ease;
 }
 
-.glass-shell-stage:hover .product-seated{
-transform:translateY(-20px) scale(1.05);
+.glass-shell-stage:hover .product-seated {
+    transform: translateY(30px) scale(1.05);
 }
 
-/* GLASS FORM */
-
-.glass-form-card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(25px);
--webkit-backdrop-filter:blur(25px);
-border-radius:24px;
-box-shadow:0 25px 50px rgba(0,0,0,0.3);
-border:1px solid rgba(255,255,255,0.15);
+/* ── BADGE ── */
+.badge-anchor {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    z-index: 50;
 }
 
-.custom-input{
-background-color:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:12px;
-padding:12px 16px;
-color:#ffffff;
-width:100%;
-outline:none;
-font-size:.9rem;
-transition:.3s;
+@media (max-width: 768px) {
+    .badge-anchor { top: -15px; right: -15px; }
+    .badge-anchor > div { width: 100px !important; height: 100px !important; }
+    .badge-anchor .w-24 { width: 60px !important; height: 60px !important; }
 }
 
-.custom-input:focus{
-border-color:#4CAF50;
-background-color:rgba(255,255,255,0.1);
+/* ── FORM ── */
+.glass-form-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
-/* HIGHLIGHTS */
-
-.highlight-card{
-background:linear-gradient(135deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 100%);
-border-bottom:1px solid rgba(74,222,128,.2);
-padding:1.5rem;
-transition:.3s;
+.custom-input {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #ffffff;
+    width: 100%;
+    outline: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-.highlight-card:hover{
-background:rgba(255,255,255,.08);
-transform:translateY(-5px);
+.custom-input:focus {
+    border-color: #4CAF50;
+    background-color: rgba(255,255,255,0.1);
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+select.custom-input option {
+    background-color: rgba(20,20,20,0.9);
+    color: #fff;
 }
 
-.animate-float{
-animation:float 5s ease-in-out infinite;
+/* ── HIGHLIGHT CARDS ── */
+.highlight-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    border-bottom: 1px solid rgba(74,222,128,0.2);
+    padding: 1.5rem;
+    transition: 0.3s;
+}
+
+.highlight-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-5px);
+}
+
+/* ── FLOAT ANIMATION ── */
+@keyframes float {
+    0%, 100% { transform: translateY(40px); }
+    50% { transform: translateY(20px); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+
+/* ── TITLE ── */
+.product-title {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
 }
 
 </style>
 
+<!-- Mobile back button -->
+<a href="/" class="mobile-back-btn">
+    <span style="font-size:18px;font-weight:bold;">←</span> Back to Home
+</a>
 
 <main class="max-w-7xl mx-auto px-6 py-12">
 
-<div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
-
-<!-- LEFT COLUMN -->
-
-<div class="w-full lg:w-5/12 relative flex flex-col items-start">
-
-<div class="glass-shell-stage group mb-12">
-
-<img
-src="{{ url_for('static', filename='images/babybanana-pd.webp') }}"
-alt="Baby Banana"
-class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
-
-</div>
-
-
-<div class="w-full glass-form-card p-8 relative">
-
-<h2 class="text-xl font-bold text-green-400 uppercase tracking-widest mb-6">
-Bulk Quote Inquiry
-</h2>
-
-<form class="space-y-4" onsubmit="submitEnquiryForm(event)">
-
-<input type="hidden" name="product" value="Baby Banana">
-
-<input type="text" name="name" placeholder="Full Name *(required)" class="custom-input" required>
-
-<select id="countrySelect" name="country" class="custom-input" required>
-<option value="">Select Country *</option>
-</select>
-
-<div class="flex gap-3">
-
-<input type="text" id="countryCode" name="country_code" placeholder="+Code" class="custom-input w-28" readonly required>
-
-<input type="tel" name="phone" placeholder="Phone Number *" class="custom-input flex-1" required>
-
-</div>
-
-<input type="email" name="email" placeholder="Email Address" class="custom-input">
-
-<button type="submit"
-class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-black uppercase tracking-widest hover:scale-[1.01] transition-transform">
-
-Send Enquiry
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-
-
-<!-- RIGHT COLUMN -->
-
-<div class="w-full lg:w-7/12 space-y-12">
-
-<div class="space-y-4">
-
-<span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block underline decoration-green-500/30 underline-offset-8">
-Premium Export Quality
-</span>
-
-<h1 class="text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tighter">
-
-Baby <br>
-
-<span class="text-green-300 italic font-serif text-6xl lg:text-8xl">
-Banana
-</span>
-
-</h1>
-
-<p class="max-w-2xl text-sm md:text-base leading-relaxed text-white">
-
-<b>
-Shastika Global’s Premium Baby Bananas are naturally sweet, nutrient-rich, and harvested from carefully selected farms. Known for their smooth texture and delightful taste, these bananas are ideal for fresh consumption and international export markets.
-</b>
-
-</p>
-
-</div>
-
-
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-<div class="highlight-card">
-
-<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Fruit Quality
-</h4>
-
-<ul class="text-sm space-y-2">
-
-<li class="text-white">Taste: <b>Naturally Sweet</b></li>
-<li class="text-white">Texture: <b>Soft & Creamy</b></li>
-<li class="text-white">Status: <b>100% Fresh</b></li>
-
-</ul>
-
-</div>
-
-
-
-<div class="highlight-card">
-
-<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Nutritional Value
-</h4>
-
-<ul class="text-sm space-y-2">
-
-<li class="text-white">Rich in <b>Potassium</b></li>
-<li class="text-white">High <b>Energy Source</b></li>
-<li class="text-white">Natural <b>Dietary Fiber</b></li>
-
-</ul>
-
-</div>
-
-
-
-<div class="highlight-card">
-
-<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Packaging
-</h4>
-
-<ul class="text-sm space-y-2">
-
-<li class="text-white">Packing: <b>Export Cartons</b></li>
-<li class="text-white">Protection: <b>Damage-Free Transit</b></li>
-<li class="text-white">Shelf Life: <b>Fresh Supply</b></li>
-
-</ul>
-
-</div>
-
-
-
-<div class="highlight-card">
-
-<h4 class="text-green-400 font-bold text-xs uppercase mb-2">
-Applications
-</h4>
-
-<ul class="text-sm space-y-2">
-
-<li class="text-white">Retail <b>Supermarkets</b></li>
-<li class="text-white">Hotels & <b>Restaurants</b></li>
-<li class="text-white">Fresh <b>Consumption</b></li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    <div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+
+        <!-- ── LEFT COLUMN ── -->
+        <div class="w-full lg:w-5/12 flex flex-col items-center lg:items-start">
+
+            <div class="glass-shell-stage group mb-12">
+
+                <img src="{{ url_for('static', filename='images/babybanana-pd.webp') }}"
+                     alt="Baby Banana"
+                     class="product-seated z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
+
+                <!-- SPINNING LOGO BADGE -->
+                <div class="badge-anchor">
+                    <div class="relative w-40 h-40 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
+                            <path id="badgePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+                            <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
+                                <textPath xlink:href="#badgePath">SHASTIKA GLOBAL IMPEX PRIVATE LTD • </textPath>
+                            </text>
+                        </svg>
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
+                            <div class="w-full h-full animate-[spin_8s_linear_infinite]">
+                                <img src="{{ url_for('static', filename='images/logo.webp') }}"
+                                     class="w-full h-full object-contain scale-110" alt="Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ENQUIRY FORM -->
+            <div class="w-full glass-form-card p-8">
+
+                <h2 class="text-xl font-bold text-green-400 uppercase tracking-widest mb-6">
+                    Bulk Quote Inquiry
+                </h2>
+
+                <form class="space-y-4" onsubmit="submitEnquiryForm(event)">
+
+                    <input type="hidden" name="product" value="Baby Banana">
+
+                    <input type="text" name="name" placeholder="Full Name *(required)"
+                           class="custom-input" required>
+
+                    <select id="countrySelect" name="country" class="custom-input" required>
+                        <option value="">Select Country *</option>
+                    </select>
+
+                    <div class="flex gap-3">
+                        <input type="text" id="countryCode" name="country_code"
+                               placeholder="+Code" class="custom-input w-28" readonly required>
+                        <input type="tel" name="phone" placeholder="Phone Number *"
+                               class="custom-input flex-1" required>
+                    </div>
+
+                    <input type="email" name="email" placeholder="Email Address"
+                           class="custom-input">
+
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-green-500 to-green-600 py-4 rounded-xl font-black uppercase tracking-widest hover:scale-[1.01] transition-transform">
+                        Send Enquiry
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- ── RIGHT COLUMN ── -->
+        <div class="w-full lg:w-7/12 space-y-12">
+
+            <div class="space-y-4">
+                <span class="text-green-400 font-bold tracking-[0.5em] text-[10px] uppercase block underline decoration-green-500/30 underline-offset-8">
+                    Premium Export Quality
+                </span>
+                <h1 class="product-title">
+                    Baby <br>
+                    <span class="text-green-300 italic font-serif" style="font-size:0.85em;">Banana</span>
+                </h1>
+                <p class="max-w-2xl text-sm md:text-base leading-relaxed text-white">
+                    <b>Shastika Global's Premium Baby Bananas are naturally sweet, nutrient-rich, and harvested
+                    from carefully selected farms. Known for their smooth texture and delightful taste, these
+                    bananas are ideal for fresh consumption and international export markets.</b>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="highlight-card">
+                    <h4 class="text-green-400 font-bold text-xs uppercase mb-2">Fruit Quality</h4>
+                    <ul class="text-sm space-y-2">
+                        <li class="text-white">Taste: <b>Naturally Sweet</b></li>
+                        <li class="text-white">Texture: <b>Soft &amp; Creamy</b></li>
+                        <li class="text-white">Status: <b>100% Fresh</b></li>
+                    </ul>
+                </div>
+
+                <div class="highlight-card">
+                    <h4 class="text-green-400 font-bold text-xs uppercase mb-2">Nutritional Value</h4>
+                    <ul class="text-sm space-y-2">
+                        <li class="text-white">Rich in <b>Potassium</b></li>
+                        <li class="text-white">High <b>Energy Source</b></li>
+                        <li class="text-white">Natural <b>Dietary Fiber</b></li>
+                    </ul>
+                </div>
+
+                <div class="highlight-card">
+                    <h4 class="text-green-400 font-bold text-xs uppercase mb-2">Packaging</h4>
+                    <ul class="text-sm space-y-2">
+                        <li class="text-white">Packing: <b>Export Cartons</b></li>
+                        <li class="text-white">Protection: <b>Damage-Free Transit</b></li>
+                        <li class="text-white">Shelf Life: <b>Fresh Supply</b></li>
+                    </ul>
+                </div>
+
+                <div class="highlight-card">
+                    <h4 class="text-green-400 font-bold text-xs uppercase mb-2">Applications</h4>
+                    <ul class="text-sm space-y-2">
+                        <li class="text-white">Retail <b>Supermarkets</b></li>
+                        <li class="text-white">Hotels &amp; <b>Restaurants</b></li>
+                        <li class="text-white">Fresh <b>Consumption</b></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- STATS BAR -->
+            <div class="bg-white/5 p-8 rounded-3xl border border-white/10 flex flex-col md:flex-row gap-8 justify-between items-center">
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-black text-green-300 italic">Sweet</p>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Natural Taste</p>
+                </div>
+                <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-black text-white italic">100%</p>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-40">Fresh Supply</p>
+                </div>
+                <div class="h-px w-full md:h-12 md:w-px bg-white/10"></div>
+                <div class="flex gap-4">
+                    <div class="w-14 h-14 rounded-full border border-green-500/50 flex items-center justify-center text-[10px] font-bold text-green-400 text-center uppercase">Pure</div>
+                    <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-[10px] font-bold opacity-40 text-center uppercase">Fresh</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </main>
 
+<!-- WHATSAPP FLOATING BUTTON -->
+<div class="floating-icons">
+    <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
 
 <script>
 
-/* COUNTRY DROPDOWN */
-
-const countries={
-"India":"+91",
-"USA":"+1",
-"UK":"+44",
-"UAE":"+971"
+const countries = {
+    "Afghanistan":"+93","Albania":"+355","Algeria":"+213","Andorra":"+376",
+    "Angola":"+244","Argentina":"+54","Armenia":"+374","Australia":"+61",
+    "Austria":"+43","Azerbaijan":"+994","Bahrain":"+973","Bangladesh":"+880",
+    "Belarus":"+375","Belgium":"+32","Belize":"+501","Benin":"+229",
+    "Bhutan":"+975","Bolivia":"+591","Bosnia and Herzegovina":"+387",
+    "Botswana":"+267","Brazil":"+55","Brunei":"+673","Bulgaria":"+359",
+    "Burkina Faso":"+226","Burundi":"+257","Cambodia":"+855","Cameroon":"+237",
+    "Canada":"+1","Chad":"+235","Chile":"+56","China":"+86","Colombia":"+57",
+    "Congo":"+242","Costa Rica":"+506","Croatia":"+385","Cuba":"+53",
+    "Cyprus":"+357","Czech Republic":"+420","Denmark":"+45","Djibouti":"+253",
+    "Dominican Republic":"+1-809","Ecuador":"+593","Egypt":"+20",
+    "El Salvador":"+503","Estonia":"+372","Ethiopia":"+251","Fiji":"+679",
+    "Finland":"+358","France":"+33","Gabon":"+241","Gambia":"+220",
+    "Georgia":"+995","Germany":"+49","Ghana":"+233","Greece":"+30",
+    "Guatemala":"+502","Guinea":"+224","Haiti":"+509","Honduras":"+504",
+    "Hungary":"+36","Iceland":"+354","India":"+91","Indonesia":"+62",
+    "Iran":"+98","Iraq":"+964","Ireland":"+353","Israel":"+972","Italy":"+39",
+    "Jamaica":"+1-876","Japan":"+81","Jordan":"+962","Kazakhstan":"+7",
+    "Kenya":"+254","Kuwait":"+965","Kyrgyzstan":"+996","Laos":"+856",
+    "Latvia":"+371","Lebanon":"+961","Lesotho":"+266","Liberia":"+231",
+    "Libya":"+218","Lithuania":"+370","Luxembourg":"+352","Madagascar":"+261",
+    "Malawi":"+265","Malaysia":"+60","Maldives":"+960","Mali":"+223",
+    "Malta":"+356","Mauritania":"+222","Mauritius":"+230","Mexico":"+52",
+    "Moldova":"+373","Monaco":"+377","Mongolia":"+976","Montenegro":"+382",
+    "Morocco":"+212","Mozambique":"+258","Myanmar":"+95","Namibia":"+264",
+    "Nepal":"+977","Netherlands":"+31","New Zealand":"+64","Nicaragua":"+505",
+    "Niger":"+227","Nigeria":"+234","North Korea":"+850","Norway":"+47",
+    "Oman":"+968","Pakistan":"+92","Palestine":"+970","Panama":"+507",
+    "Papua New Guinea":"+675","Paraguay":"+595","Peru":"+51","Philippines":"+63",
+    "Poland":"+48","Portugal":"+351","Qatar":"+974","Romania":"+40",
+    "Russia":"+7","Rwanda":"+250","Saudi Arabia":"+966","Senegal":"+221",
+    "Serbia":"+381","Sierra Leone":"+232","Singapore":"+65","Slovakia":"+421",
+    "Slovenia":"+386","Somalia":"+252","South Africa":"+27","South Korea":"+82",
+    "South Sudan":"+211","Spain":"+34","Sri Lanka":"+94","Sudan":"+249",
+    "Sweden":"+46","Switzerland":"+41","Syria":"+963","Taiwan":"+886",
+    "Tajikistan":"+992","Tanzania":"+255","Thailand":"+66","Togo":"+228",
+    "Tunisia":"+216","Turkey":"+90","Turkmenistan":"+993","Uganda":"+256",
+    "Ukraine":"+380","United Arab Emirates":"+971","United Kingdom":"+44",
+    "United States":"+1","Uruguay":"+598","Uzbekistan":"+998","Venezuela":"+58",
+    "Vietnam":"+84","Yemen":"+967","Zambia":"+260","Zimbabwe":"+263"
 };
 
-const countrySelect=document.getElementById("countrySelect");
-const countryCodeInput=document.getElementById("countryCode");
+const countrySelect    = document.getElementById("countrySelect");
+const countryCodeInput = document.getElementById("countryCode");
 
-Object.keys(countries).forEach(country=>{
-const option=document.createElement("option");
-option.value=country;
-option.textContent=country;
-countrySelect.appendChild(option);
+Object.keys(countries).sort().forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
 });
 
-countrySelect.addEventListener("change",function(){
-countryCodeInput.value=countries[this.value]||"";
+countrySelect.addEventListener("change", function () {
+    countryCodeInput.value = countries[this.value] || "";
 });
 
-function submitEnquiryForm(event){
-event.preventDefault();
-alert("Enquiry Submitted Successfully!");
+function submitEnquiryForm(event) {
+    event.preventDefault();
+    alert("Enquiry Submitted Successfully!");
 }
 
 </script>

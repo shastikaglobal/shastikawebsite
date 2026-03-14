@@ -87,14 +87,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <!-- CHATBOT BUTTON -->
 <div id="chatbot-button" onclick="openChatbot()">💬</div>
 
-<!-- GALLERY MODAL -->
-<div id="galleryModal">
-  <button class="gallery-back" onclick="closeGallery()">
-    <span class="arrow">←</span>
-    <span>Back to Gallery</span>
-  </button>
+<!-- GALLERY MODAL (same structure as home) -->
+<div id="galleryModal" class="gallery-modal">
+  <div class="gallery-topbar">
+    <button class="gallery-back" onclick="closeGallery()">
+      <span class="arrow">←</span>
+      <span>Back to Gallery</span>
+    </button>
+  </div>
   <img id="galleryModalImg">
-</div>
+  </div>
 
 <!-- SCRIPTS -->
 <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>

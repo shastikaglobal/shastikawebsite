@@ -1,8 +1,13 @@
 from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
 from pymongo import MongoClient
-import os
-import requests as http_requests
 
+import os
+import sys
+
+sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app"),
+MONGO_URI =  "mongodb+srv://shastikaAdmin:Shastika123@cluster0.wfhd0hm.mongodb.net/shastikaDB?retryWrites=true&w=majority&appName=Cluster0"
+
+ 
 # ==============================
 # APP CONFIG
 # ==============================
@@ -14,10 +19,23 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "SHASTIKA_ADMIN_PANEL_KEY_2025")
 # MONGODB CONNECTION
 # ==============================
 
-MONGO_URI = os.getenv("MONGO_URI")
+from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
+from pymongo import MongoClient
+
+import os
+import sys
+
+sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app")
+
+# ==============================
+# MONGODB CONNECTION
+# ==============================
+
+MONGO_URI = "mongodb+srv://shastikaAdmin:Shastika2026@cluster0.wfhd0hm.mongodb.net/shastikaDB?retryWrites=true&w=majority&appName=Cluster0" 
 
 client = MongoClient(MONGO_URI)
 
+# Test MongoDB connection
 try:
     client.admin.command("ping")
     print("✅ MongoDB Connected Successfully")
@@ -28,9 +46,6 @@ db = client["shastikaDB"]
 
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]
-
-
-
 
 # ==============================
 # WEBSITE ROUTES
@@ -45,7 +60,6 @@ def home():
     return render_template("home.html")
 
 @app.route("/about")
-
 def about():
     return render_template("about.html")
 
@@ -56,10 +70,11 @@ def products():
 @app.route("/countries")
 def countries():
     return render_template("countries.html")
+    from flask import send_from_directory
 
-@app.route("/widget/<path:filename>")
+@app.route('/widget/<path:filename>')
 def widget_files(filename):
-    return send_from_directory("widget", filename)
+    return send_from_directory('widget', filename)
 
 @app.route("/awards")
 def awards():
@@ -220,33 +235,25 @@ def page_not_found(e):
     return "<h1>404 - Page Not Found</h1>", 404
 
 # ==============================
+# RUN SERVER
+# ==============================
+# ==============================
 # CHATBOT API
 # ==============================
 
 @app.route("/chatbot", methods=["GET","POST"])
 def chatbot():
 
-    # Browser open panna page show
-    if request.method == "GET":
-        return render_template("chatbot.html")
+    data = request.get_json(silent=True)
 
-    # Chat message receive
-    data = request.get_json()
+    if not data:
+        return jsonify({"status": "chatbot ready"})
 
     message = data.get("message")
 
-    response = http_requests.post(
-        "https://chatbot-e99e.onrender.com/chatbot",
-        json={"message": message}
-    )
+    answer = answer_question(message)
 
-    return jsonify(response.json())
-
-# ==============================
-# RUN SERVER
-# ==============================
+    return jsonify({"reply": answer})
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
