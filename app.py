@@ -1,13 +1,8 @@
+
 from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
 from pymongo import MongoClient
-
 import os
-import sys
 
-sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app"),
-MONGO_URI =  "mongodb+srv://shastikaAdmin:Shastika123@cluster0.wfhd0hm.mongodb.net/shastikaDB?retryWrites=true&w=majority&appName=Cluster0"
-
- 
 # ==============================
 # APP CONFIG
 # ==============================
@@ -19,23 +14,10 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "SHASTIKA_ADMIN_PANEL_KEY_2025")
 # MONGODB CONNECTION
 # ==============================
 
-from flask import Flask, render_template, send_from_directory, request, jsonify, session, redirect, url_for, abort
-from pymongo import MongoClient
-
-import os
-import sys
-
-sys.path.insert(0, r"D:\Shastika (2)\shastika\chatbot-shastika\app")
-
-# ==============================
-# MONGODB CONNECTION
-# ==============================
-
-MONGO_URI = "mongodb+srv://shastikaAdmin:Shastika2026@cluster0.wfhd0hm.mongodb.net/shastikaDB?retryWrites=true&w=majority&appName=Cluster0" 
+MONGO_URI = "mongodb+srv://shastikaAdmin:Shastika2026@cluster0.wfhd0hm.mongodb.net/shastikaDB?retryWrites=true&w=majority&appName=Cluster0"
 
 client = MongoClient(MONGO_URI)
 
-# Test MongoDB connection
 try:
     client.admin.command("ping")
     print("✅ MongoDB Connected Successfully")
@@ -43,7 +25,6 @@ except Exception as e:
     print("❌ MongoDB Connection Failed:", e)
 
 db = client["shastikaDB"]
-
 contact_collection = db["contact_messages"]
 enquiry_collection = db["product_enquiries"]
 
@@ -70,7 +51,6 @@ def products():
 @app.route("/countries")
 def countries():
     return render_template("countries.html")
-    from flask import send_from_directory
 
 @app.route('/widget/<path:filename>')
 def widget_files(filename):
@@ -113,9 +93,7 @@ def product_page(product_name):
 
 @app.route("/submit_contact", methods=["POST"])
 def submit_contact():
-
     data = request.json
-
     contact_collection.insert_one({
         "name": data.get("name"),
         "email": data.get("email"),
@@ -123,7 +101,6 @@ def submit_contact():
         "subject": data.get("subject"),
         "message": data.get("message")
     })
-
     return jsonify({"status": "success"})
 
 # ==============================
@@ -132,9 +109,7 @@ def submit_contact():
 
 @app.route("/submit_enquiry", methods=["POST"])
 def submit_enquiry():
-
     data = request.json
-
     enquiry_collection.insert_one({
         "product": data.get("product"),
         "name": data.get("name"),
@@ -142,7 +117,6 @@ def submit_enquiry():
         "phone": data.get("phone"),
         "email": data.get("email")
     })
-
     return jsonify({"status": "success"})
 
 # ==============================
@@ -151,16 +125,12 @@ def submit_enquiry():
 
 @app.route("/admin_login", methods=["POST"])
 def admin_login():
-
     data = request.json
-
     ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@shastika.com")
     ADMIN_PASS = os.getenv("ADMIN_PASS", "Admin@123")
-
     if data.get("email") == ADMIN_EMAIL and data.get("password") == ADMIN_PASS:
         session["admin"] = True
         return jsonify({"status": "ok"})
-
     return jsonify({"status": "fail"}), 401
 
 # ==============================
@@ -169,57 +139,29 @@ def admin_login():
 
 @app.route("/admin")
 def admin_panel():
-
-    if not session.get("admin"):
-        return render_template("admin.html")
-
     return render_template("admin.html")
-
-# ==============================
-# ADMIN DATA APIs
-# ==============================
 
 @app.route("/admin/messages")
 def admin_messages():
-
     if not session.get("admin"):
         return jsonify([]), 401
-
     msgs = contact_collection.find().sort("_id", -1)
-
     return jsonify([
-        {
-            "name": m.get("name"),
-            "email": m.get("email"),
-            "phone": m.get("phone"),
-            "subject": m.get("subject"),
-            "message": m.get("message")
-        }
+        {"name": m.get("name"), "email": m.get("email"), "phone": m.get("phone"),
+         "subject": m.get("subject"), "message": m.get("message")}
         for m in msgs
     ])
 
 @app.route("/admin/enquiries")
 def admin_enquiries():
-
     if not session.get("admin"):
         return jsonify([]), 401
-
     enqs = enquiry_collection.find().sort("_id", -1)
-
     return jsonify([
-        {
-            "product": e.get("product"),
-            "name": e.get("name"),
-            "country": e.get("country"),
-            "phone": e.get("phone"),
-            "email": e.get("email")
-        }
+        {"product": e.get("product"), "name": e.get("name"), "country": e.get("country"),
+         "phone": e.get("phone"), "email": e.get("email")}
         for e in enqs
     ])
-
-# ==============================
-# ADMIN LOGOUT
-# ==============================
 
 @app.route("/admin_logout")
 def admin_logout():
@@ -227,7 +169,7 @@ def admin_logout():
     return redirect(url_for("admin_panel"))
 
 # ==============================
-# CUSTOM 404 PAGE
+# CUSTOM 404
 # ==============================
 
 @app.errorhandler(404)
@@ -235,25 +177,20 @@ def page_not_found(e):
     return "<h1>404 - Page Not Found</h1>", 404
 
 # ==============================
-# RUN SERVER
-# ==============================
-# ==============================
 # CHATBOT API
 # ==============================
 
-@app.route("/chatbot", methods=["GET","POST"])
+@app.route("/chatbot", methods=["GET", "POST"])
 def chatbot():
-
     data = request.get_json(silent=True)
-
     if not data:
         return jsonify({"status": "chatbot ready"})
+    return jsonify({"reply": "Chatbot coming soon."})
 
-    message = data.get("message")
-
-    answer = answer_question(message)
-
-    return jsonify({"reply": answer})
+# ==============================
+# RUN SERVER
+# ==============================
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+EOF
