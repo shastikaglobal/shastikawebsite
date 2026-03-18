@@ -8,6 +8,7 @@
 
 <title>Shastika Global</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
 </head>
@@ -17,7 +18,12 @@
 {% block content %}{% endblock %}
 
 
-<!-- ================= SHASTIKA COCOBOT ================= -->
+<!-- ================= SHASTIKA WIDGETS ================= -->
+
+<!-- WHATSAPP ICON -->
+<a href="https://wa.me/917397612015" target="_blank" id="whatsapp-icon" title="WhatsApp us">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:32px;height:32px;">
+</a>
 
 <!-- CHAT ICON -->
 <div id="cocobot-icon">
@@ -29,12 +35,38 @@
   <button id="cocobot-close" aria-label="Close chatbot">✕</button>
   <iframe
     src="https://chatbot-e99e.onrender.com"
-    style="width:100%; height:100%; border:none;">
+    style="width:100%; height:100%; border:none; pointer-events:none;">
   </iframe>
 </div>
 
 
 <style>
+
+/* WHATSAPP ICON */
+
+#whatsapp-icon{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+transition:all 0.3s ease;
+}
+
+#whatsapp-icon:hover{
+transform:scale(1.1);
+box-shadow:0 6px 16px rgba(37,211,102,0.4);
+}
 
 /* CHAT ICON */
 
@@ -75,24 +107,32 @@ z-index:9999;
 /* CLOSE BUTTON (top-right inside chat box) */
 #cocobot-close{
 position:absolute;
-top:10px;
-right:14px;
-width:28px;
-height:28px;
-border:none;
-border-radius:50%;
-background:rgba(0,0,0,0.7);
-color:#fff;
-font-size:16px;
-line-height:1;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:10000;
+top:10px !important;
+right:14px !important;
+width:32px !important;
+height:32px !important;
+border:none !important;
+border-radius:50% !important;
+background:rgba(0,0,0,0.8) !important;
+color:#fff !important;
+font-size:18px !important;
+line-height:1 !important;
+cursor:pointer !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+z-index:10002 !important;
+pointer-events:auto !important;
+padding:0 !important;
+margin:0 !important;
+outline:none !important;
 }
 #cocobot-close:hover{
-background:rgba(0,0,0,0.9);
+background:rgba(0,0,0,0.95) !important;
+transform:scale(1.1) !important;
+}
+#cocobot-close:active{
+transform:scale(0.95) !important;
 }
 
 </style>
@@ -109,19 +149,28 @@ const closeBtn=document.getElementById("cocobot-close");
 if(!icon || !box) return;
 
 icon.onclick=function(){
-
 if(box.style.display==="block"){
 box.style.display="none";
 }else{
 box.style.display="block";
 }
-
 };
 
+function closeCocobotBox(event){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+  }
+  box.style.display="none";
+  return false;
+}
+
 if(closeBtn){
-  closeBtn.onclick=function(){
-    box.style.display="none";
-  };
+  closeBtn.onclick=closeCocobotBox;
+  closeBtn.addEventListener('click',closeCocobotBox,true);
+  closeBtn.addEventListener('mousedown',closeCocobotBox,true);
+  closeBtn.addEventListener('touchend',closeCocobotBox,true);
 }
 
 });

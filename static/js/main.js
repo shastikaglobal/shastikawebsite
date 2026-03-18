@@ -51,13 +51,68 @@ window.openGalleryModal = function(img) {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 };
-window.closeGallery = function() {
+window.closeGallery = function(e) {
+  // Handle both direct calls and event handlers
+  if (e && typeof e.preventDefault === 'function') {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
   const modal = document.getElementById('galleryModal');
   if (!modal) return;
+  
+  // Remove active class - this triggers CSS hide
   modal.classList.remove('active');
+  
+  // Force hide with display: none for extra safety
   modal.style.display = 'none';
+  
+  // Restore body scroll
   document.body.style.overflow = '';
+  
+  // Log to console for debugging
+  console.log('Gallery modal closed');
+  
+  return false; // Prevent default behavior
 };
+
+/* Setup gallery close button - improved version */
+document.addEventListener('DOMContentLoaded', function() {
+  const closeBtn = document.getElementById('galleryCloseBtn');
+  const modal = document.getElementById('galleryModal');
+  
+  if (closeBtn) {
+    // Direct click handler - most reliable
+    closeBtn.onclick = function(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      window.closeGallery();
+      return false;
+    };
+    
+    // Also add event listener for redundancy
+    closeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.closeGallery();
+      return false;
+    }, true);
+  }
+  
+  // Close modal when clicking on background (dark overlay)
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      // Only close if clicking directly on the modal, not on its children
+      if (e.target === modal || e.target.id === 'galleryModal') {
+        e.preventDefault();
+        e.stopPropagation();
+        window.closeGallery();
+      }
+    });
+  }
+});
 
 /* ---- Contact Form ---- */
 window.submitContactForm = function(e) {
@@ -328,6 +383,16 @@ document.addEventListener('DOMContentLoaded', function() {
       currentIndex = Math.max(0, Math.min(currentIndex + dir, maxIndex));
       update();
     };
+    
+    // Add touch/click handlers for award buttons
+    leftBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.moveAwards(-1);
+    });
+    rightBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.moveAwards(1);
+    });
 
     window.addEventListener('resize', () => { currentIndex = 0; update(); });
     update();

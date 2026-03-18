@@ -455,7 +455,12 @@ height="1000"
 
 <!-- CERT MODAL -->
 <div id="certModal" onclick="closeCertModal()">
-  <button class="cert-modal-close" onclick="closeCertModal()">&#10005;</button>
+  <div class="gallery-topbar">
+    <button id="certCloseBtn" class="gallery-back" type="button" title="Close Certificate" onclick="event.stopPropagation(); closeCertModal()">
+      <span class="arrow">←</span>
+      <span>Back</span>
+    </button>
+  </div>
   <img id="certModalImg" src="" alt="Certificate" onclick="event.stopPropagation()" />
 </div>
 
@@ -519,7 +524,7 @@ height="1000"
 <div id="galleryModal" class="gallery-modal" onclick="closeGallery()">
 
 <div class="gallery-topbar">
-<button class="gallery-back" onclick="event.stopPropagation(); closeGallery()"><span class="arrow">←</span><span>Back to Home</span></button>
+<button id="galleryCloseBtn" class="gallery-back" type="button" title="Close Gallery" onclick="event.stopPropagation(); closeGallery()"><span class="arrow">←</span><span>Back</span></button>
 </div>
 
 <img id="galleryModalImg" onclick="event.stopPropagation()">
@@ -652,7 +657,7 @@ height="1000"
 
       <div class="map-box">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.0818374589647!2d77.54500!3d11.359500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96229c5a5a5a5%3A0x5a5a5a5a5a5a5a5a!2s41%2F2%2C%20ST-5%2C%20Sathy%20Athani%20Main%20Rd%2C%20Thuckanaickenpalayam!5e0!3m2!1sen!2sin!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.508!2d77.545!3d11.3595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9622d7b6b6b6b%3A0xa1a1a1a1a1a1a1a1!2s41%2F2%2C%20ST-5%2C%20Sathy%20Athani%20Main%20Rd%2C%20Thuckanaickenpalayam%2C%20Tamil%20Nadu%20638506!5e0!3m2!1sen!2sin!4v1711270800000"
           loading="lazy"
           allowfullscreen=""
           allow="geolocation">
@@ -664,16 +669,6 @@ height="1000"
   </div>
 
 </section>
-<!-- FLOATING ACTION BUTTONS -->
-<div class="floating-icons">
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917397612015" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp us">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-</div>
-
 
 <footer>
   <div class="footer-overlay">

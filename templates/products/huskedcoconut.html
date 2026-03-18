@@ -68,25 +68,41 @@
             background: rgba(168, 207, 230, 0.45);
             border-radius: 60% 40% 50% 50% / 40% 40% 60% 60%;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
             position: relative;
-            overflow: visible !important;
+            overflow: hidden !important;
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
             border: 1.5px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .glass-shell-stage {
+                max-width: 320px !important;
+                height: 420px !important;
+                margin: 0 auto !important;
+                padding: 15px !important;
+            }
         }
 
         .product-seated {
-            padding-bottom: 0px !important;
-            margin-bottom: -100px !important;
-            transform: translateX(0px);
-            width: 90% !important;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
             transition: all 0.6s ease;
+            margin: 0 !important;
+            padding-bottom: 0 !important;
+            transform: none !important;
         }
 
         .glass-shell-stage:hover .product-seated {
-            transform: translateY(-20px) scale(1.05);
+            transform: scale(1.08);
         }
 
         /* 2. TRANSPARENT GLASS FORM DESIGN */
@@ -147,9 +163,18 @@
 
         .badge-anchor {
             position: absolute;
-            top: -25px;
-            right: -25px;
+            top: 0;
+            right: 0;
             z-index: 50;
+            transform: translate(20%, -20%);
+        }
+
+        @media (max-width: 768px) {
+            .badge-anchor {
+                top: 0;
+                right: 0;
+                transform: translate(15%, -15%);
+            }
         }
     </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -200,7 +225,7 @@
     </div>
 </nav>
 
-<main class="max-w-7xl mx-auto px-6 py-12">
+<main class="max-w-7xl mx-auto px-6 py-4 pt-32">
     <div class="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
 
         <!-- LEFT COLUMN -->
@@ -209,18 +234,19 @@
                 <img src="{{ url_for('static', filename='images/husked-pd.webp') }}"
                      alt="Husked Coconut"
                      class="product-seated animate-float z-10 drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
-                <div class="badge-anchor">
-                    <div class="relative w-40 h-40 flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
-                            <path id="badgePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
-                            <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
-                                <textPath xlink:href="#badgePath">SHASTIKA GLOBAL IMPEX PRIVATE LTD • </textPath>
-                            </text>
-                        </svg>
-                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
-                            <div class="w-full h-full animate-[spin_8s_linear_infinite]">
-                                <img src="{{ url_for('static', filename='images/logo.webp') }}" class="w-full h-full object-contain scale-110" alt="Logo">
-                            </div>
+            </div>
+
+            <div class="badge-anchor">
+                <div class="relative w-40 h-40 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
+                        <path id="badgePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+                        <text class="fill-white font-bold uppercase tracking-[0.2em] text-[8px]">
+                            <textPath xlink:href="#badgePath">SHASTIKA GLOBAL IMPEX PRIVATE LTD • </textPath>
+                        </text>
+                    </svg>
+                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-2xl z-10">
+                        <div class="w-full h-full animate-[spin_8s_linear_infinite]">
+                            <img src="{{ url_for('static', filename='images/logo.webp') }}" class="w-full h-full object-contain scale-110" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -319,16 +345,6 @@
 
     </div>
 </main>
-
-<!-- WHATSAPP FLOATING BUTTON (reuses global styles from main.css) -->
-<div class="floating-icons">
-  <a href="https://wa.me/917397612015"
-     target="_blank"
-     class="float-btn whatsapp-btn"
-     title="WhatsApp us">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-</div>
 
 <script>
 /* ── Country dropdown with dial codes ── */
