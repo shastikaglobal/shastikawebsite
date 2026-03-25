@@ -180,17 +180,106 @@ def page_not_found(e):
 # CHATBOT API
 # ==============================
 
-@app.route("/chatbot", methods=["GET", "POST"])
-def chatbot():
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"status": "chatbot ready"})
-    return jsonify({"reply": "Chatbot coming soon."})
+# ==============================
+# CHATBOT RESPONSES
+# ==============================
+
+CHATBOT_DATA = {
+    "en": {
+        "welcome": "Welcome to Shastika! 🌿 How can I help you today?",
+        "options": [
+            "📦 Our Products",
+            "🌍 Export Services",
+            "💰 Get Quote",
+            "📞 Contact Us"
+        ]
+    },
+    "fr": {
+        "welcome": "Bienvenue chez Shastika! 🌿 Comment puis-je vous aider?",
+        "options": ["📦 Nos Produits", "🌍 Services d'Exportation", "💰 Obtenir un Devis", "📞 Nous Contacter"]
+    }
+}
+
+PRODUCTS_INFO = {
+    "coconut": "We offer premium coconuts: Tender Coconut, Green Coconut, and Dehusked Coconut. All organic and fresh!",
+    "banana": "Our bananas include Cavendish, Red Banana, Baby Banana, and Nendran varieties - perfect for export.",
+    "watermelon": "Premium watermelons and black watermelons - fresh and delicious, ready for global markets.",
+    "tomato": "Farm-fresh tomatoes grown using sustainable methods.",
+    "pumpkin": "White Pumpkin and Yellow Pumpkin - nutritious and versatile.",
+    "cucumber": "Yellow cucumbers - fresh and crunchy.",
+    "quote": "Please fill in the quotation form to get a price estimate.",
+    "export": "We handle international export to multiple countries. Let's discuss your requirements!",
+    "contact": "You can reach us via email, phone, or through our contact form."
+}
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"})
+
+@app.route("/", methods=["GET"])
+def chatbot_welcome():
+    lang = request.args.get("lang", "en")
+    data = CHATBOT_DATA.get(lang, CHATBOT_DATA["en"])
+    return jsonify(data)
+
+@app.route("/chat", methods=["POST"])
+def chatbot_message():
+    data = request.get_json(silent=True) or {}
+    user_message = data.get("message", "").lower()
+    lang = data.get("lang", "en")
+    
+    # Simple keyword matching to generate responses
+    response = "Thank you for your message! How else can I help you?"
+    
+    if any(word in user_message for word in ["coconut", "tender", "green", "husked"]):
+        response = PRODUCTS_INFO.get("coconut", "")
+    elif any(word in user_message for word in ["banana", "cavendish", "red", "nendran"]):
+        response = PRODUCTS_INFO.get("banana", "")
+    elif any(word in user_message for word in ["watermelon"]):
+        response = PRODUCTS_INFO.get("watermelon", "")
+    elif any(word in user_message for word in ["tomato"]):
+        response = PRODUCTS_INFO.get("tomato", "")
+    elif any(word in user_message for word in ["pumpkin", "cucumber"]):
+        response = PRODUCTS_INFO.get("pumpkin", "")
+    elif any(word in user_message for word in ["quote", "price", "quotation"]):
+        response = PRODUCTS_INFO.get("quote", "")
+        return jsonify({"response": response, "reply": "SHOW_QUOTE_FORM"})
+    elif any(word in user_message for word in ["export", "international"]):
+        response = PRODUCTS_INFO.get("export", "")
+    elif any(word in user_message for word in ["contact", "phone", "email"]):
+        response = PRODUCTS_INFO.get("contact", "")
+    
+    return jsonify({"response": response, "reply": response})
+
+@app.route("/contact-submit", methods=["POST"])
+def contact_submit():
+    data = request.get_json(silent=True) or {}
+    contact_collection.insert_one({
+        "name": data.get("name"),
+        "email": data.get("email"),
+        "phone": data.get("phone"),
+        "message": data.get("message", "")
+    })
+    return jsonify({"status": "success", "message": "Thank you! We'll contact you soon."})
+
+@app.route("/quote-submit", methods=["POST"])
+def quote_submit():
+    data = request.get_json(silent=True) or {}
+    enquiry_collection.insert_one({
+        "company": data.get("company"),
+        "product": data.get("product"),
+        "quantity": data.get("quantity"),
+        "destination": data.get("destination"),
+        "phone": data.get("phone"),
+        "whatsapp": data.get("whatsapp"),
+        "timestamp": os.popen("date").read()
+    })
+    return jsonify({"status": "success", "message": "Quote request submitted!"})
 
 # ==============================
 # RUN SERVER
 # ==============================
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
 EOF

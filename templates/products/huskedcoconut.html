@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Back to Home Button (Mobile Only) -->
-<a href="/" class="mobile-back-btn">
+<a href="/home" class="mobile-back-btn">
   <span class="back-arrow">←</span> Back to Home
 </a>
 
@@ -19,7 +19,7 @@
     <style>
         
         .mobile-back-btn {
-            display: none;
+            display: inline-flex;
             position: fixed;
             top: 100px;
             left: 20px;
@@ -47,12 +47,6 @@
             display: inline-block;
             font-size: 18px;
             font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-back-btn {
-                display: inline-flex;
-            }
         }
 
         * {

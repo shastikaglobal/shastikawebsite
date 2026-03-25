@@ -1,6 +1,6 @@
-const API_URL = "https://chatbot-e99e.onrender.com/chat";
-const API_ROOT = "https://chatbot-e99e.onrender.com";
-const API_QUOTE = "https://chatbot-e99e.onrender.com/quote-submit";
+const API_URL = "/chat";
+const API_ROOT = "";
+const API_QUOTE = "/quote-submit";
 
 let USER_LANG = "en";
 const SESSION_ID = "web-" + Math.random().toString(36);
