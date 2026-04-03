@@ -5308,3 +5308,105 @@ perspective: 1000px;
   font-weight: 600;
   color: white;
 }
+
+/* ================= PROFESSIONAL MAP STYLING ================= */
+.location-block {
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+}
+
+.map-heading {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.map-link {
+  display: block;
+  text-decoration: none;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.4s ease;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 0;
+}
+
+.map-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.map-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent;
+}
+
+.map-box iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  pointer-events: none; /* Allows hover/click on the wrapper */
+  filter: grayscale(15%) contrast(1.1);
+  transition: all 0.6s ease;
+  object-fit: cover;
+}
+
+.map-link:hover .map-box iframe {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(1.1);
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+
+.map-overlay span {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.map-link:hover .map-overlay {
+  opacity: 1;
+}
+
+.map-link:hover .map-overlay span {
+  transform: translateY(0);
+}
